@@ -23,5 +23,6 @@ class AuthViewModel: ViewModel() {
 
         authListener?.onSuccess(response)
         // TO DO: navigate to homepage
+        //test primo commin da android studio
     }
 }
