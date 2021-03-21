@@ -87,12 +87,12 @@
                     android:textColor="#3F51B5" />
 
 
-                    <ProgressBar
-                     android:id="@+id/progress_bar"
-                     style="?android:attr/progressBarStyle"
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:visibility="gone" />
+                <ProgressBar
+                    android:id="@+id/progress_bar"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -100,36 +100,28 @@
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginEnd="32dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardView">
 
-            <CheckBox
-                android:checked="@={viewModel.rememberMe}"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="Remember me" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
-
             <RelativeLayout
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/button_back">
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+
+                android:background="@drawable/button_back"
+                android:scaleX="0.65"
+                android:scaleY="0.85">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/poppinsbold"
-                    android:gravity="center|center_horizontal|center_vertical"
+                    android:gravity="center_horizontal"
                     android:onClick="@{viewModel::onLoginBtnClick}"
                     android:text="LOG IN"
                     android:textColor="#fff"
@@ -176,32 +168,34 @@
             android:layout_marginTop="20dp"
             android:gravity="center"
             android:orientation="horizontal"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:translationY="-60dp"
+            android:translationZ="1dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
-            <ImageView
+            <!--<ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
-                android:src="@drawable/fb" />
+                android:src="@drawable/fb" />-->
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:src="@drawable/g" />
+                android:id="@+id/signingoogle"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:cropToPadding="true"
+                android:scaleType="fitStart"
+                android:src="@drawable/google_signup_dark" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:src="@drawable/in" />
+            <!-- <ImageView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_marginRight="10dp"
+                 android:src="@drawable/g" />-->
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/tw" />
         </LinearLayout>
 
         <LinearLayout
