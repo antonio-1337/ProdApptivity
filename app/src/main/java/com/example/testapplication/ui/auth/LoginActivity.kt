@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import android.widget.ProgressBar
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
@@ -20,6 +21,11 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import com.google.android.play.core.tasks.Task
+import com.google.firebase.auth.AuthResult
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.GoogleAuthProvider
 import utils.hide
 import utils.show
 import utils.toast
@@ -28,12 +34,33 @@ import kotlin.concurrent.schedule
 
 class LoginActivity : AppCompatActivity(), AuthListener {
 
+    private var auth: FirebaseAuth? = null
     private val RC_SIGN_IN: Int = 1
     private var googleSignInClient: GoogleSignInClient? = null
+
+    private var signInWithGoogleBtn: ImageView? = null
+
+    private var TAG = "LoginActivity"
+
+
+    override fun onStart() {
+        super.onStart()
+
+        val user: FirebaseUser? = auth?.currentUser
+        //sel'utente è già loggato vai alla homepage
+        if(user != null)
+        {
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_login)
+
+        //init firebase Auth
+        auth = FirebaseAuth.getInstance()
 
         //Google Auth Init
         createRequest()
@@ -57,7 +84,7 @@ class LoginActivity : AppCompatActivity(), AuthListener {
         googleSignInClient = GoogleSignIn.getClient(this, gso)
     }
 
-    var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+   /* var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
             // There are no request codes
             val data: Intent? = result.data
@@ -68,12 +95,54 @@ class LoginActivity : AppCompatActivity(), AuthListener {
     fun openSomeActivityForResult() {
         val intent = Intent(this, HomeActivity::class.java)
         resultLauncher.launch(intent)
-    }
+    }*/
 
-    /*private fun signIn() {
+    private fun signIn() {
+        findViewById<ProgressBar>(R.id.progress_bar).show()
         val signInIntent = googleSignInClient?.signInIntent
         startActivityForResult(signInIntent, RC_SIGN_IN)
-    }*/
+    }
+
+   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+        if (requestCode == RC_SIGN_IN) {
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            try {
+                // Google Sign In was successful, authenticate with Firebase
+                val account = task.getResult(ApiException::class.java)!!
+                Log.d(TAG, "firebaseAuthWithGoogle:" + account.id)
+                firebaseAuthWithGoogle(account.idToken!!)
+            } catch (e: ApiException) {
+                // Google Sign In failed, update UI appropriately
+                Log.w(TAG, "Google sign in failed", e)
+                e.message?.let { toast(it) }
+            }
+        }
+    }
+
+    private fun firebaseAuthWithGoogle(idToken: String) {
+        val credential = GoogleAuthProvider.getCredential(idToken, null)
+        auth?.signInWithCredential(credential)
+                ?.addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        findViewById<ProgressBar>(R.id.progress_bar).hide()
+                        // Sign in success, update UI with the signed-in user's information
+                        Log.d(TAG, "signInWithCredential:success")
+                        val user = auth?.currentUser
+                        // go to home activity
+                        val intent = Intent(this, HomeActivity::class.java)
+                        startActivity(intent)
+                    } else {
+                        findViewById<ProgressBar>(R.id.progress_bar).hide()
+                        // If sign in fails, display a message to the user.
+                        Log.w(TAG, "signInWithCredential:failure", task.exception)
+                        toast("Oops. something went wrong with the authentication")
+                    }
+                }
+    }
+
 
 
     override fun onStarted() {
@@ -99,5 +168,9 @@ class LoginActivity : AppCompatActivity(), AuthListener {
     override fun onError(errorMsg: String) {
         findViewById<ProgressBar>(R.id.progress_bar).hide()
         toast("Login error: $errorMsg")
+    }
+
+    fun tryGoogleSignin(view: View) {
+        signIn()
     }
 }

@@ -186,7 +186,11 @@
                 android:id="@+id/signingoogle"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
+                android:clickable="true"
                 android:cropToPadding="true"
+                android:elevation="5dp"
+                android:focusable="auto"
+                android:onClick="tryGoogleSignin"
                 android:scaleType="fitStart"
                 android:src="@drawable/google_signup_dark" />
 

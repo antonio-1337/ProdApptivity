@@ -3,6 +3,8 @@ package com.example.testapplication.ui.auth
 import android.view.View
 import androidx.lifecycle.ViewModel
 import com.example.testapplication.data.repository.UserRepository
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 
 class AuthViewModel: ViewModel() {
     var email: String? = null
