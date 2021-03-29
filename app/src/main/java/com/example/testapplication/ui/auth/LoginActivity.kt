@@ -42,7 +42,6 @@ class LoginActivity : AppCompatActivity(), AuthListener {
 
     private var TAG = "LoginActivity"
 
-
     override fun onStart() {
         super.onStart()
 
@@ -58,10 +57,8 @@ class LoginActivity : AppCompatActivity(), AuthListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_login)
-
         //init firebase Auth
         auth = FirebaseAuth.getInstance()
-
         //Google Auth Init
         createRequest()
 
