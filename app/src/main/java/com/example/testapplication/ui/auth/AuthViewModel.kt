@@ -9,7 +9,9 @@ import utils.ApiException
 import utils.Coroutines
 import utils.NoInternetException
 
-class AuthViewModel: ViewModel() {
+class AuthViewModel(
+        private val userRepository: UserRepository
+): ViewModel() {
     var email: String? = null
     var password: String? = null
     var rememberMe: Boolean? = false
@@ -29,13 +31,15 @@ class AuthViewModel: ViewModel() {
         //Main thread Scope
         Coroutines.main {
             try {
-                val response = UserRepository().userLogin(email!!, password!!)
+                val response = userRepository.userLogin(email!!, password!!)
                 response.message.let {
                     authListener?.onSuccess(it)
                     return@main
                 }
                 authListener?.onError("message object is null")
             }catch (e: ApiException){
+                authListener?.onError(e.message!!)
+            }catch (e: NoInternetException){
                 authListener?.onError(e.message!!)
             }
         }

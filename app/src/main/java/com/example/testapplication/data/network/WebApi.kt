@@ -1,6 +1,7 @@
 package com.example.testapplication.data.network
 
 import com.example.testapplication.data.network.responses.AuthResponse
+import okhttp3.OkHttpClient
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Response
@@ -20,8 +21,16 @@ interface WebApi {
     ): Response<AuthResponse> //tipo di risposta della chiamata
 
     companion object {
-        operator fun invoke(): WebApi {
+        operator fun invoke(
+            networkConnectionInterceptor: NetworkConnectionInterceptor
+        ): WebApi {
+
+            var OkHttpClient = OkHttpClient.Builder()
+                    .addInterceptor(networkConnectionInterceptor)
+                    .build()
+
             return Retrofit.Builder()
+                    .client(OkHttpClient)
                     .baseUrl("https://baseurlusedforapicall")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()

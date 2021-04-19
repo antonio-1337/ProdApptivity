@@ -1,28 +1,24 @@
 package com.example.testapplication.ui.auth
 
-import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.testapplication.R
+import com.example.testapplication.data.network.NetworkConnectionInterceptor
+import com.example.testapplication.data.network.WebApi
+import com.example.testapplication.data.repository.UserRepository
 import com.example.testapplication.databinding.ActivityLoginBinding
 import com.example.testapplication.ui.home.HomeActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.android.play.core.tasks.Task
-import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
@@ -30,8 +26,6 @@ import utils.hide
 import utils.show
 import utils.snackbar
 import utils.toast
-import java.util.*
-import kotlin.concurrent.schedule
 
 class LoginActivity : AppCompatActivity(), AuthListener {
 
@@ -58,16 +52,23 @@ class LoginActivity : AppCompatActivity(), AuthListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_login)
+
+        val networkConnectionInterceptor = NetworkConnectionInterceptor(this)
+        val api = WebApi(networkConnectionInterceptor)
+        val repository = UserRepository(api)
+        val factory = AuthViewModelFactory(repository)
+
+
         //init firebase Auth
         auth = FirebaseAuth.getInstance()
         //Google Auth Init
         createRequest()
 
-        val viewModel: AuthViewModel by viewModels()
-        viewModel.authListener = this
 
+        val viewModel = ViewModelProvider(this, factory).get(AuthViewModel::class.java)
         val bindingModel: ActivityLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login)
         bindingModel.viewModel = viewModel
+        viewModel.authListener = this
 
     }
 

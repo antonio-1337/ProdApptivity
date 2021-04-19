@@ -10,8 +10,10 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class UserRepository: SafeApiRequest() {
+class UserRepository(
+        private val webApi: WebApi
+): SafeApiRequest() {
     suspend fun userLogin(email: String, password: String): AuthResponse{
-        return apiRequest { WebApi().loginUser(email,password)}
+        return apiRequest { webApi.loginUser(email,password)}
     }
 }
