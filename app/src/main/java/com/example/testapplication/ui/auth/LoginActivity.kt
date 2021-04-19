@@ -22,12 +22,19 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.closestKodein
+import org.kodein.di.android.kodein
+import org.kodein.di.generic.instance
 import utils.hide
 import utils.show
 import utils.snackbar
 import utils.toast
 
-class LoginActivity : AppCompatActivity(), AuthListener {
+class LoginActivity : AppCompatActivity(), AuthListener, KodeinAware {
+
+    override val kodein by kodein()
+    private val factory: AuthViewModelFactory by instance()
 
     private var auth: FirebaseAuth? = null
     private val RC_SIGN_IN: Int = 1
@@ -53,11 +60,12 @@ class LoginActivity : AppCompatActivity(), AuthListener {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_login)
 
+        /*
         val networkConnectionInterceptor = NetworkConnectionInterceptor(this)
         val api = WebApi(networkConnectionInterceptor)
         val repository = UserRepository(api)
         val factory = AuthViewModelFactory(repository)
-
+        */
 
         //init firebase Auth
         auth = FirebaseAuth.getInstance()

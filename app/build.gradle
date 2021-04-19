@@ -89,9 +89,9 @@ dependencies {
     kapt "androidx.room:room-compiler:$room_version"
 
     //Kodein Dependency injection
-    def kodein_version = "7.4.0"
-    implementation "org.kodein.di:kodein-di:$kodein_version"
-    implementation "org.kodein.di:kodein-di-jvm:$kodein_version"
+    def kodein_version = "6.2.1"
+    implementation "org.kodein.di:kodein-di-generic-jvm:$kodein_version"
+    implementation "org.kodein.di:kodein-di-framework-android-x:$kodein_version"
 
     //Google sign in button
     implementation 'com.shobhitpuri.custombuttons:google-signin:1.0.0'
