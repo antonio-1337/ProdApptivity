@@ -1,7 +1,9 @@
 package com.example.testapplication.data.network
 
+import com.example.testapplication.data.network.responses.AuthResponse
 import okhttp3.ResponseBody
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Field
@@ -12,10 +14,10 @@ interface WebApi {
     //esempio chiamata api
     @FormUrlEncoded //serve nelle chiamate POST
     @POST(value = "login") //login è il nome della API
-    fun loginUser(
+    suspend fun loginUser(
         @Field(value = "email") email_address: String, //parametro chiamata API = email
         @Field(value = "password") pass: String //parametro chiamata API = password
-    ): Call<ResponseBody> //tipo di risposta della chiamata
+    ): Response<AuthResponse> //tipo di risposta della chiamata
 
     companion object {
         operator fun invoke(): WebApi {

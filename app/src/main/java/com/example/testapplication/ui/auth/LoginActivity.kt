@@ -28,6 +28,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import utils.hide
 import utils.show
+import utils.snackbar
 import utils.toast
 import java.util.*
 import kotlin.concurrent.schedule
@@ -154,17 +155,17 @@ class LoginActivity : AppCompatActivity(), AuthListener {
 
     }
 
-    override fun onSuccess(response: LiveData<String>) {
-        response.observe(this, Observer {
-            findViewById<ProgressBar>(R.id.progress_bar).hide()
-            toast(it)
-        })
-        toast("Login Success")
+    override fun onSuccess(response: String) {
+
+        findViewById<ProgressBar>(R.id.progress_bar).hide()
+        //toast("Login Success")
+        findViewById<View>(R.id.root_layout).snackbar("Login Success with the message $response")
     }
 
     override fun onError(errorMsg: String) {
         findViewById<ProgressBar>(R.id.progress_bar).hide()
-        toast("Login error: $errorMsg")
+        findViewById<View>(R.id.root_layout).snackbar("Login error: $errorMsg")
+        //toast("Login error: $errorMsg")
     }
 
     fun tryGoogleSignin(view: View) {
