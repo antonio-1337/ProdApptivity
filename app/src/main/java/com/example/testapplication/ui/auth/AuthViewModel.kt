@@ -28,14 +28,16 @@ class AuthViewModel: ViewModel() {
 
         //Main thread Scope
         Coroutines.main {
-            val response = UserRepository().userLogin(email!!, password!!)
-            if(response.isSuccessful){
-                authListener?.onSuccess(response.body()?.message!!)
+            try {
+                val response = UserRepository().userLogin(email!!, password!!)
+                response.message.let {
+                    authListener?.onSuccess(it)
+                    return@main
+                }
+                authListener?.onError("message object is null")
+            }catch (e: ApiException){
+                authListener?.onError(e.message!!)
             }
-            else{
-                authListener?.onError("Error code: ${response.code()}")
-            }
-
         }
 
 
