@@ -5,6 +5,7 @@ import com.example.testapplication.data.network.NetworkConnectionInterceptor
 import com.example.testapplication.data.network.WebApi
 import com.example.testapplication.data.repository.UserRepository
 import com.example.testapplication.ui.auth.AuthViewModelFactory
+import com.example.testapplication.ui.home.HomeViewModelFactory
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.androidXModule
@@ -19,7 +20,10 @@ class BaseApplication : Application(), KodeinAware {
 
         bind () from singleton { NetworkConnectionInterceptor(instance()) }
         bind () from singleton { WebApi(instance()) }
-        bind () from singleton { UserRepository(instance()) }
-        bind () from provider { AuthViewModelFactory(instance()) }
+        bind ("repouser") from singleton { UserRepository(instance()) }
+
+        //viewmodel factory bindings
+        bind ("auth") from provider { AuthViewModelFactory(instance("repouser")) }
+        bind ("home") from provider { HomeViewModelFactory(instance("repouser")) }
     }
 }

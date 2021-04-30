@@ -4,15 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.ImageView
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.testapplication.R
-import com.example.testapplication.data.network.NetworkConnectionInterceptor
-import com.example.testapplication.data.network.WebApi
-import com.example.testapplication.data.repository.UserRepository
 import com.example.testapplication.databinding.ActivityLoginBinding
 import com.example.testapplication.ui.home.HomeActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -23,7 +19,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import org.kodein.di.KodeinAware
-import org.kodein.di.android.closestKodein
 import org.kodein.di.android.kodein
 import org.kodein.di.generic.instance
 import utils.hide
@@ -34,13 +29,11 @@ import utils.toast
 class LoginActivity : AppCompatActivity(), AuthListener, KodeinAware {
 
     override val kodein by kodein()
-    private val factory: AuthViewModelFactory by instance()
+    private val factory: AuthViewModelFactory by instance("auth")
 
     private var auth: FirebaseAuth? = null
     private val RC_SIGN_IN: Int = 1
     private var googleSignInClient: GoogleSignInClient? = null
-
-    private var signInWithGoogleBtn: ImageView? = null
 
     private var TAG = "LoginActivity"
 
@@ -153,15 +146,7 @@ class LoginActivity : AppCompatActivity(), AuthListener, KodeinAware {
 
 
     override fun onStarted() {
-        //toast("Login Started")
-
         findViewById<ProgressBar>(R.id.progress_bar).show()
-
-
-      /*  Timer().schedule(2000) {
-            TODO("Do something")
-        }*/
-
     }
 
     override fun onSuccess(response: String) {

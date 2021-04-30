@@ -14,7 +14,6 @@ class AuthViewModel(
 ): ViewModel() {
     var email: String? = null
     var password: String? = null
-    var rememberMe: Boolean? = false
 
     var authListener: AuthListener? = null
 
@@ -25,8 +24,6 @@ class AuthViewModel(
             authListener?.onError("Invalid email or password")
             return
         }
-        //faccio la chiamata api TODO cambiare modo di fare la chiamata
-
 
         //Main thread Scope
         Coroutines.main {
