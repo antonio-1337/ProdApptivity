@@ -3,19 +3,18 @@ package com.example.testapplication.ui.home
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.testapplication.R
+import com.example.testapplication.data.network.responses.GetQuoteResponse
 import com.example.testapplication.databinding.ActivityHomeBinding
 import com.example.testapplication.ui.auth.LoginActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.firebase.auth.FirebaseAuth
-import com.squareup.picasso.Picasso
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.kodein
 import org.kodein.di.generic.instance
@@ -55,10 +54,10 @@ class HomeActivity : AppCompatActivity(), HomeListener, KodeinAware {
         findViewById<ProgressBar>(R.id.homeProgressBar).show()
     }
 
-    override fun onSuccess(response: String) {
+    override fun onSuccess(response: GetQuoteResponse) {
         findViewById<ProgressBar>(R.id.homeProgressBar).hide()
-        Picasso.get().load(response).into(findViewById<ImageView>(R.id.waifuContainer))
-        //toast(response)
+        //Picasso.get().load(response).into(findViewById<ImageView>(R.id.))
+        toast(response.q + " - " + response.a)
     }
 
     override fun onError(errorMsg: String) {

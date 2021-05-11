@@ -1,10 +1,9 @@
 package com.example.testapplication.data.network
 
 import com.example.testapplication.data.network.responses.AuthResponse
-import com.example.testapplication.data.network.responses.GetWaifuResponse
+import com.example.testapplication.data.network.responses.GetQuoteResponse
+import com.google.gson.reflect.TypeToken
 import okhttp3.OkHttpClient
-import okhttp3.ResponseBody
-import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -14,7 +13,7 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface WebApi {
-    //esempio chiamata api
+    //esempio chiamata api POST
     @FormUrlEncoded //serve nelle chiamate POST
     @POST(value = "login") //login è il nome della API
     suspend fun loginUser(
@@ -23,9 +22,11 @@ interface WebApi {
     ): Response<AuthResponse> //tipo di risposta della chiamata
 
 
-    //Chiamata get random quote
-    @GET(value = "sfw/waifu")
-    suspend fun getRandomWaifu(): Response<GetWaifuResponse>
+    //@GET(value ="random")
+    //suspend fun getRandomQuote(): Response<GetQuoteResponse>
+
+    @GET(value ="random")
+    suspend fun getRandomQuote(): Response<Array<GetQuoteResponse>>
 
     companion object {
         operator fun invoke(
@@ -38,7 +39,7 @@ interface WebApi {
 
             return Retrofit.Builder()
                     .client(okHttpClient)
-                    .baseUrl("https://waifu.pics/api/")
+                    .baseUrl("https://zenquotes.io/api/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
                     .create(WebApi::class.java)

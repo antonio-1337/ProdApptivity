@@ -21,9 +21,16 @@ class HomeViewModel(
         //Main thread Scope
         Coroutines.main {
             try {
-                val response = userRepository.getRandomWaifu()
-                response.url.let {
-                    homeListener?.onSuccess(it)
+                val response = userRepository.getRandomQuote()
+                response.let {
+
+                    /*
+                    val gson = Gson()
+                    val arrayRandomQuoteType = object : TypeToken<Array<GetQuoteResponse>>() {}.type
+
+                    var tutorials: Array<GetQuoteResponse> = gson.fromJson(it, arrayTutorialType)
+                    */
+                    homeListener?.onSuccess(it[0])
                     return@main
                 }
                 homeListener?.onError("message object is null")

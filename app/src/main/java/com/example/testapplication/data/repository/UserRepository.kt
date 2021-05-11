@@ -1,15 +1,10 @@
 package com.example.testapplication.data.repository
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.example.testapplication.data.network.SafeApiRequest
 import com.example.testapplication.data.network.WebApi
 import com.example.testapplication.data.network.responses.AuthResponse
-import com.example.testapplication.data.network.responses.GetWaifuResponse
-import okhttp3.ResponseBody
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.example.testapplication.data.network.responses.GetQuoteResponse
+import org.kodein.di.TypeToken
 
 class UserRepository(
         private val webApi: WebApi
@@ -19,7 +14,7 @@ class UserRepository(
     }
 
     //get random quote
-    suspend fun getRandomWaifu(): GetWaifuResponse{
-        return apiRequest { webApi.getRandomWaifu() }
+    suspend fun getRandomQuote(): Array<GetQuoteResponse> {
+        return apiRequest { webApi.getRandomQuote() }
     }
 }
