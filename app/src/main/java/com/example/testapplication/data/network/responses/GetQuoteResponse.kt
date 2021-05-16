@@ -1,7 +1,7 @@
 package com.example.testapplication.data.network.responses
 
 data class GetQuoteResponse(
-    val q: String, //quote
-    val a: String, //author
+    var q: String, //quote
+    var a: String, //author
     val h: String //HTML format
 )

@@ -36,10 +36,13 @@ class HomeActivity : AppCompatActivity(), HomeListener, KodeinAware {
         bindingModel.viewModel = viewModel
         viewModel.homeListener = this
 
+        //get random quote of the day
+        viewModel.getRandomQuote()
+
         val google_account: GoogleSignInAccount? = GoogleSignIn.getLastSignedInAccount(this)
         if (google_account != null){
-            findViewById<TextView>(R.id.textView).text = google_account.displayName
-            findViewById<TextView>(R.id.textView2).text = google_account.email
+            findViewById<TextView>(R.id.textView).text = "Hello " + google_account.givenName + "!"
+            //findViewById<TextView>(R.id.textView2).text = google_account.email
         }
     }
 
@@ -55,9 +58,13 @@ class HomeActivity : AppCompatActivity(), HomeListener, KodeinAware {
     }
 
     override fun onSuccess(response: GetQuoteResponse) {
-        findViewById<ProgressBar>(R.id.homeProgressBar).hide()
+
         //Picasso.get().load(response).into(findViewById<ImageView>(R.id.))
-        toast(response.q + " - " + response.a)
+        findViewById<TextView>(R.id.quote_text).text = response.q
+        findViewById<TextView>(R.id.quote_author).text = response.a
+
+        findViewById<ProgressBar>(R.id.homeProgressBar).hide()
+
     }
 
     override fun onError(errorMsg: String) {

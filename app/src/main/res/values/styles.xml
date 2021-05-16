@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="LightGrayText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/text_default</item>
+    </style>
+
+    <style name="Citazione" parent="TextAppearance.AppCompat">
+        <item name="android:lineSpacingExtra">5sp</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+</resources>

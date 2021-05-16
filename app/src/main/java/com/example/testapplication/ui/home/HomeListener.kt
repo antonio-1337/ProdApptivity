@@ -4,6 +4,6 @@ import com.example.testapplication.data.network.responses.GetQuoteResponse
 
 interface HomeListener {
     fun onStarted()
-    fun onSuccess(response: GetQuoteResponse)
+    fun onSuccess(getQuoteResponse: GetQuoteResponse)
     fun onError(errorMsg: String)
 }
