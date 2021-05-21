@@ -36,7 +36,8 @@
             android:layout_marginTop="370dp"
             android:layout_marginEnd="60dp"
             android:text="Hello Name!"
-            android:textSize="35sp"
+            android:fontFamily="@font/inter_semibold"
+            android:textSize="36sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -51,7 +52,8 @@
             android:backgroundTint="@color/orange_normal"
             android:backgroundTintMode="src_in"
             android:onClick="@{()->viewModel.getRandomQuote()}"
-            android:text="click me"
+            android:text="Start your day!"
+            android:fontFamily="@font/inter_extrabold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -96,8 +98,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="left"
+                android:fontFamily="@font/inter_regular"
                 android:text='"Inspirational quote"'
-                android:textSize="25sp"
+                android:textSize="24sp"
                 android:textStyle="italic" />
 
             <TextView
@@ -106,8 +109,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:gravity="start"
-                android:text='- Author'
-                android:textSize="25sp" />
+                android:text='- cit. Author'
+                android:textSize="24sp" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
