@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="409dp"
+        android:layout_height="48dp"
+        android:background="@color/activity_bg"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/WeekDaysButton"
+        android:layout_width="379dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <Button
+            android:id="@+id/mondayButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/week_button"
+            android:fontFamily="@font/inter_bold"
+            android:text="@string/monday"
+            android:textSize="18sp" />
+
+        <Space
+            android:layout_width="4dp"
+            android:layout_height="4dp"
+            android:layout_weight="4dp" />
+
+        <Button
+            android:id="@+id/tuesdayButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/week_button"
+            android:fontFamily="@font/inter_bold"
+            android:text="@string/tuesday"
+            android:textSize="18sp" />
+
+        <Space
+            android:layout_width="4dp"
+            android:layout_height="4dp"
+            android:layout_weight="4dp" />
+
+        <Button
+            android:id="@+id/wednesdayButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/week_button"
+            android:fontFamily="@font/inter_bold"
+            android:text="@string/wednesday"
+            android:textSize="18sp" />
+
+        <Space
+            android:layout_width="4dp"
+            android:layout_height="4dp"
+            android:layout_weight="4dp" />
+
+        <Button
+            android:id="@+id/thursdayButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/week_button"
+            android:fontFamily="@font/inter_bold"
+            android:text="@string/thursday"
+            android:textSize="18sp" />
+
+        <Space
+            android:layout_width="4dp"
+            android:layout_height="4dp"
+            android:layout_weight="4dp" />
+
+        <Button
+            android:id="@+id/fridayButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/week_button"
+            android:fontFamily="@font/inter_bold"
+            android:text="@string/friday"
+            android:textSize="18sp" />
+
+        <Space
+            android:layout_width="4dp"
+            android:layout_height="4dp"
+            android:layout_weight="4dp" />
+
+        <Button
+            android:id="@+id/saturdayButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/week_button"
+            android:fontFamily="@font/inter_bold"
+            android:text="@string/saturday"
+            android:textSize="18sp" />
+
+        <Space
+            android:layout_width="4dp"
+            android:layout_height="4dp"
+            android:layout_weight="4dp" />
+
+        <Button
+            android:id="@+id/sundayButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/week_button"
+            android:fontFamily="@font/inter_bold"
+            android:text="@string/sunday"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/WeekOverview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/inter_semibold"
+        android:text="@string/week_overview"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.004"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+</androidx.constraintlayout.widget.ConstraintLayout>
