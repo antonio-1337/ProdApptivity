@@ -11,7 +11,7 @@
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="48dp"
-        android:background="@color/activity_bg"
+        android:background="@color/secondary_color"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,9 +34,9 @@
 
         <Button
             android:id="@+id/mondayButton"
+            android:background="@drawable/week_button_default"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:background="@drawable/week_button"
             android:fontFamily="@font/inter_bold"
             android:text="@string/monday"
             android:textSize="18sp" />
@@ -49,7 +49,7 @@
             android:id="@+id/tuesdayButton"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:background="@drawable/week_button"
+            android:background="@drawable/week_button_default"
             android:fontFamily="@font/inter_bold"
             android:text="@string/tuesday"
             android:textSize="18sp" />
@@ -62,7 +62,7 @@
             android:id="@+id/wednesdayButton"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:background="@drawable/week_button"
+            android:background="@drawable/week_button_default"
             android:fontFamily="@font/inter_bold"
             android:text="@string/wednesday"
             android:textSize="18sp" />
@@ -75,7 +75,7 @@
             android:id="@+id/thursdayButton"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:background="@drawable/week_button"
+            android:background="@drawable/week_button_default"
             android:fontFamily="@font/inter_bold"
             android:text="@string/thursday"
             android:textSize="18sp" />
@@ -88,7 +88,7 @@
             android:id="@+id/fridayButton"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:background="@drawable/week_button"
+            android:background="@drawable/week_button_default"
             android:fontFamily="@font/inter_bold"
             android:text="@string/friday"
             android:textSize="18sp" />
@@ -101,7 +101,7 @@
             android:id="@+id/saturdayButton"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:background="@drawable/week_button"
+            android:background="@drawable/week_button_default"
             android:fontFamily="@font/inter_bold"
             android:text="@string/saturday"
             android:textSize="18sp" />
@@ -114,7 +114,7 @@
             android:id="@+id/sundayButton"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:background="@drawable/week_button"
+            android:background="@drawable/week_button_default"
             android:fontFamily="@font/inter_bold"
             android:text="@string/sunday"
             android:textSize="18sp" />

@@ -6,6 +6,7 @@
     <color name="text_default">#F2F2F2</color>
 
     <color name="gray1">#333333</color>
+    <color name="gray3">#828282</color>
     <color name="gray6">#F2F2F2</color>
 
     <color name="teal_normal">#75ccb9</color>
@@ -19,7 +20,5 @@
     <color name="activity_bg">#212121</color>
     <color name="textWeek">#1B1B1B</color>
     <color name="secondary_color">#1D1D1D</color>
-
-    <color name="default_button_week">#828282</color>
 
 </resources>
