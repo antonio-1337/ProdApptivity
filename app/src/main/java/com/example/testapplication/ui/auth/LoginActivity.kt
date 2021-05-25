@@ -41,7 +41,7 @@ class LoginActivity : AppCompatActivity(), AuthListener, KodeinAware {
         super.onStart()
 
         val user: FirebaseUser? = auth?.currentUser
-        //sel'utente è già loggato vai alla homepage
+        //se l'utente è già loggato vai alla homepage
         if(user != null)
         {
             val intent = Intent(this, HomeActivity::class.java)

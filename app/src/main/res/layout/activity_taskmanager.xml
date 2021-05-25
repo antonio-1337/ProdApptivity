@@ -41,8 +41,7 @@
 
         <Space
             android:layout_width="4dp"
-            android:layout_height="4dp"
-            android:layout_weight="4dp" />
+            android:layout_height="4dp" />
 
         <Button
             android:id="@+id/tuesdayButton"
@@ -55,8 +54,7 @@
 
         <Space
             android:layout_width="4dp"
-            android:layout_height="4dp"
-            android:layout_weight="4dp" />
+            android:layout_height="4dp" />
 
         <Button
             android:id="@+id/wednesdayButton"
@@ -69,8 +67,7 @@
 
         <Space
             android:layout_width="4dp"
-            android:layout_height="4dp"
-            android:layout_weight="4dp" />
+            android:layout_height="4dp" />
 
         <Button
             android:id="@+id/thursdayButton"
@@ -83,8 +80,7 @@
 
         <Space
             android:layout_width="4dp"
-            android:layout_height="4dp"
-            android:layout_weight="4dp" />
+            android:layout_height="4dp" />
 
         <Button
             android:id="@+id/fridayButton"
@@ -97,8 +93,7 @@
 
         <Space
             android:layout_width="4dp"
-            android:layout_height="4dp"
-            android:layout_weight="4dp" />
+            android:layout_height="4dp" />
 
         <Button
             android:id="@+id/saturdayButton"
@@ -111,8 +106,7 @@
 
         <Space
             android:layout_width="4dp"
-            android:layout_height="4dp"
-            android:layout_weight="4dp" />
+            android:layout_height="4dp" />
 
         <Button
             android:id="@+id/sundayButton"
