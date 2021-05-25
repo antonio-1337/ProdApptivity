@@ -9,7 +9,11 @@
     <string name="saturday">S</string>
     <string name="sunday">S</string>
     <string name="week_overview">Week Overview</string>
+<<<<<<< Updated upstream
     <string name="hello_name">Hello Name!</string>
     <string name="start_your_day">Start your day!</string>
     <string name="login">Login</string>
+=======
+    <string name="myTasks">My Tasks</string>
+>>>>>>> Stashed changes
 </resources>

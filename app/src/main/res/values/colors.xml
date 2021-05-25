@@ -17,7 +17,9 @@
     <color name="orange_dark">#c77800</color>
 
     <color name="activity_bg">#212121</color>
-    <color name= "textWeek">#1B1B1B</color>
+    <color name="textWeek">#1B1B1B</color>
+    <color name="secondary_color">#1D1D1D</color>
 
+    <color name="default_button_week">#828282</color>
 
 </resources>
