@@ -8,4 +8,12 @@
         <item name="android:lineSpacingExtra">5sp</item>
         <item name="android:textStyle">italic</item>
     </style>
+
+    <style name="notSelectedButtonWeek" parent="TextAppearance.AppCompat">
+        <item name="colorPrimary">@color/gray3</item>
+    </style>
+
+    <style name="selectedButtonWeek" parent="TextAppearance.AppCompat">
+        <item name="colorPrimary">@color/teal_normal</item>
+    </style>
 </resources>
