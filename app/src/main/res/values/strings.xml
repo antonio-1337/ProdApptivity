@@ -9,11 +9,10 @@
     <string name="saturday">S</string>
     <string name="sunday">S</string>
     <string name="week_overview">Week Overview</string>
-
     <string name="hello_name">Hello Name!</string>
     <string name="start_your_day">Start your day!</string>
     <string name="login">Login</string>
-    =======
+
     <string name="myTasks">My Tasks</string>
     <string name="set_as_done">Set as done</string>
 </resources>

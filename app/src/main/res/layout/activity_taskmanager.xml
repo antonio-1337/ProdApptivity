@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+    <!-- Variabili da creare/viewModel -->
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -34,7 +37,7 @@
         <Button
             android:id="@+id/mondayButton"
             android:clickable="true"
-            android:theme="@style/notSelectedButton"
+            android:theme="@style/notSelectedButtonWeek"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="@drawable/week_button_default"
@@ -49,7 +52,7 @@
         <Button
             android:id="@+id/tuesdayButton"
             android:clickable="true"
-            android:theme="@style/notSelectedButton"
+            android:theme="@style/notSelectedButtonWeek"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="@drawable/week_button_default"
@@ -64,7 +67,7 @@
         <Button
             android:id="@+id/wednesdayButton"
             android:clickable="true"
-            android:theme="@style/notSelectedButton"
+            android:theme="@style/notSelectedButtonWeek"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="@drawable/week_button_default"
@@ -79,7 +82,7 @@
         <Button
             android:id="@+id/thursdayButton"
             android:clickable="true"
-            android:theme="@style/notSelectedButton"
+            android:theme="@style/notSelectedButtonWeek"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="@drawable/week_button_default"
@@ -94,7 +97,7 @@
         <Button
             android:id="@+id/fridayButton"
             android:clickable="true"
-            android:theme="@style/notSelectedButton"
+            android:theme="@style/notSelectedButtonWeek"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="@drawable/week_button_default"
@@ -109,7 +112,7 @@
         <Button
             android:id="@+id/saturdayButton"
             android:clickable="true"
-            android:theme="@style/notSelectedButton"
+            android:theme="@style/notSelectedButtonWeek"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="@drawable/week_button_default"
@@ -124,7 +127,7 @@
         <Button
             android:id="@+id/sundayButton"
             android:clickable="true"
-            android:theme="@style/notSelectedButton"
+            android:theme="@style/notSelectedButtonWeek"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="@drawable/week_button_default"

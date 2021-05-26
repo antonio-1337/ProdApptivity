@@ -15,5 +15,7 @@
         <!-- Customize your theme here. -->
         <item name="android:windowBackground">@color/activity_bg</item>
         <item name="android:textViewStyle">@style/LightGrayText</item>
+
+
     </style>
 </resources>
