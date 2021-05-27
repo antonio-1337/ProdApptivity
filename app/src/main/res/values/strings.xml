@@ -15,4 +15,10 @@
 
     <string name="myTasks">My Tasks</string>
     <string name="set_as_done">Set as done</string>
+    <string name="create_task">Create Task</string>
+    <string name="add_a_description">Add a description</string>
+    <string name="set_name">Set Name</string>
+    <string name="set_mode">Set Mode</string>
+    <string name="set_task">set task</string>
+    <string name="repeating_task">Repeating Task</string>
 </resources>

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/containerTaskCreate"
+        android:name="org.kodein.di.android.RetainedKodeinFragment"
+        android:layout_width="348dp"
+        android:layout_height="560dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/taskcreator"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="126dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="169dp"
+        android:layout_marginTop="382dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="48dp"
+        android:background="@drawable/taskcreatebutton"
+        android:backgroundTint="@color/orange_normal"
+        android:fontFamily="@font/inter_bold"
+        android:text="@string/set_task"
+        android:textSize="14sp"
+        android:theme="@style/taskcreatebutton"
+        app:layout_constraintBottom_toBottomOf="@+id/containerTaskCreate"
+        app:layout_constraintEnd_toEndOf="@+id/containerTaskCreate"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/containerTaskCreate"
+        app:layout_constraintTop_toTopOf="@+id/containerTaskCreate"
+        app:layout_constraintVertical_bias="0.865" />
+
+    <TextView
+        android:id="@+id/createtask"
+        android:layout_width="160dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="136dp"
+        android:text="@string/create_task"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/containerTaskCreate"
+        app:layout_constraintStart_toStartOf="@+id/containerTaskCreate"
+        app:layout_constraintTop_toTopOf="@+id/containerTaskCreate" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="352dp"
+        app:layout_constraintBottom_toBottomOf="@+id/containerTaskCreate"
+        app:layout_constraintEnd_toEndOf="@+id/containerTaskCreate"
+        app:layout_constraintStart_toStartOf="@+id/containerTaskCreate"
+        app:layout_constraintTop_toTopOf="@+id/containerTaskCreate">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="280dp"
+            android:layout_height="48dp"
+            android:clickable="true"
+            android:background="@drawable/taskcreatortext"
+            android:hint="@string/set_name"
+            android:textSize="18sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="280dp"
+        android:layout_height="160dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="176dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="@+id/containerTaskCreate"
+        app:layout_constraintEnd_toEndOf="@+id/containerTaskCreate"
+        app:layout_constraintStart_toStartOf="@+id/containerTaskCreate"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="280dp"
+            android:layout_height="160dp"
+            android:hint="@string/add_a_description"
+            android:textSize="18sp"
+            android:background="@drawable/taskcreatortext"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="126dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="382dp"
+        android:layout_marginEnd="171dp"
+        android:layout_marginBottom="38dp"
+        android:background="@drawable/taskcreatebutton"
+        android:backgroundTint="@color/orange_normal"
+        android:fontFamily="@font/inter_bold"
+        android:text="@string/set_mode"
+        android:textSize="14sp"
+        android:theme="@style/taskcreatebutton"
+        app:layout_constraintBottom_toBottomOf="@+id/containerTaskCreate"
+        app:layout_constraintEnd_toEndOf="@+id/containerTaskCreate"
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toEndOf="@+id/containerTaskCreate"
+        app:layout_constraintStart_toStartOf="@+id/containerTaskCreate"
+        app:layout_constraintTop_toTopOf="@+id/containerTaskCreate"
+        app:layout_constraintVertical_bias="0.771" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="125dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="312dp"
+        android:layout_marginEnd="166dp"
+        android:layout_marginBottom="131dp"
+        android:text="@string/repeating_task"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/containerTaskCreate"
+        app:layout_constraintEnd_toEndOf="@+id/containerTaskCreate"
+        app:layout_constraintHorizontal_bias="0.39"
+        app:layout_constraintStart_toStartOf="@+id/containerTaskCreate"
+        app:layout_constraintTop_toTopOf="@+id/containerTaskCreate"
+        app:layout_constraintVertical_bias="0.804" />
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="254dp"
+        android:layout_marginTop="315dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="133dp"
+        app:layout_constraintBottom_toBottomOf="@+id/containerTaskCreate"
+        app:layout_constraintEnd_toEndOf="@+id/containerTaskCreate"
+        app:layout_constraintHorizontal_bias="0.625"
+        app:layout_constraintStart_toStartOf="@+id/containerTaskCreate"
+        app:layout_constraintTop_toTopOf="@+id/containerTaskCreate"
+        app:layout_constraintVertical_bias="0.811" />
+</androidx.constraintlayout.widget.ConstraintLayout>

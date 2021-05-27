@@ -23,4 +23,6 @@
     <color name="textWeek">#1B1B1B</color>
     <color name="secondary_color">#1D1D1D</color>
 
+    <color name="taskCreateText">#C4C4C4</color>
+
 </resources>
