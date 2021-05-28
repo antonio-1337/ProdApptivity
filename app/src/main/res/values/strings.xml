@@ -21,4 +21,9 @@
     <string name="set_mode">Set Mode</string>
     <string name="set_task">set task</string>
     <string name="repeating_task">Repeating Task</string>
+    <string name="set_timer_mode">Set timer mode</string>
+    <string name="pomodoro_technique">Pomodoro technique</string>
+    <string name="incremental">Incremental</string>
+    <string name="decremental">Decremental</string>
+    <string name="two_minutes_interval">Two minutes interval</string>
 </resources>
