@@ -29,4 +29,5 @@
     <string name="every_day">Every day</string>
     <string name="does_not_repeat">Does not repeat</string>
     <string name="every_week">Every Week</string>
+    <string name="string_break">Break</string>
 </resources>
