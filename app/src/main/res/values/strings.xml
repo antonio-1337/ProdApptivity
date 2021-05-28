@@ -30,4 +30,5 @@
     <string name="does_not_repeat">Does not repeat</string>
     <string name="every_week">Every Week</string>
     <string name="string_break">Break</string>
+    <string name="task_name">Task Name</string>
 </resources>

@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TestApplication">
-        <activity android:name=".activity_break"></activity>
+        <activity android:name=".activity_timergoing"></activity>
+        <activity android:name=".activity_break" />
         <activity android:name=".ui.home.HomeActivity" />
         <activity android:name=".ui.auth.LoginActivity">
             <intent-filter>
