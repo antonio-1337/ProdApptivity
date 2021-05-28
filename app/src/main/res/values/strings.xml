@@ -26,4 +26,7 @@
     <string name="incremental">Incremental</string>
     <string name="decremental">Decremental</string>
     <string name="two_minutes_interval">Two minutes interval</string>
+    <string name="every_day">Every day</string>
+    <string name="does_not_repeat">Does not repeat</string>
+    <string name="every_week">Every Week</string>
 </resources>

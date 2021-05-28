@@ -43,7 +43,8 @@
             android:background="@drawable/week_button_default"
             android:fontFamily="@font/inter_bold"
             android:text="@string/monday"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:focusable="true" />
 
         <Space
             android:layout_width="4dp"
@@ -58,7 +59,8 @@
             android:background="@drawable/week_button_default"
             android:fontFamily="@font/inter_bold"
             android:text="@string/tuesday"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:focusable="true" />
 
         <Space
             android:layout_width="4dp"
@@ -73,7 +75,8 @@
             android:background="@drawable/week_button_default"
             android:fontFamily="@font/inter_bold"
             android:text="@string/wednesday"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:focusable="true" />
 
         <Space
             android:layout_width="4dp"
@@ -88,7 +91,8 @@
             android:background="@drawable/week_button_default"
             android:fontFamily="@font/inter_bold"
             android:text="@string/thursday"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:focusable="true" />
 
         <Space
             android:layout_width="4dp"
@@ -103,7 +107,8 @@
             android:background="@drawable/week_button_default"
             android:fontFamily="@font/inter_bold"
             android:text="@string/friday"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:focusable="true" />
 
         <Space
             android:layout_width="4dp"
@@ -118,7 +123,8 @@
             android:background="@drawable/week_button_default"
             android:fontFamily="@font/inter_bold"
             android:text="@string/saturday"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:focusable="true" />
 
         <Space
             android:layout_width="4dp"
@@ -133,7 +139,8 @@
             android:background="@drawable/week_button_default"
             android:fontFamily="@font/inter_bold"
             android:text="@string/sunday"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:focusable="true" />
 
     </LinearLayout>
 
@@ -178,7 +185,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/add_button_task"
-        android:contentDescription="TODO" />
+        android:contentDescription="TODO"
+        android:focusable="true" />
 
     <ScrollView
         android:id="@+id/scrollTask"
@@ -193,6 +201,11 @@
         app:layout_constraintTop_toBottomOf="@+id/MyTask">
 
 
+        <LinearLayout
+            android:id="@+id/taskLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
     </ScrollView>
 
 
