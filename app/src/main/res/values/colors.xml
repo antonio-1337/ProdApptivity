@@ -7,8 +7,10 @@
 
     <!-- Grey for UI. -->
     <color name="gray1">#333333</color>
+    <color name="gray2">#4F4F4F</color>
     <color name="gray3">#828282</color>
     <color name="gray6">#F2F2F2</color>
+    <color name="taskcreatortext_gray">#282828</color>
 
     <color name="teal_normal">#75ccb9</color>
     <color name="teal_light">#a7ffeb</color>

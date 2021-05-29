@@ -19,7 +19,7 @@
     <string name="add_a_description">Add a description</string>
     <string name="set_name">Set Name</string>
     <string name="set_mode">Set Mode</string>
-    <string name="set_task">set task</string>
+    <string name="save_task">Save Task</string>
     <string name="repeating_task">Repeating Task</string>
     <string name="set_timer_mode">Set timer mode</string>
     <string name="pomodoro_technique">Pomodoro technique</string>
@@ -31,4 +31,5 @@
     <string name="every_week">Every Week</string>
     <string name="string_break">Break</string>
     <string name="task_name">Task Name</string>
+    <string name="pomodoro_technique_description">Pomodoro technique: 4 sets of 25 minutes with a 5 minute break between each set</string>
 </resources>

@@ -9,7 +9,8 @@
         android:id="@+id/setTimerMode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="48dp"
+        android:fontFamily="@font/inter_medium"
         android:text="@string/set_timer_mode"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -17,72 +18,99 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <RadioButton
-        android:id="@+id/pomodoroTechnique"
-        android:layout_width="280dp"
-        android:layout_height="26dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="7dp"
-        android:focusable="true"
-        android:paddingHorizontal="30dp"
-        android:text="@string/pomodoro_technique"
-        android:textColor="@color/gray6"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.58"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/setTimerMode">
-
-    </RadioButton>
-
-    <RadioButton
         android:id="@+id/incremental"
         android:layout_width="280dp"
         android:layout_height="26dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="7dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:focusable="true"
         android:paddingHorizontal="30dp"
         android:text="@string/incremental"
         android:textColor="@color/gray6"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.58"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pomodoroTechnique" />
-
-    <RadioButton
-        android:id="@+id/decremental"
-        android:layout_width="280dp"
-        android:layout_height="26dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="7dp"
-        android:focusable="true"
-        android:paddingHorizontal="30dp"
-        android:text="@string/decremental"
-        android:textColor="@color/gray6"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.59"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/incremental" />
 
     <RadioButton
         android:id="@+id/twoMinutesIntervals"
         android:layout_width="280dp"
         android:layout_height="26dp"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="7dp"
+        android:layout_marginEnd="16dp"
         android:focusable="true"
         android:paddingHorizontal="30dp"
         android:text="@string/two_minutes_interval"
         android:textColor="@color/gray6"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.58"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/decremental" />
+
+    <RadioButton
+        android:id="@+id/pomodoroTechnique"
+        android:layout_width="280dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="16dp"
+        android:focusable="true"
+        android:paddingHorizontal="30dp"
+        android:text="@string/pomodoro_technique"
+        android:textColor="@color/gray6"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/setTimerMode">
+
+    </RadioButton>
+
+    <RadioButton
+        android:id="@+id/decremental"
+        android:layout_width="280dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:focusable="true"
+        android:paddingHorizontal="30dp"
+        android:text="@string/decremental"
+        android:textColor="@color/gray6"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/incremental" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.875"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.116"
+        app:srcCompat="@drawable/ic_outline_info_24" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="340dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/pomodoro_technique_description"
+        android:textColor="@color/gray3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/twoMinutesIntervals" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
