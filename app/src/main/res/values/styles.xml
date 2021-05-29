@@ -16,7 +16,14 @@
     <style name="selectedButtonWeek" parent="TextAppearance.AppCompat">
         <item name="colorPrimary">@color/teal_normal</item>
     </style>
+
     <style name="taskcreatebutton" parent="TextAppearance.AppCompat">
         <item name="colorPrimary">@color/orange_normal</item>
     </style>
+
+    <style name="startyourdaybutton" parent="TextAppearance.AppCompat">
+        <item name="colorPrimary">@color/orange_normal</item>
+
+    <style name="scrollview" parent="TextAppearance.AppCompat"></style>
+    <item name="colorPrimary">@color/activity_bg</item>
 </resources>
