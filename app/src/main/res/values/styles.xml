@@ -21,6 +21,16 @@
         <item name="colorPrimary">@color/orange_normal</item>
     </style>
 
+    <style name="deletebutton" parent="TextAppearance.AppCompat">
+        <item name="fontFamily">@font/inter_bold</item>
+        <item name="colorPrimary">@color/orange_normal</item>>
+    </style>
+
+    <style name="cancelbutton" parent="TextAppearance.AppCompat">
+        <item name="fontFamily">@font/inter_bold</item>
+        <item name="colorPrimary">#4F4F4F</item>>
+    </style>
+
     <style name="startyourdaybutton" parent="TextAppearance.AppCompat">
         <item name="colorPrimary">@color/orange_normal</item>
     </style>

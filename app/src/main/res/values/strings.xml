@@ -32,4 +32,6 @@
     <string name="string_break">Break</string>
     <string name="task_name">Task Name</string>
     <string name="pomodoro_technique_description">Pomodoro technique: 4 sets of 25 minutes with a 5 minute break between each set</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete">Delete</string>
 </resources>
