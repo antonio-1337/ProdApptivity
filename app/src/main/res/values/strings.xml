@@ -34,4 +34,6 @@
     <string name="pomodoro_technique_description">Pomodoro technique: 4 sets of 25 minutes with a 5 minute break between each set</string>
     <string name="cancel">Cancel</string>
     <string name="delete">Delete</string>
+    <string name="login_description">Please sign in to continue</string>
+    <string name="welcome_string">Welcome to ProdApptivity!</string>
 </resources>

@@ -11,6 +11,7 @@
     <color name="gray3">#828282</color>
     <color name="gray6">#F2F2F2</color>
     <color name="taskcreatortext_gray">#282828</color>
+    <color name="dark_bg_gray">#212121</color>
 
     <color name="teal_normal">#75ccb9</color>
     <color name="teal_light">#a7ffeb</color>
