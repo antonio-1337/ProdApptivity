@@ -23,7 +23,17 @@
 
     <style name="startyourdaybutton" parent="TextAppearance.AppCompat">
         <item name="colorPrimary">@color/orange_normal</item>
+    </style>
 
-    <style name="scrollview" parent="TextAppearance.AppCompat"></style>
-    <item name="colorPrimary">@color/activity_bg</item>
+    <style name="scrollview" parent="TextAppearance.AppCompat">
+        <item name="colorPrimary">@color/activity_bg</item>
+    </style>
+
+    <style name="textquote" parent="@android:style/TextAppearance.Small">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/gray6</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
 </resources>
