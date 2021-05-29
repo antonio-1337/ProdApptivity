@@ -47,11 +47,12 @@
 
         <Button
             android:id="@+id/set_as_done_break"
-            android:layout_width="wrap_content"
+            android:layout_width="148dp"
             android:layout_height="64dp"
             android:layout_marginStart="32dp"
             android:text="@string/set_as_done"
             app:cornerRadius="24dp"
+            android:fontFamily="@font/inter_bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

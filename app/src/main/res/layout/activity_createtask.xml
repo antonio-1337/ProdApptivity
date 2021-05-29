@@ -24,11 +24,11 @@
 
     <Button
         android:id="@+id/button4"
-        android:layout_width="126dp"
+        android:layout_width="130dp"
         android:layout_height="48dp"
         android:layout_marginStart="169dp"
         android:layout_marginTop="382dp"
-        android:layout_marginEnd="17dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="48dp"
         android:background="@drawable/taskcreatebutton"
         android:backgroundTint="@color/orange_normal"
@@ -37,8 +37,8 @@
         android:textSize="14sp"
         android:theme="@style/taskcreatebutton"
         app:layout_constraintBottom_toBottomOf="@+id/containerTaskCreate"
-        app:layout_constraintEnd_toEndOf="@+id/containerTaskCreate"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toStartOf="@+id/containerTaskCreate"
         app:layout_constraintTop_toTopOf="@+id/containerTaskCreate"
         app:layout_constraintVertical_bias="0.865" />
@@ -106,9 +106,9 @@
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="126dp"
+        android:layout_width="130dp"
         android:layout_height="48dp"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="382dp"
         android:layout_marginEnd="171dp"
         android:layout_marginBottom="38dp"
@@ -121,8 +121,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/containerTaskCreate"
         app:layout_constraintEnd_toEndOf="@+id/containerTaskCreate"
         app:layout_constraintHorizontal_bias="0.555"
-        app:layout_constraintStart_toEndOf="@+id/containerTaskCreate"
-        app:layout_constraintStart_toStartOf="@+id/containerTaskCreate"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/containerTaskCreate"
         app:layout_constraintVertical_bias="0.771" />
 
