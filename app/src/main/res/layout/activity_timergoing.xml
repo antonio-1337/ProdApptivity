@@ -14,7 +14,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayoutTimerGoingButtons"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +38,7 @@
         app:layout_constraintVertical_bias="0.485" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
+        android:id="@+id/constraintLayoutTimerGoingButtons"
         android:layout_width="413dp"
         android:layout_height="100dp"
         android:layout_marginBottom="36dp"
@@ -48,7 +48,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/set_as_done"
             android:layout_width="wrap_content"
             android:layout_height="64dp"
             android:layout_marginStart="32dp"
