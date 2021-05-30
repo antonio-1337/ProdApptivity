@@ -30,6 +30,7 @@
         android:clickable="true"
         android:focusable="true"
         android:text="@string/cancel"
+        android:fontFamily="@font/inter_extrabold"
         android:theme="@style/cancelbutton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -44,6 +45,7 @@
         android:clickable="true"
         android:focusable="true"
         android:text="@string/delete"
+        android:fontFamily="@font/inter_extrabold"
         android:theme="@style/deletebutton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

@@ -21,90 +21,19 @@
             android:layout_height="match_parent"
             tools:context=".ui.auth.LoginActivity">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardView"
-                android:layout_width="350dp"
-                android:layout_height="290dp"
-                app:cardElevation="20dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.60">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:background="@color/dark_bg_gray"
-                    android:id="@+id/linearLayout">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/inter_bold"
-                        android:text="@string/login"
-                        android:textSize="36sp"
-                        tools:layout_conversion_absoluteHeight="51dp"
-                        tools:layout_editor_absoluteY="241dp"
-                        tools:layout_editor_absoluteX="61dp"
-                        tools:layout_conversion_absoluteWidth="290dp" />
-
-
-                    <ProgressBar
-                        android:id="@+id/progress_bar"
-                        style="?android:attr/progressBarStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:translationY="40dp"
-                        android:visibility="gone"
-                        tools:layout_conversion_absoluteHeight="0dp"
-                        tools:layout_editor_absoluteY="261dp"
-                        tools:layout_editor_absoluteX="31dp"
-                        tools:layout_conversion_absoluteWidth="0dp" />
-
-                    <TextView
-                        android:id="@+id/pleaseSignIn"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/login_description"
-                        android:fontFamily="@font/inter_medium"
-                        android:textColor="@color/gray3"
-                        android:textSize="14sp"/>
-
-                    <Space
-                        android:layout_width="match_parent"
-                        android:layout_height="28dp" />
-
-                    <ImageView
-                        android:id="@+id/signingoogle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:cropToPadding="true"
-                        android:elevation="5dp"
-                        android:focusable="auto"
-                        android:onClick="tryGoogleSignin"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/google_signup_dark"
-                        android:translationY="20dp"
-                        tools:layout_conversion_absoluteHeight="73dp"
-                        tools:layout_conversion_absoluteWidth="350dp"
-                        tools:layout_editor_absoluteX="31dp"
-                        tools:layout_editor_absoluteY="313dp" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="391dp"
-                android:layout_height="198dp"
+                android:layout_width="400dp"
+                android:layout_height="206dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:translationY="70dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.523"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/ic_login_back" />
 
             <ImageView
@@ -128,6 +57,80 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_editor_absoluteX="52dp" />
 
+            <ImageButton
+                android:id="@+id/loginSpace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintBottom_toTopOf="@+id/imageView2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.485"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView"
+                app:layout_constraintVertical_bias="0.858"
+                app:srcCompat="@drawable/login_card" />
+
+            <ImageView
+                android:id="@+id/googleLogo"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                app:layout_constraintEnd_toEndOf="@+id/loginSpace"
+                app:layout_constraintHorizontal_bias="0.082"
+                app:layout_constraintStart_toStartOf="@+id/loginSpace"
+                app:srcCompat="@drawable/google_logo"
+                tools:layout_editor_absoluteY="442dp" />
+
+            <TextView
+                android:id="@+id/login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/inter_bold"
+                android:text="@string/login"
+                android:textSize="32sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.027"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView"
+                app:layout_constraintVertical_bias="0.216" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/inter_medium"
+                android:text="@string/login_description"
+                android:textColor="@color/gray3"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.038"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/login"
+                app:layout_constraintVertical_bias="0.018" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:fontFamily="@font/inter_medium"
+                android:text="@string/sign_in_with_google"
+                android:textColor="@color/gray2"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/loginSpace"
+                app:layout_constraintEnd_toEndOf="@+id/loginSpace"
+                app:layout_constraintHorizontal_bias="0.025"
+                app:layout_constraintStart_toEndOf="@+id/googleLogo"
+                app:layout_constraintTop_toTopOf="@+id/loginSpace" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
