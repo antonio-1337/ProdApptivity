@@ -1,6 +1,17 @@
 <resources>
     <string name="app_name">ProdApptivity</string>
     <string name="default_webclient_ID">1080031430846-vmlofvh1ubuu4k6iuf518bu6reqsbbh3.apps.googleusercontent.com</string>
+
+    <!-- login page strings -->
+    <string name="welcome_string">Welcome to ProdApptivity!</string>
+    <string name="login">Login</string>
+    <string name="login_description">Please sign in to continue</string>
+
+    <!-- home strings -->
+    <string name="hello_name">Hello Name!</string>
+    <string name="start_your_day">Start your day!</string>
+
+    <!-- task manager strings -->
     <string name="monday">M</string>
     <string name="tuesday">T</string>
     <string name="wednesday">W</string>
@@ -9,33 +20,46 @@
     <string name="saturday">S</string>
     <string name="sunday">S</string>
     <string name="week_overview">Week Overview</string>
-    <string name="hello_name">Hello Name!</string>
-    <string name="start_your_day">Start your day!</string>
-    <string name="login">Login</string>
-
     <string name="myTasks">My Tasks</string>
-    <string name="set_as_done">Set as done</string>
+
+    <!-- create task strings -->
     <string name="create_task">Create Task</string>
     <string name="add_a_description">Add a description</string>
     <string name="set_name">Set Name</string>
+    <string name="repeating_task">Repeating Task</string>
     <string name="set_mode">Set Mode</string>
     <string name="save_task">Save Task</string>
-    <string name="repeating_task">Repeating Task</string>
-    <string name="set_timer_mode">Set timer mode</string>
+
+    <!-- set timer mode strings -->
     <string name="pomodoro_technique">Pomodoro technique</string>
     <string name="incremental">Incremental</string>
     <string name="decremental">Decremental</string>
     <string name="two_minutes_interval">Two minutes interval</string>
+    <string name="pomodoro_technique_description">Pomodoro technique: 4 sets of 25 minutes with a 5 minute break between each set</string>
+
+    <!-- create task strings -->
+    <string name="set_timer_mode">Set timer mode</string>
+
+    <!-- timer going and break timer strings -->
+    <string name="set_as_done">Set as done</string>
+    <string name="task_name">Task Name</string>
+
+    <!-- set timer strings -->
+    <string name="set_timer">Set timer</string>
+
+    <!-- set break strings -->
+    <string name="set_break">Set break</string>
+
+    <!-- pop-up strings -->
     <string name="every_day">Every day</string>
     <string name="does_not_repeat">Does not repeat</string>
     <string name="every_week">Every Week</string>
     <string name="string_break">Break</string>
-    <string name="task_name">Task Name</string>
-    <string name="pomodoro_technique_description">Pomodoro technique: 4 sets of 25 minutes with a 5 minute break between each set</string>
+    <string name="start_focusing">Start focusing</string>
     <string name="cancel">Cancel</string>
     <string name="delete">Delete</string>
-    <string name="login_description">Please sign in to continue</string>
-    <string name="welcome_string">Welcome to ProdApptivity!</string>
-    <string name="set_timer">Set timer</string>
-    <string name="set_break">Set break</string>
+    <string name="keep_going">Keep going</string>
+    <string name="good_job">You did an amazing job, keep going like this!</string>
+
+
 </resources>

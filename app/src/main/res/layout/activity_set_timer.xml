@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="16dp"
         android:text="@string/set_timer"
         android:textSize="36sp"
@@ -49,6 +49,7 @@
             android:text="@string/set_break"
             android:fontFamily="@font/inter_bold"
             app:cornerRadius="24dp"
+            android:theme="@style/deletebutton"
             app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="25dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -56,7 +57,7 @@
     <LinearLayout
         android:id="@+id/manual_timer"
         android:layout_width="360dp"
-        android:layout_height="400dp"
+        android:layout_height="380dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
