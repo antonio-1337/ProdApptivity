@@ -6,6 +6,7 @@
     <string name="welcome_string">Welcome to ProdApptivity!</string>
     <string name="login">Login</string>
     <string name="login_description">Please sign in to continue</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
 
     <!-- home strings -->
     <string name="hello_name">Hello Name!</string>
@@ -43,6 +44,7 @@
     <!-- timer going and break timer strings -->
     <string name="set_as_done">Set as done</string>
     <string name="task_name">Task Name</string>
+    <string name="timer" />
 
     <!-- set timer strings -->
     <string name="set_timer">Set timer</string>
@@ -60,7 +62,6 @@
     <string name="delete">Delete</string>
     <string name="keep_going">Keep going</string>
     <string name="good_job">You did an amazing job, keep going like this!</string>
-    <string name="sign_in_with_google">Sign in with Google</string>
-
+    
 
 </resources>
