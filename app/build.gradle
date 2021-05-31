@@ -93,10 +93,7 @@ dependencies {
     implementation "org.kodein.di:kodein-di-generic-jvm:$kodein_version"
     implementation "org.kodein.di:kodein-di-framework-android-x:$kodein_version"
 
-    //Google sign in button
-    implementation 'com.shobhitpuri.custombuttons:google-signin:1.0.0'
-
     //Picasso load image from url
-    implementation 'com.squareup.picasso:picasso:2.71828'
+    //implementation 'com.squareup.picasso:picasso:2.71828'
 
 }

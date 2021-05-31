@@ -21,6 +21,24 @@
             android:layout_height="match_parent"
             tools:context=".ui.auth.LoginActivity">
 
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="45dp"
+                android:layout_marginEnd="185dp"
+                android:visibility="gone"
+                app:layout_anchor="@+id/constraintLayout"
+                app:layout_anchorGravity="center"
+                app:layout_constraintBottom_toTopOf="@+id/textView2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/login"
+                app:layout_constraintTop_toBottomOf="@+id/imageView"
+                app:layout_constraintVertical_bias="0.642" />
+
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="400dp"
@@ -49,13 +67,16 @@
                 android:id="@+id/welcome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="50dp"
                 android:fontFamily="@font/inter_medium"
                 android:text="@string/welcome_string"
                 android:textColor="@color/orange_normal"
                 android:textSize="24sp"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:layout_editor_absoluteX="52dp" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
                 android:id="@+id/loginSpace"
