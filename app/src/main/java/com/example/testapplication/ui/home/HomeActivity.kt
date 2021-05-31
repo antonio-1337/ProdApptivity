@@ -41,7 +41,7 @@ class HomeActivity : AppCompatActivity(), HomeListener, KodeinAware {
 
         val google_account: GoogleSignInAccount? = GoogleSignIn.getLastSignedInAccount(this)
         if (google_account != null){
-            findViewById<TextView>(R.id.textView).text = "Hello " + google_account.givenName + "!"
+            findViewById<TextView>(R.id.name).text = "Hello " + google_account.givenName + "!"
             //findViewById<TextView>(R.id.textView2).text = google_account.email
         }
     }

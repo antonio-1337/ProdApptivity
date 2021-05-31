@@ -29,14 +29,14 @@
             app:layout_constraintStart_toEndOf="@+id/button" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="60dp"
-            android:layout_marginTop="370dp"
+            android:layout_marginTop="360dp"
             android:layout_marginEnd="60dp"
-            android:text="@string/hello_name"
             android:fontFamily="@font/inter_semibold"
+            android:text="@string/hello_name"
             android:textSize="36sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -83,14 +83,15 @@
 
         <LinearLayout
             android:id="@+id/quote_container"
-            android:layout_width="286dp"
+            android:layout_width="320dp"
             android:layout_height="200dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="440dp"
-            android:layout_marginEnd="50dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="416dp"
+            android:layout_marginEnd="24dp"
             android:gravity="center"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/imageView3">
 
@@ -98,8 +99,8 @@
                 android:id="@+id/quote_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="left"
                 android:fontFamily="@font/inter_regular"
+                android:gravity="left"
                 android:text='"Inspirational quote"'
                 android:textSize="24sp"
                 android:textStyle="italic" />
