@@ -33,10 +33,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="60dp"
-            android:layout_marginTop="364dp"
+            android:layout_marginTop="370dp"
             android:layout_marginEnd="60dp"
-            android:fontFamily="@font/inter_semibold"
             android:text="@string/hello_name"
+            android:fontFamily="@font/inter_semibold"
             android:textSize="36sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -48,59 +48,20 @@
             android:layout_height="64dp"
             android:layout_marginStart="36dp"
             android:layout_marginEnd="36dp"
-<<<<<<< Updated upstream
             android:layout_marginBottom="24dp"
             android:backgroundTint="@color/orange_normal"
             android:backgroundTintMode="src_in"
             android:fontFamily="@font/inter_extrabold"
 
-=======
-            android:layout_marginBottom="16dp"
-            android:backgroundTint="@color/orange_normal"
-            android:fontFamily="@font/inter_extrabold"
-            android:onClick="@{()->viewModel.getRandomQuote()}"
->>>>>>> Stashed changes
             android:text="@string/start_your_day"
-            android:theme="@style/startyourdaybutton"
             app:cornerRadius="24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-<<<<<<< Updated upstream
         <ProgressBar
             android:id="@+id/homeProgressBar"
             style="?android:attr/progressBarStyle"
-=======
-        <Button
-            android:id="@+id/btn_logout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="40dp"
-            android:layout_marginBottom="30dp"
-            android:onClick="logOffUser"
-            android:text="LOGOUT"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/button" />
-
-        <ProgressBar
-            android:id="@+id/homeProgressBar"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="230dp"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button" />
-
-        <ImageView
-            android:id="@+id/sfondo"
->>>>>>> Stashed changes
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="230dp"
@@ -120,7 +81,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/welcome" />
 
-<<<<<<< Updated upstream
         <LinearLayout
             android:id="@+id/quote_container"
             android:layout_width="286dp"
@@ -130,41 +90,19 @@
             android:layout_marginEnd="50dp"
             android:gravity="center"
             android:orientation="vertical"
-=======
-        <ScrollView
-            android:layout_width="340dp"
-            android:layout_height="148dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:textAlignment="center"
-            app:layout_constraintBottom_toBottomOf="parent"
->>>>>>> Stashed changes
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.492"
             app:layout_constraintStart_toStartOf="parent"
-<<<<<<< Updated upstream
             app:layout_constraintTop_toTopOf="@+id/imageView3">
-=======
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.825">
->>>>>>> Stashed changes
 
             <TextView
                 android:id="@+id/quote_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-<<<<<<< Updated upstream
                 android:gravity="left"
                 android:fontFamily="@font/inter_regular"
                 android:text='"Inspirational quote"'
                 android:textSize="24sp"
                 android:textStyle="italic" />
-=======
-                android:layout_gravity="center"
-                android:orientation="vertical" />
-
-        </ScrollView>
->>>>>>> Stashed changes
 
             <TextView
                 android:id="@+id/quote_author"
