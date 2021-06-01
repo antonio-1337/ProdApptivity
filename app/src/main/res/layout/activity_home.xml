@@ -53,6 +53,7 @@
             android:backgroundTintMode="src_in"
             android:fontFamily="@font/inter_extrabold"
             android:text="@string/start_your_day"
+            android:onClick="@{viewModel::gotoMainpage}"
             app:cornerRadius="24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

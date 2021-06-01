@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TestApplication">
-        <activity android:name=".acitivity_popup_taskcompleted"></activity>
+        <activity android:name=".ui.main.MainContainerActivity"></activity>
+        <activity android:name=".acitivity_popup_taskcompleted" />
         <activity android:name=".pop_up_taskname" />
         <activity android:name=".activity_set_break" />
         <activity android:name=".activity_set_timer" />
