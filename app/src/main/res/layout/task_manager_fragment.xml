@@ -9,6 +9,7 @@
     android:layout_height="match_parent">
 
 
+    <!--
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
@@ -19,32 +20,34 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+        -->
+
 
     <LinearLayout
         android:id="@+id/WeekDaysButton"
         android:layout_width="0dp"
         android:layout_height="52dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+        app:layout_constraintTop_toBottomOf="@+id/weekOverview">
 
         <Button
             android:id="@+id/mondayButton"
-            android:clickable="true"
-            android:theme="@style/notSelectedButtonWeek"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="@drawable/week_button_default"
+            android:clickable="true"
+            android:focusable="true"
             android:fontFamily="@font/inter_bold"
             android:text="@string/monday"
             android:textSize="18sp"
-            android:focusable="true" />
+            tools:theme="@style/notSelectedButtonWeek" />
 
         <Space
             android:layout_width="4dp"
@@ -52,15 +55,15 @@
 
         <Button
             android:id="@+id/tuesdayButton"
-            android:clickable="true"
-            android:theme="@style/notSelectedButtonWeek"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="@drawable/week_button_default"
+            android:clickable="true"
+            android:focusable="true"
             android:fontFamily="@font/inter_bold"
             android:text="@string/tuesday"
             android:textSize="18sp"
-            android:focusable="true" />
+            tools:theme="@style/notSelectedButtonWeek" />
 
         <Space
             android:layout_width="4dp"
@@ -68,15 +71,15 @@
 
         <Button
             android:id="@+id/wednesdayButton"
-            android:clickable="true"
-            android:theme="@style/notSelectedButtonWeek"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="@drawable/week_button_default"
+            android:clickable="true"
+            android:focusable="true"
             android:fontFamily="@font/inter_bold"
             android:text="@string/wednesday"
             android:textSize="18sp"
-            android:focusable="true" />
+            tools:theme="@style/notSelectedButtonWeek" />
 
         <Space
             android:layout_width="4dp"
@@ -84,15 +87,15 @@
 
         <Button
             android:id="@+id/thursdayButton"
-            android:clickable="true"
-            android:theme="@style/notSelectedButtonWeek"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="@drawable/week_button_default"
+            android:clickable="true"
+            android:focusable="true"
             android:fontFamily="@font/inter_bold"
             android:text="@string/thursday"
             android:textSize="18sp"
-            android:focusable="true" />
+            tools:theme="@style/notSelectedButtonWeek" />
 
         <Space
             android:layout_width="4dp"
@@ -100,15 +103,15 @@
 
         <Button
             android:id="@+id/fridayButton"
-            android:clickable="true"
-            android:theme="@style/notSelectedButtonWeek"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="@drawable/week_button_default"
+            android:clickable="true"
+            android:focusable="true"
             android:fontFamily="@font/inter_bold"
             android:text="@string/friday"
             android:textSize="18sp"
-            android:focusable="true" />
+            tools:theme="@style/notSelectedButtonWeek" />
 
         <Space
             android:layout_width="4dp"
@@ -116,15 +119,15 @@
 
         <Button
             android:id="@+id/saturdayButton"
-            android:clickable="true"
-            android:theme="@style/notSelectedButtonWeek"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="@drawable/week_button_default"
+            android:clickable="true"
+            android:focusable="true"
             android:fontFamily="@font/inter_bold"
             android:text="@string/saturday"
             android:textSize="18sp"
-            android:focusable="true" />
+            tools:theme="@style/notSelectedButtonWeek" />
 
         <Space
             android:layout_width="4dp"
@@ -132,15 +135,15 @@
 
         <Button
             android:id="@+id/sundayButton"
-            android:clickable="true"
-            android:theme="@style/notSelectedButtonWeek"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="@drawable/week_button_default"
+            android:clickable="true"
+            android:focusable="true"
             android:fontFamily="@font/inter_bold"
             android:text="@string/sunday"
             android:textSize="18sp"
-            android:focusable="true" />
+            tools:theme="@style/notSelectedButtonWeek" />
 
     </LinearLayout>
 
@@ -150,7 +153,6 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:fontFamily="@font/inter_semibold"
         android:text="@string/week_overview"
@@ -158,7 +160,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/MyTask"

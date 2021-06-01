@@ -15,7 +15,7 @@ import utils.toast
 
 class MainContainerActivity : AppCompatActivity() {
 
-    lateinit var toolbar: MaterialToolbar
+    private lateinit var toolbar: MaterialToolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,26 +46,20 @@ class MainContainerActivity : AppCompatActivity() {
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
         when (item.itemId) {
             R.id.fragmentTaskManager -> {
                 // Handle favorite icon press
                 toast("Fragment Task pressed!")
-                true
             }
             R.id.fragmentAnalytics -> {
                 // Handle search icon press
                 toast("Analytics pressed!")
-                true
             }
             R.id.action_logout -> {
                 // Handle more item (inside overflow menu) press
                 toast("log out pressed!")
-                true
             }
-            else -> false
         }
-
         return super.onOptionsItemSelected(item)
     }
 }

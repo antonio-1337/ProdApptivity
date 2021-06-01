@@ -2,15 +2,18 @@ package com.example.testapplication.ui.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.testapplication.R
 import com.example.testapplication.data.network.responses.GetQuoteResponse
 import com.example.testapplication.databinding.ActivityHomeBinding
 import com.example.testapplication.ui.auth.LoginActivity
+import com.example.testapplication.ui.main.MainContainerActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.firebase.auth.FirebaseAuth
@@ -35,6 +38,8 @@ class HomeActivity : AppCompatActivity(), HomeListener, KodeinAware {
         bindingModel.viewModel = viewModel
         viewModel.homeListener = this
 
+        bindingModel.buttonStart.setOnClickListener { gotoMainpage() }
+
         //get random quote of the day
         viewModel.getRandomQuote()
 
@@ -49,6 +54,15 @@ class HomeActivity : AppCompatActivity(), HomeListener, KodeinAware {
         FirebaseAuth.getInstance().signOut()
         // go back to login screen
         val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun gotoMainpage() {
+        //Intent(view.context, MainContainerActivity::class.java).also {
+        //    view.context.startActivity(it)
+        //}
+
+        val intent = Intent(this, MainContainerActivity::class.java)
         startActivity(intent)
     }
 
