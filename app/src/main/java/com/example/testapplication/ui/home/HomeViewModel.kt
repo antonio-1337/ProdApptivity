@@ -9,20 +9,20 @@ import utils.ApiException
 import utils.Coroutines
 import utils.NoInternetException
 
-class HomeViewModel (
-        private val userRepository: UserRepository
-): ViewModel(){
+class HomeViewModel(
+    private val userRepository: UserRepository
+) : ViewModel() {
 
     var homeListener: HomeListener? = null
 
 
-    fun gotoMainpage(view : View){
-     Intent(view.context, MainContainerActivity::class.java).also{
-         view.context.startActivity(it);
-     }
+    fun gotoMainpage(view: View) {
+        Intent(view.context, MainContainerActivity::class.java).also {
+            view.context.startActivity(it)
+        }
     }
 
-    fun getRandomQuote(){
+    fun getRandomQuote() {
         homeListener?.onStarted()
 
         //Main thread Scope
@@ -30,16 +30,16 @@ class HomeViewModel (
             try {
                 val response = userRepository.getRandomQuote()
                 response.let {
-                //metto la citazione fra doppi apici
-                it[0].q = "\"" + it[0].q + "\""
-                it[0].a = "- " + it[0].a
-                homeListener?.onSuccess(it[0])
-                return@main
+                    //metto la citazione fra doppi apici
+                    it[0].q = "\"" + it[0].q + "\""
+                    it[0].a = "- " + it[0].a
+                    homeListener?.onSuccess(it[0])
+                    return@main
                 }
                 homeListener?.onError("message object is null")
-            }catch (e: ApiException){
+            } catch (e: ApiException) {
                 homeListener?.onError(e.message!!)
-            }catch (e: NoInternetException){
+            } catch (e: NoInternetException) {
                 homeListener?.onError(e.message!!)
             }
         }

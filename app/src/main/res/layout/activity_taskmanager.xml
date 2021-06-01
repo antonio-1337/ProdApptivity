@@ -185,7 +185,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/add_button_task"
-        android:contentDescription="TODO"
+        android:contentDescription="@string/add_task"
         android:focusable="true"
         android:elevation="5dp"/>
 

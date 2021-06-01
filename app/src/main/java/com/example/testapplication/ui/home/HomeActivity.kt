@@ -2,7 +2,6 @@ package com.example.testapplication.ui.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -39,14 +38,14 @@ class HomeActivity : AppCompatActivity(), HomeListener, KodeinAware {
         //get random quote of the day
         viewModel.getRandomQuote()
 
-        val google_account: GoogleSignInAccount? = GoogleSignIn.getLastSignedInAccount(this)
-        if (google_account != null){
-            findViewById<TextView>(R.id.name).text = "Hello " + google_account.givenName + "!"
+        val googleAccount: GoogleSignInAccount? = GoogleSignIn.getLastSignedInAccount(this)
+        if (googleAccount != null){
+            findViewById<TextView>(R.id.name).text = getString(R.string.hello_name, googleAccount.givenName)
             //findViewById<TextView>(R.id.textView2).text = google_account.email
         }
     }
 
-    fun logOffUser(view: View){
+    fun logOffUser() {
         FirebaseAuth.getInstance().signOut()
         // go back to login screen
         val intent = Intent(this, LoginActivity::class.java)
