@@ -186,7 +186,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/add_button_task"
         android:contentDescription="TODO"
-        android:focusable="true" />
+        android:focusable="true"
+        android:elevation="5dp"/>
 
     <ScrollView
         android:id="@+id/scrollTask"

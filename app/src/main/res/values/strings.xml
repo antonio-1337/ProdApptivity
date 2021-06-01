@@ -62,6 +62,7 @@
     <string name="delete">Delete</string>
     <string name="keep_going">Keep going</string>
     <string name="good_job">You did an amazing job, keep going like this!</string>
-    
+    <string name="you_completed_your_task">You completed your task!</string>
+
 
 </resources>

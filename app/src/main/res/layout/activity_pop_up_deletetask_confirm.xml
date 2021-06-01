@@ -6,7 +6,8 @@
     android:layout_height="200dp"
     android:layout_margin="25dp"
     android:layout_gravity="center"
-    android:background="@drawable/task_info_card">
+    android:background="@drawable/task_info_card"
+    android:elevation="5dp">
 
     <TextView
         android:id="@+id/view_eliminated_task"
@@ -33,7 +34,8 @@
         android:text="@string/cancel"
         android:theme="@style/cancelbutton"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:elevation="5dp"/>
 
     <Button
         android:id="@+id/delete_button"
@@ -48,7 +50,8 @@
         android:text="@string/delete"
         android:theme="@style/deletebutton"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:elevation="5dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

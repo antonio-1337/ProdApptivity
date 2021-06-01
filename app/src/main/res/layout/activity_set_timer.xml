@@ -52,7 +52,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_baseline_check_circle_24" />
+            app:srcCompat="@drawable/ic_baseline_check_circle_24"
+            android:elevation="5dp"/>
 
         <Button
             android:id="@+id/button5"
@@ -64,7 +65,8 @@
             app:cornerRadius="24dp"
             android:theme="@style/deletebutton"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="25dp" />
+            tools:layout_editor_absoluteY="25dp"
+            android:elevation="5dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout

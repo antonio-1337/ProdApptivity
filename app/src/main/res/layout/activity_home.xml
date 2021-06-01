@@ -52,12 +52,12 @@
             android:backgroundTint="@color/orange_normal"
             android:backgroundTintMode="src_in"
             android:fontFamily="@font/inter_extrabold"
-
             android:text="@string/start_your_day"
             app:cornerRadius="24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            android:elevation="5dp"/>
 
         <ProgressBar
             android:id="@+id/homeProgressBar"

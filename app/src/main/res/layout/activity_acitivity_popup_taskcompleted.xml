@@ -6,7 +6,8 @@
     android:layout_height="220dp"
     android:layout_margin="25dp"
     android:layout_gravity="center"
-    android:background="@drawable/task_info_card">
+    android:background="@drawable/task_info_card"
+    android:elevation="5dp">
 
     <TextView
         android:id="@+id/task_completed"
@@ -15,7 +16,7 @@
         android:layout_marginTop="32dp"
         android:fontFamily="@font/inter_semibold"
         android:gravity="center"
-        android:text="You completed your task!"
+        android:text="@string/you_completed_your_task"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -50,7 +51,8 @@
         android:text="@string/set_as_done"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/good_job" />
+        app:layout_constraintTop_toBottomOf="@+id/compliments_taskcompleted"
+        android:elevation="5dp"/>
 
     <Button
         android:id="@+id/keep_going"
@@ -65,7 +67,8 @@
         android:text="@string/keep_going"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/good_job" />
+        app:layout_constraintTop_toBottomOf="@+id/compliments_taskcompleted"
+        android:elevation="5dp"/>
 
     <ImageView
         android:id="@+id/imageView4"
@@ -76,7 +79,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.333"
-        app:layout_constraintStart_toEndOf="@+id/good_job"
+        app:layout_constraintStart_toEndOf="@+id/compliments_taskcompleted"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.455"
         app:srcCompat="@drawable/thumbs_up_icon" />

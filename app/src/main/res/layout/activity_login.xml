@@ -91,7 +91,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView"
                 app:layout_constraintVertical_bias="0.792"
-                app:srcCompat="@drawable/login_card" />
+                app:srcCompat="@drawable/login_card"
+                android:elevation="5dp"/>
 
             <ImageView
                 android:id="@+id/googleLogo"
@@ -102,7 +103,8 @@
                 app:layout_constraintHorizontal_bias="0.082"
                 app:layout_constraintStart_toStartOf="@+id/loginSpace"
                 app:layout_constraintTop_toTopOf="@+id/loginSpace"
-                app:srcCompat="@drawable/google_logo" />
+                app:srcCompat="@drawable/google_logo"
+                android:elevation="5dp"/>
 
             <TextView
                 android:id="@+id/login"
@@ -152,7 +154,8 @@
                 app:layout_constraintHorizontal_bias="0.058"
                 app:layout_constraintStart_toEndOf="@+id/googleLogo"
                 app:layout_constraintTop_toTopOf="@+id/loginSpace"
-                app:layout_constraintVertical_bias="0.52" />
+                app:layout_constraintVertical_bias="0.52"
+                android:elevation="5dp"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

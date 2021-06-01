@@ -41,7 +41,8 @@
         app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toStartOf="@+id/containerTaskCreate"
         app:layout_constraintTop_toTopOf="@+id/containerTaskCreate"
-        app:layout_constraintVertical_bias="0.865" />
+        app:layout_constraintVertical_bias="0.865"
+        android:elevation="5dp"/>
 
     <TextView
         android:id="@+id/createtask"
@@ -78,7 +79,8 @@
             android:clickable="true"
             android:background="@drawable/taskcreatortext"
             android:hint="@string/set_name"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:elevation="5dp"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -101,7 +103,7 @@
             android:hint="@string/add_a_description"
             android:textSize="18sp"
             android:background="@drawable/taskcreatortext"
-            />
+            android:elevation="5dp"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -123,7 +125,8 @@
         app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/containerTaskCreate"
-        app:layout_constraintVertical_bias="0.771" />
+        app:layout_constraintVertical_bias="0.771"
+        android:elevation="5dp"/>
 
     <TextView
         android:id="@+id/textView3"
