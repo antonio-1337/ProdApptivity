@@ -7,7 +7,6 @@ import android.view.View
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
 import com.example.testapplication.R
 import com.example.testapplication.databinding.ActivityLoginBinding
 import com.example.testapplication.ui.home.HomeActivity
@@ -18,18 +17,15 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
-import org.kodein.di.KodeinAware
-import org.kodein.di.android.kodein
-import org.kodein.di.generic.instance
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import utils.hide
 import utils.show
 import utils.snackbar
 import utils.toast
 
-class LoginActivity : AppCompatActivity(), AuthListener, KodeinAware {
+class LoginActivity : AppCompatActivity(), AuthListener {
 
-    override val kodein by kodein()
-    private val factory: AuthViewModelFactory by instance("auth")
+    private val auth_vm: AuthViewModel by viewModel()
 
     private var auth: FirebaseAuth? = null
     private val RC_SIGN_IN: Int = 1
@@ -66,10 +62,10 @@ class LoginActivity : AppCompatActivity(), AuthListener, KodeinAware {
         createRequest()
 
 
-        val viewModel = ViewModelProvider(this, factory).get(AuthViewModel::class.java)
+        //val viewModel = auth_vm
         val bindingModel: ActivityLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login)
-        bindingModel.viewModel = viewModel
-        viewModel.authListener = this
+        bindingModel.viewModel = auth_vm
+        auth_vm.authListener = this
 
     }
 
@@ -142,8 +138,6 @@ class LoginActivity : AppCompatActivity(), AuthListener, KodeinAware {
                     }
                 }
     }
-
-
 
     override fun onStarted() {
         findViewById<ProgressBar>(R.id.progress_bar).show()

@@ -2,13 +2,10 @@ package com.example.testapplication.ui.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
 import com.example.testapplication.R
 import com.example.testapplication.data.network.responses.GetQuoteResponse
 import com.example.testapplication.databinding.ActivityHomeBinding
@@ -17,31 +14,28 @@ import com.example.testapplication.ui.main.MainContainerActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.firebase.auth.FirebaseAuth
-import org.kodein.di.KodeinAware
-import org.kodein.di.android.kodein
-import org.kodein.di.generic.instance
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import utils.hide
 import utils.show
 import utils.toast
 
-class HomeActivity : AppCompatActivity(), HomeListener, KodeinAware {
+class HomeActivity : AppCompatActivity(), HomeListener {
 
-    override val kodein by kodein()
-    private val factory: HomeViewModelFactory by instance("home")
+    private val home_vm: HomeViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_home)
 
-        val viewModel = ViewModelProvider(this, factory).get(HomeViewModel::class.java)
+        //val viewModel = home_vm
         val bindingModel: ActivityHomeBinding = DataBindingUtil.setContentView(this, R.layout.activity_home)
-        bindingModel.viewModel = viewModel
-        viewModel.homeListener = this
+        bindingModel.viewModel = home_vm
+        home_vm.homeListener = this
 
         bindingModel.buttonStart.setOnClickListener { gotoMainpage() }
 
         //get random quote of the day
-        viewModel.getRandomQuote()
+        home_vm.getRandomQuote()
 
         val googleAccount: GoogleSignInAccount? = GoogleSignIn.getLastSignedInAccount(this)
         if (googleAccount != null){

@@ -91,8 +91,18 @@ dependencies {
 
     //Kodein Dependency injection
     def kodein_version = "6.2.1"
-    implementation "org.kodein.di:kodein-di-generic-jvm:$kodein_version"
-    implementation "org.kodein.di:kodein-di-framework-android-x:$kodein_version"
+    //implementation "org.kodein.di:kodein-di-generic-jvm:$kodein_version"
+    //implementation "org.kodein.di:kodein-di-framework-android-x:$kodein_version"
+
+    def koin_version = "2.2.3"
+    // Koin for Kotlin
+    //implementation "io.insert-koin:koin-core:$koin_version"
+    // Koin for Android
+    implementation "io.insert-koin:koin-android:$koin_version"
+    // Koin AndroidX ViewModel features
+    implementation "io.insert-koin:koin-androidx-viewmodel:$koin_version"
+    // Koin AndroidX Fragment features
+    //implementation "io.insert-koin:koin-androidx-fragment:$koin_version"
 
     //Picasso load image from url
     //implementation 'com.squareup.picasso:picasso:2.71828'

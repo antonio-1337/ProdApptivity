@@ -4,7 +4,6 @@ import com.example.testapplication.data.network.SafeApiRequest
 import com.example.testapplication.data.network.WebApi
 import com.example.testapplication.data.network.responses.AuthResponse
 import com.example.testapplication.data.network.responses.GetQuoteResponse
-import org.kodein.di.TypeToken
 
 class UserRepository(
         private val webApi: WebApi

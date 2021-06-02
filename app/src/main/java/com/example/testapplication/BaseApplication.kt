@@ -1,29 +1,17 @@
 package com.example.testapplication
 
 import android.app.Application
-import com.example.testapplication.data.network.NetworkConnectionInterceptor
-import com.example.testapplication.data.network.WebApi
-import com.example.testapplication.data.repository.UserRepository
-import com.example.testapplication.ui.auth.AuthViewModelFactory
-import com.example.testapplication.ui.home.HomeViewModelFactory
-import org.kodein.di.Kodein
-import org.kodein.di.KodeinAware
-import org.kodein.di.android.x.androidXModule
-import org.kodein.di.generic.bind
-import org.kodein.di.generic.instance
-import org.kodein.di.generic.provider
-import org.kodein.di.generic.singleton
+import com.example.testapplication.ui.appModule
+import com.example.testapplication.ui.viewModelModule
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.startKoin
 
-class BaseApplication : Application(), KodeinAware {
-    override val kodein = Kodein.lazy {
-        import(androidXModule(this@BaseApplication))
-
-        bind () from singleton { NetworkConnectionInterceptor(instance()) }
-        bind () from singleton { WebApi(instance()) }
-        bind ("repouser") from singleton { UserRepository(instance()) }
-
-        //viewmodel factory bindings
-        bind ("auth") from provider { AuthViewModelFactory(instance("repouser")) }
-        bind ("home") from provider { HomeViewModelFactory(instance("repouser")) }
+class BaseApplication : Application() {
+    override fun onCreate() {
+        super.onCreate()
+        startKoin {
+            androidContext(this@BaseApplication)
+            modules(listOf(appModule, viewModelModule))
+        }
     }
 }
