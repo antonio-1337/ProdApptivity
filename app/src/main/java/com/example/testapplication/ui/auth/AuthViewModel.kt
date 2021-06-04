@@ -12,6 +12,7 @@ import utils.NoInternetException
 class AuthViewModel(
         private val userRepository: UserRepository
 ): ViewModel() {
+
     var email: String? = null
     var password: String? = null
 

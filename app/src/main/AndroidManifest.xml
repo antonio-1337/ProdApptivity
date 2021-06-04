@@ -14,12 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TestApplication">
         <activity android:name=".ui.main.MainContainerActivity"></activity>
-        <activity android:name=".acitivity_popup_taskcompleted" />
-        <activity android:name=".pop_up_taskname" />
-        <activity android:name=".activity_set_break" />
-        <activity android:name=".activity_set_timer" />
-        <activity android:name=".activity_timergoing" />
-        <activity android:name=".activity_break" />
+
+
         <activity android:name=".ui.home.HomeActivity" />
         <activity android:name=".ui.auth.LoginActivity">
             <intent-filter>

@@ -8,5 +8,5 @@
         android:id="@+id/taskManagerFragment"
         android:name="com.example.testapplication.ui.main.taskManager.TaskManagerFragment"
         android:label="TaskManagerFragment"
-        tools:layout="@layout/task_manager_fragment"/>
+        tools:layout="@layout/fragment_task_manager"/>
 </navigation>

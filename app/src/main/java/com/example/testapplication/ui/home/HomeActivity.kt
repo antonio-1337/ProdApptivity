@@ -6,6 +6,7 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import com.example.testapplication.R
 import com.example.testapplication.data.network.responses.GetQuoteResponse
 import com.example.testapplication.databinding.ActivityHomeBinding
@@ -19,30 +20,47 @@ import utils.hide
 import utils.show
 import utils.toast
 
+// TODO spostare la logica legata all'account google nel ViewModel
 class HomeActivity : AppCompatActivity(), HomeListener {
 
-    private val home_vm: HomeViewModel by viewModel()
+    // Ottengo il ViewModel da Koin
+    private val homeViewModel: HomeViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_home)
 
-        //val viewModel = home_vm
-        val bindingModel: ActivityHomeBinding = DataBindingUtil.setContentView(this, R.layout.activity_home)
-        bindingModel.viewModel = home_vm
-        home_vm.homeListener = this
+        // Crea l'oggetto Binding per l'activity mostrando anche il layout
+        val binding: ActivityHomeBinding = DataBindingUtil.setContentView(this, R.layout.activity_home)
 
-        bindingModel.buttonStart.setOnClickListener { gotoMainpage() }
+        // Binda il layout direttamente con il ViewModel
+        binding.viewModel = homeViewModel
 
-        //get random quote of the day
-        home_vm.getRandomQuote()
+        // Passa al ViewModel questa activity come homeListener
+        homeViewModel.homeListener = this
 
+        // Ottieni la frase del giorno
+        homeViewModel.getRandomQuote()
+
+        // Ottieni e mostra il nome dell'utente loggato
         val googleAccount: GoogleSignInAccount? = GoogleSignIn.getLastSignedInAccount(this)
         if (googleAccount != null){
             findViewById<TextView>(R.id.name).text = getString(R.string.hello_name, googleAccount.givenName)
-            //findViewById<TextView>(R.id.textView2).text = google_account.email
         }
+
+        // Naviga verso la MainContainerActivity, vedi nel ViewModel per spiegazioni.
+        homeViewModel.toMainPage.observe(this, Observer {
+            val intent = Intent(this, MainContainerActivity::class.java)
+            startActivity(intent)
+        })
     }
+
+    override fun onStarted() {
+        findViewById<ProgressBar>(R.id.homeProgressBar).show()
+    }
+
+
+
+    //======DA METTERE NEL VIEWMODEL======
 
     fun logOffUser() {
         FirebaseAuth.getInstance().signOut()
@@ -51,21 +69,7 @@ class HomeActivity : AppCompatActivity(), HomeListener {
         startActivity(intent)
     }
 
-    fun gotoMainpage() {
-        //Intent(view.context, MainContainerActivity::class.java).also {
-        //    view.context.startActivity(it)
-        //}
-
-        val intent = Intent(this, MainContainerActivity::class.java)
-        startActivity(intent)
-    }
-
-    override fun onStarted() {
-        findViewById<ProgressBar>(R.id.homeProgressBar).show()
-    }
-
     override fun onSuccess(response: GetQuoteResponse) {
-
         //Picasso.get().load(response).into(findViewById<ImageView>(R.id.))
         findViewById<TextView>(R.id.quote_text).text = response.q
         findViewById<TextView>(R.id.quote_author).text = response.a
