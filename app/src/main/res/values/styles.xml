@@ -11,10 +11,14 @@
 
     <style name="notSelectedButtonWeek" parent="TextAppearance.AppCompat">
         <item name="colorPrimary">@color/gray3</item>
+        <item name="android:fontFamily">"@font/inter_bold"</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
     <style name="selectedButtonWeek" parent="TextAppearance.AppCompat">
         <item name="colorPrimary">@color/teal_normal</item>
+        <item name="android:fontFamily">"@font/inter_bold"</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
     <style name="taskcreatebutton" parent="TextAppearance.AppCompat">
@@ -23,7 +27,7 @@
 
     <style name="deletebutton" parent="TextAppearance.AppCompat">
         <item name="fontFamily">@font/inter_bold</item>
-        <item name="colorPrimary">@color/orange_normal</item>>
+        <item name="colorPrimary">@color/orange_normal</item>
     </style>
 
     <style name="cancelbutton" parent="TextAppearance.AppCompat">

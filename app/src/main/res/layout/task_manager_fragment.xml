@@ -44,9 +44,7 @@
             android:background="@drawable/week_button_default"
             android:clickable="true"
             android:focusable="true"
-            android:fontFamily="@font/inter_bold"
             android:text="@string/monday"
-            android:textSize="18sp"
             tools:theme="@style/notSelectedButtonWeek" />
 
         <Space
@@ -60,9 +58,7 @@
             android:background="@drawable/week_button_default"
             android:clickable="true"
             android:focusable="true"
-            android:fontFamily="@font/inter_bold"
             android:text="@string/tuesday"
-            android:textSize="18sp"
             tools:theme="@style/notSelectedButtonWeek" />
 
         <Space
@@ -76,9 +72,7 @@
             android:background="@drawable/week_button_default"
             android:clickable="true"
             android:focusable="true"
-            android:fontFamily="@font/inter_bold"
             android:text="@string/wednesday"
-            android:textSize="18sp"
             tools:theme="@style/notSelectedButtonWeek" />
 
         <Space
@@ -92,9 +86,7 @@
             android:background="@drawable/week_button_default"
             android:clickable="true"
             android:focusable="true"
-            android:fontFamily="@font/inter_bold"
             android:text="@string/thursday"
-            android:textSize="18sp"
             tools:theme="@style/notSelectedButtonWeek" />
 
         <Space
@@ -108,9 +100,7 @@
             android:background="@drawable/week_button_default"
             android:clickable="true"
             android:focusable="true"
-            android:fontFamily="@font/inter_bold"
             android:text="@string/friday"
-            android:textSize="18sp"
             tools:theme="@style/notSelectedButtonWeek" />
 
         <Space
@@ -124,9 +114,7 @@
             android:background="@drawable/week_button_default"
             android:clickable="true"
             android:focusable="true"
-            android:fontFamily="@font/inter_bold"
             android:text="@string/saturday"
-            android:textSize="18sp"
             tools:theme="@style/notSelectedButtonWeek" />
 
         <Space
@@ -140,9 +128,7 @@
             android:background="@drawable/week_button_default"
             android:clickable="true"
             android:focusable="true"
-            android:fontFamily="@font/inter_bold"
             android:text="@string/sunday"
-            android:textSize="18sp"
             tools:theme="@style/notSelectedButtonWeek" />
 
     </LinearLayout>
