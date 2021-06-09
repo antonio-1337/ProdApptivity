@@ -6,9 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import com.example.testapplication.R
-import com.example.testapplication.databinding.FragmentTaskManagerBinding
 
 class TaskManagerFragment : Fragment() {
 
@@ -19,16 +17,9 @@ class TaskManagerFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        // Crea l'oggetto Binding per il Fragment mostrando anche il layout
-        val binding: FragmentTaskManagerBinding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_task_manager, container, false)
-
-        return binding.root
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+        //TODO: create everything lol
         viewModel = ViewModelProvider(this).get(TaskManagerViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
 
+        return inflater.inflate(R.layout.task_manager_fragment, container, false)
+    }
 }

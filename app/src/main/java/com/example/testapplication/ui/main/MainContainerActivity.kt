@@ -1,65 +1,23 @@
 package com.example.testapplication.ui.main
 
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.navigation.Navigation
+import androidx.appcompat.widget.Toolbar
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
 import com.example.testapplication.R
-import com.google.android.material.appbar.MaterialToolbar
-import com.google.android.material.navigation.NavigationView
-import utils.toast
 
 class MainContainerActivity : AppCompatActivity() {
-
-    private lateinit var toolbar: MaterialToolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_container)
 
-        toolbar = findViewById(R.id.app_header)
-
-        setSupportActionBar(toolbar)
-
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+        // Setup for the toolbar
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
-
-        NavigationUI.setupWithNavController(findViewById<NavigationView>(R.id.nav_view), navController)
-        NavigationUI.setupActionBarWithNavController(this, navController, findViewById<DrawerLayout>(R.id.drawer_layout))
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        return NavigationUI.navigateUp(
-            Navigation.findNavController(this, R.id.fragmentContainerView),
-            findViewById<DrawerLayout>(R.id.drawer_layout)
-        )
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.nav_menu, menu)
-        return true
-    }
-
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.fragmentTaskManager -> {
-                // Handle favorite icon press
-                toast("Fragment Task pressed!")
-            }
-            R.id.fragmentAnalytics -> {
-                // Handle search icon press
-                toast("Analytics pressed!")
-            }
-            R.id.action_logout -> {
-                // Handle more item (inside overflow menu) press
-                toast("log out pressed!")
-            }
-        }
-        return super.onOptionsItemSelected(item)
+        val appBarConfiguration = AppBarConfiguration(navController.graph)
+        findViewById<Toolbar>(R.id.toolbar).setupWithNavController(navController, appBarConfiguration)
     }
 }

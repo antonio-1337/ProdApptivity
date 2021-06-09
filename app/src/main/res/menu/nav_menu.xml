@@ -2,7 +2,9 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Task Manager" android:id="@+id/fragmentTaskManager" app:showAsAction="never"/>
-    <item android:title="Analytics" android:id="@+id/fragmentAnalytics" app:showAsAction="never"/>
-    <item android:title="Logout" android:id="@+id/action_logout" app:showAsAction="never" />
+    <!-- TODO Cambiare il colore del testo che è bianco su bianco (wtf?) -->
+
+    <item android:title="@string/task_manager" android:id="@+id/fragmentTaskManager" app:showAsAction="never"/>
+    <item android:title="@string/analytics" android:id="@+id/fragmentAnalytics" app:showAsAction="never"/>
+    <item android:title="@string/logout" android:id="@+id/action_logout" app:showAsAction="never" />
 </menu>

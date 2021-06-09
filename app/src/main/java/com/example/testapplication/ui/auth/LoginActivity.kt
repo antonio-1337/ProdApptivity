@@ -23,9 +23,11 @@ import utils.show
 import utils.snackbar
 import utils.toast
 
+//TODO Spostare la logica del Log-In nel ViewModel
 class LoginActivity : AppCompatActivity(), AuthListener {
 
-    private val auth_vm: AuthViewModel by viewModel()
+    // Ottengo il ViewModel da Koin
+    private val authViewModel: AuthViewModel by viewModel()
 
     private var auth: FirebaseAuth? = null
     private val RC_SIGN_IN: Int = 1
@@ -33,41 +35,45 @@ class LoginActivity : AppCompatActivity(), AuthListener {
 
     private var TAG = "LoginActivity"
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        // Inizializza Firebase Auth
+        auth = FirebaseAuth.getInstance()
+
+        //Google Auth Init
+        createRequest()
+
+        // Crea l'oggetto Binding per l'activity mostrando anche il layout
+        val binding: ActivityLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login)
+
+        // Binda il layout direttamente con il ViewModel
+        binding.viewModel = authViewModel
+
+        // Passa al ViewModel questa activity come authListener
+        authViewModel.authListener = this
+
+    }
+
     override fun onStart() {
         super.onStart()
 
         val user: FirebaseUser? = auth?.currentUser
-        //se l'utente è già loggato vai alla homepage
-        if(user != null)
-        {
+
+        // Se l'utente è già loggato, vai alla homepage
+        if(user != null) {
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_login)
-
-        /*
-        val networkConnectionInterceptor = NetworkConnectionInterceptor(this)
-        val api = WebApi(networkConnectionInterceptor)
-        val repository = UserRepository(api)
-        val factory = AuthViewModelFactory(repository)
-        */
-
-        //init firebase Auth
-        auth = FirebaseAuth.getInstance()
-        //Google Auth Init
-        createRequest()
-
-
-        //val viewModel = auth_vm
-        val bindingModel: ActivityLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login)
-        bindingModel.viewModel = auth_vm
-        auth_vm.authListener = this
-
+    override fun onStarted() {
+        // Mostra la progress bar
+        findViewById<ProgressBar>(R.id.progress_bar).show()
     }
+
+
+    //==========DA SPOSTARE NEL VIEWMODEL===========
 
     private fun createRequest() {
         // Configure Google Sign In
@@ -79,19 +85,6 @@ class LoginActivity : AppCompatActivity(), AuthListener {
         // Build a GoogleSignInClient with the options specified by gso
         googleSignInClient = GoogleSignIn.getClient(this, gso)
     }
-
-   /* var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        if (result.resultCode == Activity.RESULT_OK) {
-            // There are no request codes
-            val data: Intent? = result.data
-            //doSomeOperations()
-        }
-    }
-
-    fun openSomeActivityForResult() {
-        val intent = Intent(this, HomeActivity::class.java)
-        resultLauncher.launch(intent)
-    }*/
 
     private fun signIn() {
         findViewById<ProgressBar>(R.id.progress_bar).show()
@@ -137,10 +130,6 @@ class LoginActivity : AppCompatActivity(), AuthListener {
                         toast("Oops. something went wrong with the authentication")
                     }
                 }
-    }
-
-    override fun onStarted() {
-        findViewById<ProgressBar>(R.id.progress_bar).show()
     }
 
     override fun onSuccess(response: String) {

@@ -66,6 +66,8 @@
     <string name="you_completed_your_task">You completed your task!</string>
     <string name="add_task">Add task</string>
     <string name="logout">LOGOUT</string>
+    <string name="task_manager">Task Manager</string>
+    <string name="analytics">Analytics</string>
 
 
 </resources>
