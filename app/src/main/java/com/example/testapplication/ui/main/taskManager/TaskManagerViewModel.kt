@@ -6,6 +6,7 @@ import java.util.*
 
 class TaskManagerViewModel : ViewModel() {
 
+    // Instantiate all the calendar-related variable that we need
     val calendar = Calendar.getInstance()
     val currentDayOfTheWeek = calendar.get(Calendar.DAY_OF_WEEK)
     var selectedDay: Int = currentDayOfTheWeek

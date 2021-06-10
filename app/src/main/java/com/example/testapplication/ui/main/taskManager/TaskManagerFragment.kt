@@ -36,6 +36,11 @@ class TaskManagerFragment : Fragment() {
         // Set the radio button of the current day checked
         setRadioButtonToCurrentDay(binding)
 
+        binding.fab.setOnClickListener {
+            //TODO: Navigate to create new task fragment
+            Log.i("TaskManagerFragment", "FAB clicked.")
+        }
+
         return binding.root
     }
 
