@@ -6,7 +6,9 @@ import androidx.appcompat.widget.Toolbar
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import androidx.room.Room
 import com.example.testapplication.R
+import com.example.testapplication.data.database.TasksDatabase
 
 class MainContainerActivity : AppCompatActivity() {
 
@@ -19,5 +21,8 @@ class MainContainerActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
         val appBarConfiguration = AppBarConfiguration(navController.graph)
         findViewById<Toolbar>(R.id.toolbar).setupWithNavController(navController, appBarConfiguration)
+
+        // Create a database instance
+        val db = Room.databaseBuilder(applicationContext, TasksDatabase::class.java, "tasks_database").build()
     }
 }

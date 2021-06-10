@@ -107,4 +107,6 @@ dependencies {
     //Picasso load image from url
     //implementation 'com.squareup.picasso:picasso:2.71828'
 
+
+
 }

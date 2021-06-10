@@ -2,9 +2,13 @@ package com.example.testapplication.ui.main.taskManager
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import com.example.testapplication.data.database.TasksDatabase
 import java.util.*
 
 class TaskManagerViewModel : ViewModel() {
+
+    // Instantiate Database
+    //val tasksDatabase = TasksDatabase.getDatabase()
 
     // Instantiate all the calendar-related variable that we need
     val calendar = Calendar.getInstance()

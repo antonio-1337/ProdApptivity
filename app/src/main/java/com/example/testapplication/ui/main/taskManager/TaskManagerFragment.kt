@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.testapplication.databinding.TaskManagerFragmentBinding
 import java.util.*
 
@@ -37,6 +38,9 @@ class TaskManagerFragment : Fragment() {
         binding.fab.setOnClickListener {
             //TODO: Navigate to create new task fragment
             Log.i("TaskManagerFragment", "FAB clicked.")
+
+            val action = TaskManagerFragmentDirections.actionTaskManagerFragmentToCreateTaskFragment()
+            findNavController().navigate(action)
         }
 
         return binding.root
