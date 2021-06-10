@@ -36,7 +36,6 @@
             android:layout_marginEnd="60dp"
             android:fontFamily="@font/inter_semibold"
             android:text="@string/hello_name"
-            android:textColor="@color/white"
             tools:text="Hello Name!"
             android:textSize="36sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -104,7 +103,6 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter_regular"
                 android:gravity="start"
-                android:textColor="@color/white"
                 tools:text='"Inspirational quote"'
                 android:textSize="24sp"
                 android:textStyle="italic" />
@@ -115,7 +113,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:gravity="start"
-                android:textColor="@color/white"
                 tools:text='- cit. Author'
                 android:textSize="24sp" />
         </LinearLayout>

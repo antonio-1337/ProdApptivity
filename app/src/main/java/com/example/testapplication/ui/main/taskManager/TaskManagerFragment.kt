@@ -1,14 +1,12 @@
 package com.example.testapplication.ui.main.taskManager
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.NonNull
-import com.example.testapplication.R
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.example.testapplication.databinding.TaskManagerFragmentBinding
 import java.util.*
 
@@ -19,7 +17,7 @@ class TaskManagerFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         // Set the viewModel to the fragment
         viewModel = ViewModelProvider(this).get(TaskManagerViewModel::class.java)

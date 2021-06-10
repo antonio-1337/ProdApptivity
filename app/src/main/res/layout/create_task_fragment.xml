@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.testapplication.ui.main.createTask.CreateTaskViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.main.createTask.CreateTaskFragment">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textViewCreateTask"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/create_task"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.13"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/editTextTextName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:hint="@string/set_name"
+                android:inputType="textPersonName"
+                app:layout_constraintStart_toStartOf="@+id/textViewCreateTask"
+                app:layout_constraintTop_toBottomOf="@+id/textViewCreateTask" />
+
+            <EditText
+                android:id="@+id/editTextTextDescription"
+                android:layout_width="303dp"
+                android:layout_height="204dp"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="@string/add_a_description"
+                android:inputType="textMultiLine"
+                app:layout_constraintStart_toStartOf="@+id/editTextTextName"
+                app:layout_constraintTop_toBottomOf="@+id/editTextTextName" />
+
+            <CheckBox
+                android:id="@+id/checkBoxRepeating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/repeating_task"
+                app:layout_constraintStart_toStartOf="@+id/editTextTextDescription"
+                app:layout_constraintTop_toBottomOf="@+id/editTextTextDescription" />
+
+            <Button
+                android:id="@+id/buttonSetMode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/set_mode"
+                app:layout_constraintStart_toStartOf="@+id/checkBoxRepeating"
+                app:layout_constraintTop_toBottomOf="@+id/checkBoxRepeating" />
+
+            <Button
+                android:id="@+id/buttonSaveTask"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/save_task"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/buttonSetMode"
+                app:layout_constraintTop_toTopOf="@+id/buttonSetMode" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+</layout>

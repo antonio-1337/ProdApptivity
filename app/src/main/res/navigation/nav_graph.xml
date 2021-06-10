@@ -8,5 +8,14 @@
         android:id="@+id/taskManagerFragment"
         android:name="com.example.testapplication.ui.main.taskManager.TaskManagerFragment"
         android:label="task_manager_fragment"
-        tools:layout="@layout/task_manager_fragment" />
+        tools:layout="@layout/task_manager_fragment" >
+        <action
+            android:id="@+id/action_taskManagerFragment_to_createTaskFragment"
+            app:destination="@id/createTaskFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createTaskFragment"
+        android:name="com.example.testapplication.ui.main.createTask.CreateTaskFragment"
+        android:label="CreateTaskFragment"
+        tools:layout="@layout/create_task_fragment"/>
 </navigation>
