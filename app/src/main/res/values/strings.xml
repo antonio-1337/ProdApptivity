@@ -68,6 +68,14 @@
     <string name="logout">LOGOUT</string>
     <string name="task_manager">Task Manager</string>
     <string name="analytics">Analytics</string>
+    <string name="letter_monday">M</string>
+    <string name="letter_tuesday">T</string>
+    <string name="letter_wednesday">W</string>
+    <string name="letter_thursday">T</string>
+    <string name="letter_friday">F</string>
+    <string name="letter_saturday">S</string>
+    <string name="letter_sunday">S</string>
+    <string name="my_tasks">My tasks</string>
 
 
 </resources>
