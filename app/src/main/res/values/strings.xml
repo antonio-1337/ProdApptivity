@@ -45,7 +45,7 @@
     <!-- timer going and break timer strings -->
     <string name="set_as_done">Set as done</string>
     <string name="task_name">Task Name</string>
-    <string name="timer" />
+    <string name="timer">Timer</string>
 
     <!-- set timer strings -->
     <string name="set_timer">Set timer</string>
