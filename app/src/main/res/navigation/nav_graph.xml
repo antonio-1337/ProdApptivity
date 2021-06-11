@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_taskManagerFragment_to_createTaskFragment"
             app:destination="@id/createTaskFragment" />
+        <action
+            android:id="@+id/action_taskManagerFragment_to_timerFragment"
+            app:destination="@id/timerFragment" />
     </fragment>
     <fragment
         android:id="@+id/createTaskFragment"
@@ -20,6 +23,15 @@
         tools:layout="@layout/create_task_fragment">
         <action
             android:id="@+id/action_createTaskFragment_to_taskManagerFragment"
+            app:destination="@id/taskManagerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/timerFragment"
+        android:name="com.example.testapplication.ui.main.timer.TimerFragment"
+        android:label="TimerFragment"
+        tools:layout="@layout/timer_fragment">
+        <action
+            android:id="@+id/action_timerFragment_to_taskManagerFragment"
             app:destination="@id/taskManagerFragment" />
     </fragment>
 </navigation>

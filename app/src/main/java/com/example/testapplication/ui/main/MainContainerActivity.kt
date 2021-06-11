@@ -1,19 +1,23 @@
 package com.example.testapplication.ui.main
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.NavDirections
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
 import com.example.testapplication.R
+import com.example.testapplication.ui.main.taskManager.TaskManagerFragmentDirections
 import com.google.android.material.navigation.NavigationView
 
-class MainContainerActivity : AppCompatActivity() {
+class MainContainerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,8 +30,6 @@ class MainContainerActivity : AppCompatActivity() {
         val appBarConfiguration = AppBarConfiguration(navController.graph, drawerLayout)
         findViewById<Toolbar>(R.id.toolbar).setupWithNavController(navController, appBarConfiguration)
 
-
-        // TODO: Finire
         // Insert the user name, email and pic in the drawer
         val navigationView = findViewById<NavigationView>(R.id.nav_view)
         val header = navigationView.getHeaderView(0)
@@ -41,5 +43,18 @@ class MainContainerActivity : AppCompatActivity() {
             header.findViewById<TextView>(R.id.user_name).text = displayName
             header.findViewById<TextView>(R.id.email).text = email
         }
+
+        // TODO: Bug found. Maybe the drawer should be in the fragments and NOT in the main activity.
+        // Right now the drawer is accessible in all the fragments, and this causes a crash.
+
+        // Set click-listeners for the drawer
+        navigationView.setNavigationItemSelectedListener(this)
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.nav_timer -> findNavController(R.id.nav_host_fragment).navigate(TaskManagerFragmentDirections.actionTaskManagerFragmentToTimerFragment())
+        }
+        return true
     }
 }
