@@ -1,11 +1,13 @@
 package com.example.testapplication.ui.main
 
 import android.os.Bundle
+import android.view.Gravity
 import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
@@ -52,6 +54,7 @@ class MainContainerActivity : AppCompatActivity(), NavigationView.OnNavigationIt
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        findViewById<DrawerLayout>(R.id.drawer_layout).closeDrawer(GravityCompat.START)
         when(item.itemId){
             R.id.nav_timer -> findNavController(R.id.nav_host_fragment).navigate(TaskManagerFragmentDirections.actionTaskManagerFragmentToTimerFragment())
         }

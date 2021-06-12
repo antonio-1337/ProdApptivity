@@ -2,12 +2,16 @@ package com.example.testapplication.data.database.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
 @Entity
 data class Tasks(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
+
+    @ColumnInfo
+    val userID: String,
 
     @ColumnInfo
     val name: String,

@@ -23,7 +23,7 @@ import utils.toast
 // TODO spostare la logica legata all'account google nel ViewModel
 class HomeActivity : AppCompatActivity(), HomeListener {
 
-    // Ottengo il ViewModel da Koin
+    // Get the ViewModel from Koin
     private val homeViewModel: HomeViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {

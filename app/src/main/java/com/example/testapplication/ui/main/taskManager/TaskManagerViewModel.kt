@@ -2,10 +2,12 @@ package com.example.testapplication.ui.main.taskManager
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.example.testapplication.data.database.TasksDatabase
+import com.example.testapplication.data.repository.UserRepository
 import java.util.*
 
-class TaskManagerViewModel : ViewModel() {
+class TaskManagerViewModel(
+    private val userRepository: UserRepository
+) : ViewModel() {
 
     // Instantiate Database
     //val tasksDatabase = TasksDatabase.getDatabase()

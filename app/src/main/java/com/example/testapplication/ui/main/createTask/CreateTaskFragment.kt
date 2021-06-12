@@ -7,10 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.testapplication.databinding.CreateTaskFragmentBinding
+import com.example.testapplication.ui.home.HomeViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CreateTaskFragment : Fragment() {
 
-    private lateinit var viewModel: CreateTaskViewModel
+    // Get the ViewModel from Koin
+    private val viewModel: CreateTaskViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -18,7 +21,7 @@ class CreateTaskFragment : Fragment() {
     ): View {
 
         // Set the viewModel to the fragment
-        viewModel = ViewModelProvider(this).get(CreateTaskViewModel::class.java)
+        //viewModel = ViewModelProvider(this).get(CreateTaskViewModel::class.java)
 
         // Setup binding object and inflate the fragment xml
         val binding = CreateTaskFragmentBinding.inflate(inflater, container, false)

@@ -9,11 +9,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.testapplication.databinding.TaskManagerFragmentBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
-class TaskManagerFragment : Fragment() {
+class TaskManagerFragment() : Fragment() {
 
-    private lateinit var viewModel: TaskManagerViewModel
+    // Get the ViewModel from Koin
+    private val viewModel: TaskManagerViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -21,7 +23,7 @@ class TaskManagerFragment : Fragment() {
     ): View {
 
         // Set the viewModel to the fragment
-        viewModel = ViewModelProvider(this).get(TaskManagerViewModel::class.java)
+        //viewModel = ViewModelProvider(this).get(TaskManagerViewModel::class.java)
 
         // Setup binding object and inflate the fragment xml
         val binding = TaskManagerFragmentBinding.inflate(inflater, container, false)
