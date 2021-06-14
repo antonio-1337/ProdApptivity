@@ -105,7 +105,7 @@
                 app:layout_constraintHorizontal_bias="0.082"
                 app:layout_constraintStart_toStartOf="@+id/loginSpace"
                 app:layout_constraintTop_toTopOf="@+id/loginSpace"
-                app:srcCompat="@drawable/google_logo"
+                app:srcCompat="@drawable/ic_google_logo"
                 android:elevation="5dp"/>
 
             <TextView
