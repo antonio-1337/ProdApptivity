@@ -1,6 +1,7 @@
 package com.example.testapplication.ui.main
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.MenuItem
 import android.widget.ImageView
@@ -9,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.NavController
 import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -21,6 +23,9 @@ import com.google.android.material.navigation.NavigationView
 
 class MainContainerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
+    private lateinit var drawerLayout: DrawerLayout
+    private var drawerLockMode: Boolean = true
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_container)
@@ -28,7 +33,7 @@ class MainContainerActivity : AppCompatActivity(), NavigationView.OnNavigationIt
         // Setup for the toolbar
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
-        val drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout)
+        drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout)
         val appBarConfiguration = AppBarConfiguration(navController.graph, drawerLayout)
         findViewById<Toolbar>(R.id.toolbar).setupWithNavController(navController, appBarConfiguration)
 
@@ -46,8 +51,8 @@ class MainContainerActivity : AppCompatActivity(), NavigationView.OnNavigationIt
             header.findViewById<TextView>(R.id.email).text = email
         }
 
-        // TODO: Bug found. Maybe the drawer should be in the fragments and NOT in the main activity.
-        // Right now the drawer is accessible in all the fragments, and this causes a crash.
+        // Add a listener for when the destination is changed to lock the drawer, preventing the drawer bug
+        navController.addOnDestinationChangedListener(destinationChangedListener)
 
         // Set click-listeners for the drawer
         navigationView.setNavigationItemSelectedListener(this)
@@ -56,8 +61,18 @@ class MainContainerActivity : AppCompatActivity(), NavigationView.OnNavigationIt
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         findViewById<DrawerLayout>(R.id.drawer_layout).closeDrawer(GravityCompat.START)
         when(item.itemId){
-            R.id.nav_timer -> findNavController(R.id.nav_host_fragment).navigate(TaskManagerFragmentDirections.actionTaskManagerFragmentToTimerFragment())
+            R.id.nav_timer -> findNavController(R.id.nav_host_fragment).navigate(R.id.timerFragment)
         }
         return true
+    }
+
+    private val destinationChangedListener = NavController.OnDestinationChangedListener{ controller, destination, argument ->
+        if (drawerLockMode == false){
+            drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+            drawerLockMode = true
+        } else{
+            drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+            drawerLockMode = false
+        }
     }
 }
