@@ -17,7 +17,7 @@ class TimerFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         // Set the viewModel to the fragment
         viewModel = ViewModelProvider(this).get(TimerViewModel::class.java)
@@ -30,6 +30,9 @@ class TimerFragment : Fragment() {
 
         // This makes LiveData update the UI correctly
         binding.lifecycleOwner = this
+
+        // Initialize the viewModel for the timer to set up correctly
+        //viewModel.initialize(10000L)
 
         return binding.root
     }
