@@ -28,7 +28,7 @@
     <fragment
         android:id="@+id/timerFragment"
         android:name="com.example.testapplication.ui.main.timer.TimerFragment"
-        android:label="TimerFragment"
+        android:label="Timer"
         tools:layout="@layout/timer_fragment">
         <action
             android:id="@+id/action_timerFragment_to_taskManagerFragment"
