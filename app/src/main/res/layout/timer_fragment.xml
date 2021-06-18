@@ -87,7 +87,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="70sp"
-                android:text="@{String.valueOf(viewModel.timeLeft)}"
+                android:text="@{String.valueOf(viewModel.timeLeftString)}"
                 android:visibility="gone"
                 tools:text="00:00"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -95,16 +95,32 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/progress_countdown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:indicatorSize="360dp"
+                app:trackThickness="20dp"
+                android:max="100"
+                android:progress="@{Integer.valueOf(viewModel.timeLeftPercent)}"
+                tools:progress="75"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+            <!--
             <ProgressBar
                 android:id="@+id/progress_countdown"
                 android:minWidth="360dp"
                 android:minHeight="360dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:progress="25"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+                -->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>

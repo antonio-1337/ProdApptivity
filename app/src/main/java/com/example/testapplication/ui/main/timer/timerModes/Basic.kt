@@ -50,6 +50,7 @@ class Basic(private val length: Long) : TimerInterface {
     // Stop the timer
     override fun stop() {
         _state.value = TimerInterface.Companion.TimerState.STOPPED
+        _timeLeft.value = 0L
         timer.cancel()
     }
 
