@@ -15,36 +15,56 @@ class Basic(private val length: Long) : TimerInterface {
         get() = _timeLeft
 
     // The actual state of the timer, starts STOPPED
-    override var state = TimerInterface.Companion.TimerState.STOPPED
+    private var _state = MutableLiveData<TimerInterface.Companion.TimerState>(TimerInterface.Companion.TimerState.STOPPED)
+    override val state: LiveData<TimerInterface.Companion.TimerState>
+        get() = _state
 
     // Initialization of the timer object
-    override var timer: CountDownTimer =
-        object : CountDownTimer(length + 999, TimerInterface.ONE_DECASECOND) {
+    override var timer: CountDownTimer = initialize(length)
+
+    private fun initialize(length: Long): CountDownTimer {
+        return object : CountDownTimer(length, TimerInterface.ONE_DECASECOND) {
 
             // Update the timeLeft value every one second
             override fun onTick(millisUntilFinished: Long) {
-                _timeLeft.value = millisUntilFinished
-                Log.i("BasicTimer", "Time left: $millisUntilFinished")
+                val remains = millisUntilFinished % 1000
+                _timeLeft.value = millisUntilFinished - remains + 1000
+                Log.i("BasicTimer", "Time left: $millisUntilFinished which corresponds to ${_timeLeft.value}")
             }
 
             // When the timer is over, set timeLeft to 0
             override fun onFinish() {
                 _timeLeft.value = 0
+                _state.value = TimerInterface.Companion.TimerState.STOPPED
                 Log.i("BasicTimer", "Timer completed!")
             }
-
         }
+    }
 
     // Start the timer
     override fun start() {
-        state = TimerInterface.Companion.TimerState.RUNNING_FOCUS
+        _state.value = TimerInterface.Companion.TimerState.RUNNING_FOCUS
         timer.start()
     }
 
     // Stop the timer
     override fun stop() {
-        state = TimerInterface.Companion.TimerState.STOPPED
+        _state.value = TimerInterface.Companion.TimerState.STOPPED
         timer.cancel()
+    }
+
+    // Pause the timer
+    private var pauseTime: Long = 0
+    override fun pause() {
+        _state.value = TimerInterface.Companion.TimerState.PAUSED
+        pauseTime = _timeLeft.value!!
+        timer.cancel()
+        _timeLeft.value = pauseTime
+    }
+
+    override fun resume() {
+        timer = initialize(pauseTime)
+        start()
     }
 
 }

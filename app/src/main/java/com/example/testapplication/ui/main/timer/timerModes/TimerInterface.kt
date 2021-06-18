@@ -15,9 +15,12 @@ interface TimerInterface {
     }
 
     val timeLeft: LiveData<Long>
-    var state: TimerState
+    val state: LiveData<TimerState>
     var timer: CountDownTimer
 
     fun start()
     fun stop()
+
+    fun pause()
+    fun resume()
 }
