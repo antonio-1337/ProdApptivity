@@ -16,20 +16,20 @@
         tools:context=".ui.main.taskManager.TaskManagerFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:background="@color/activity_bg"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/activity_bg">
 
             <TextView
                 android:id="@+id/WeekOverviewText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="24dp"
                 android:fontFamily="@font/inter_semibold"
                 android:text="@string/week_overview"
                 android:textColor="@color/text_default_gray6"
                 android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,8 +37,9 @@
                 android:id="@+id/radioGroup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
                 android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/WeekOverviewText">
 
@@ -46,73 +47,84 @@
                     android:id="@+id/radioButtonMonday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:button="@android:color/transparent"
                     android:layout_gravity="center"
-                    android:paddingLeft="17dp"
                     android:layout_weight="1"
                     android:background="@drawable/radio_week_button_default"
+                    android:button="@android:color/transparent"
                     android:onClick="@{() -> viewModel.setSelectedDay(2)}"
+                    android:paddingLeft="18dp"
                     android:text="@string/letter_monday" />
 
                 <RadioButton
                     android:id="@+id/radioButtonTuesday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:button="@android:color/transparent"
                     android:background="@drawable/radio_week_button_default"
+                    android:button="@android:color/transparent"
                     android:onClick="@{() -> viewModel.setSelectedDay(3)}"
+                    android:paddingLeft="20dp"
                     android:text="@string/letter_tuesday" />
 
                 <RadioButton
                     android:id="@+id/radioButtonWednesday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:button="@android:color/transparent"
                     android:background="@drawable/radio_week_button_default"
+                    android:button="@android:color/transparent"
                     android:onClick="@{() -> viewModel.setSelectedDay(4)}"
+                    android:paddingLeft="18dp"
                     android:text="@string/letter_wednesday" />
 
                 <RadioButton
                     android:id="@+id/radioButtonThursday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:button="@android:color/transparent"
                     android:background="@drawable/radio_week_button_default"
+                    android:button="@android:color/transparent"
                     android:onClick="@{() -> viewModel.setSelectedDay(5)}"
+                    android:paddingLeft="20dp"
                     android:text="@string/letter_thursday" />
 
                 <RadioButton
                     android:id="@+id/radioButtonFriday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:button="@android:color/transparent"
                     android:background="@drawable/radio_week_button_default"
+                    android:button="@android:color/transparent"
                     android:onClick="@{() -> viewModel.setSelectedDay(6)}"
+                    android:paddingLeft="20dp"
                     android:text="@string/letter_friday" />
 
                 <RadioButton
                     android:id="@+id/radioButtonSaturday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="18dp"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:button="@android:color/transparent"
                     android:background="@drawable/radio_week_button_default"
+                    android:button="@android:color/transparent"
                     android:onClick="@{() -> viewModel.setSelectedDay(7)}"
+                    android:paddingLeft="20dp"
                     android:text="@string/letter_saturday" />
 
                 <RadioButton
                     android:id="@+id/radioButtonSunday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:button="@android:color/transparent"
                     android:background="@drawable/radio_week_button_default"
+                    android:button="@android:color/transparent"
                     android:onClick="@{() -> viewModel.setSelectedDay(1)}"
+                    android:paddingLeft="20dp"
                     android:text="@string/letter_sunday" />
             </RadioGroup>
 
@@ -120,24 +132,28 @@
                 android:id="@+id/my_task_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="152dp"
-                android:layout_marginTop="64dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="28dp"
                 android:fontFamily="@font/inter_semibold"
                 android:text="@string/my_tasks"
                 android:textColor="@color/text_default_gray6"
                 android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="409dp"
-                android:layout_height="379dp"
-                android:layout_marginTop="16dp"
+                android:layout_width="360dp"
+                android:layout_height="460dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="4dp"
                 android:background="@color/activity_bg"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/my_task_text" />
+                app:layout_constraintHorizontal_bias="0.485"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fab"
@@ -145,8 +161,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
-                android:src="@drawable/add_button_task"
                 android:contentDescription="@string/create_task"
+                android:src="@drawable/add_button_task"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
