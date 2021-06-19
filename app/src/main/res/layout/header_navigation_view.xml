@@ -16,12 +16,16 @@
 
     <TextView
         android:id="@+id/user_name"
+        android:textColor="@color/gray1"
+        android:textSize="16sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="username" />
 
     <TextView
         android:id="@+id/email"
+        android:textColor="@color/gray1"
+        android:textSize="16sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="email@google.it" />
