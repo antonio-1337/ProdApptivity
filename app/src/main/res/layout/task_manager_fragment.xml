@@ -37,9 +37,12 @@
                 android:id="@+id/radioGroup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="5dp"
+                android:gravity="center"
                 android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/WeekOverviewText">
 
@@ -47,84 +50,76 @@
                     android:id="@+id/radioButtonMonday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
                     android:background="@drawable/radio_week_button_default"
                     android:button="@android:color/transparent"
+                    android:gravity="center"
                     android:onClick="@{() -> viewModel.setSelectedDay(2)}"
-                    android:paddingLeft="18dp"
                     android:text="@string/letter_monday" />
 
                 <RadioButton
                     android:id="@+id/radioButtonTuesday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
+                    android:layout_marginLeft="6dp"
                     android:background="@drawable/radio_week_button_default"
                     android:button="@android:color/transparent"
+                    android:gravity="center"
                     android:onClick="@{() -> viewModel.setSelectedDay(3)}"
-                    android:paddingLeft="20dp"
                     android:text="@string/letter_tuesday" />
 
                 <RadioButton
                     android:id="@+id/radioButtonWednesday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
+                    android:layout_marginLeft="6dp"
                     android:background="@drawable/radio_week_button_default"
                     android:button="@android:color/transparent"
+                    android:gravity="center"
                     android:onClick="@{() -> viewModel.setSelectedDay(4)}"
-                    android:paddingLeft="18dp"
                     android:text="@string/letter_wednesday" />
 
                 <RadioButton
                     android:id="@+id/radioButtonThursday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
+                    android:layout_marginLeft="6dp"
                     android:background="@drawable/radio_week_button_default"
                     android:button="@android:color/transparent"
+                    android:gravity="center"
                     android:onClick="@{() -> viewModel.setSelectedDay(5)}"
-                    android:paddingLeft="20dp"
                     android:text="@string/letter_thursday" />
 
                 <RadioButton
                     android:id="@+id/radioButtonFriday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
+                    android:layout_marginLeft="6dp"
                     android:background="@drawable/radio_week_button_default"
                     android:button="@android:color/transparent"
+                    android:gravity="center"
                     android:onClick="@{() -> viewModel.setSelectedDay(6)}"
-                    android:paddingLeft="20dp"
                     android:text="@string/letter_friday" />
 
                 <RadioButton
                     android:id="@+id/radioButtonSaturday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
+                    android:layout_marginLeft="6dp"
                     android:background="@drawable/radio_week_button_default"
                     android:button="@android:color/transparent"
+                    android:gravity="center"
                     android:onClick="@{() -> viewModel.setSelectedDay(7)}"
-                    android:paddingLeft="20dp"
                     android:text="@string/letter_saturday" />
 
                 <RadioButton
                     android:id="@+id/radioButtonSunday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
+                    android:layout_marginLeft="6dp"
                     android:background="@drawable/radio_week_button_default"
                     android:button="@android:color/transparent"
+                    android:gravity="center"
                     android:onClick="@{() -> viewModel.setSelectedDay(1)}"
-                    android:paddingLeft="20dp"
                     android:text="@string/letter_sunday" />
             </RadioGroup>
 
