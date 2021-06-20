@@ -24,8 +24,8 @@
                 android:id="@+id/WeekOverviewText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="36dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
                 android:fontFamily="@font/inter_semibold"
                 android:text="@string/week_overview"
                 android:textColor="@color/text_default_gray6"
@@ -37,12 +37,10 @@
                 android:id="@+id/radioGroup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="5dp"
                 android:gravity="center"
                 android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/WeekOverviewText">
 
@@ -52,9 +50,12 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/radio_week_button_default"
                     android:button="@android:color/transparent"
+                    android:fontFamily="@font/inter_bold"
                     android:gravity="center"
                     android:onClick="@{() -> viewModel.setSelectedDay(2)}"
-                    android:text="@string/letter_monday" />
+                    android:text="@string/letter_monday"
+                    android:textColor="@color/activity_bg"
+                    android:textSize="24sp" />
 
                 <RadioButton
                     android:id="@+id/radioButtonTuesday"
@@ -63,9 +64,12 @@
                     android:layout_marginLeft="6dp"
                     android:background="@drawable/radio_week_button_default"
                     android:button="@android:color/transparent"
+                    android:fontFamily="@font/inter_bold"
                     android:gravity="center"
                     android:onClick="@{() -> viewModel.setSelectedDay(3)}"
-                    android:text="@string/letter_tuesday" />
+                    android:text="@string/letter_tuesday"
+                    android:textColor="@color/activity_bg"
+                    android:textSize="24sp" />
 
                 <RadioButton
                     android:id="@+id/radioButtonWednesday"
@@ -74,9 +78,12 @@
                     android:layout_marginLeft="6dp"
                     android:background="@drawable/radio_week_button_default"
                     android:button="@android:color/transparent"
+                    android:fontFamily="@font/inter_bold"
                     android:gravity="center"
                     android:onClick="@{() -> viewModel.setSelectedDay(4)}"
-                    android:text="@string/letter_wednesday" />
+                    android:text="@string/letter_wednesday"
+                    android:textColor="@color/activity_bg"
+                    android:textSize="24sp" />
 
                 <RadioButton
                     android:id="@+id/radioButtonThursday"
@@ -85,9 +92,12 @@
                     android:layout_marginLeft="6dp"
                     android:background="@drawable/radio_week_button_default"
                     android:button="@android:color/transparent"
+                    android:fontFamily="@font/inter_bold"
                     android:gravity="center"
                     android:onClick="@{() -> viewModel.setSelectedDay(5)}"
-                    android:text="@string/letter_thursday" />
+                    android:text="@string/letter_thursday"
+                    android:textColor="@color/activity_bg"
+                    android:textSize="24sp" />
 
                 <RadioButton
                     android:id="@+id/radioButtonFriday"
@@ -96,9 +106,12 @@
                     android:layout_marginLeft="6dp"
                     android:background="@drawable/radio_week_button_default"
                     android:button="@android:color/transparent"
+                    android:fontFamily="@font/inter_bold"
                     android:gravity="center"
                     android:onClick="@{() -> viewModel.setSelectedDay(6)}"
-                    android:text="@string/letter_friday" />
+                    android:text="@string/letter_friday"
+                    android:textColor="@color/activity_bg"
+                    android:textSize="24sp" />
 
                 <RadioButton
                     android:id="@+id/radioButtonSaturday"
@@ -107,9 +120,12 @@
                     android:layout_marginLeft="6dp"
                     android:background="@drawable/radio_week_button_default"
                     android:button="@android:color/transparent"
+                    android:fontFamily="@font/inter_bold"
                     android:gravity="center"
                     android:onClick="@{() -> viewModel.setSelectedDay(7)}"
-                    android:text="@string/letter_saturday" />
+                    android:text="@string/letter_saturday"
+                    android:textColor="@color/activity_bg"
+                    android:textSize="24sp" />
 
                 <RadioButton
                     android:id="@+id/radioButtonSunday"
@@ -118,28 +134,31 @@
                     android:layout_marginLeft="6dp"
                     android:background="@drawable/radio_week_button_default"
                     android:button="@android:color/transparent"
+                    android:fontFamily="@font/inter_bold"
                     android:gravity="center"
                     android:onClick="@{() -> viewModel.setSelectedDay(1)}"
-                    android:text="@string/letter_sunday" />
+                    android:text="@string/letter_sunday"
+                    android:textColor="@color/activity_bg"
+                    android:textSize="24sp" />
             </RadioGroup>
 
             <TextView
                 android:id="@+id/my_task_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="28dp"
                 android:fontFamily="@font/inter_semibold"
                 android:text="@string/my_tasks"
                 android:textColor="@color/text_default_gray6"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.01"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="360dp"
+                android:layout_width="374dp"
                 android:layout_height="460dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
@@ -147,7 +166,7 @@
                 android:background="@color/activity_bg"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.485"
+                app:layout_constraintHorizontal_bias="0.523"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton

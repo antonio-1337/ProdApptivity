@@ -22,85 +22,98 @@
             android:layout_height="match_parent"
             android:background="@color/activity_bg">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:background="@drawable/taskcreator"
-            android:layout_width="380dp"
-            android:layout_height="586dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="63dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <EditText
-                android:id="@+id/editTextTextName"
-                android:layout_width="300dp"
-                android:layout_height="47dp"
-                android:ems="10"
-                android:hint="@string/set_name"
-                android:inputType="textPersonName"
-                android:textColor="@color/text_default_gray6"
-                android:textColorHint="@color/text_default_gray6"
-                android:background="@drawable/task_text_shape"
-                android:paddingStart="4dp"
-                tools:layout_editor_absoluteX="49dp"
-                tools:layout_editor_absoluteY="16dp" />
-
-            <EditText
-                android:id="@+id/editTextTextDescription"
-                android:layout_width="303dp"
-                android:layout_height="204dp"
-                android:layout_marginTop="16dp"
-                android:ems="10"
-                android:gravity="start|top"
-                android:hint="@string/add_a_description"
-                android:inputType="textMultiLine"
-                android:textColor="@color/text_default_gray6"
-                android:textColorHint="@color/text_default_gray6"
-                android:background="@drawable/task_text_shape"
-                android:paddingTop="4dp"
-                android:paddingStart="4dp"
-                app:layout_constraintStart_toStartOf="@+id/editTextTextName"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextName" />
-
-            <Switch
-                android:id="@+id/checkBoxRepeating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/repeating_task"
-                android:textColor="@color/text_default_gray6"
-                android:switchPadding="160dp"
-                app:layout_constraintStart_toStartOf="@+id/editTextTextDescription"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextDescription" />
-
-            <Button
-                android:id="@+id/buttonSetMode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="48dp"
-                android:backgroundTint="@color/orange_normal"
-                android:fontFamily="@font/inter_extrabold"
-                android:text="@string/set_mode"
-                android:textSize="14sp"
-                app:cornerRadius="24dp"
-                app:layout_constraintStart_toStartOf="@+id/checkBoxRepeating"
-                app:layout_constraintTop_toBottomOf="@+id/checkBoxRepeating" />
-
-            <Button
-                android:id="@+id/buttonSaveTask"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/orange_normal"
-                android:fontFamily="@font/inter_extrabold"
-                android:text="@string/save_task"
-                android:textSize="14sp"
-                app:cornerRadius="24dp"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="376dp"
+                android:layout_height="520dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/taskcreator"
+                android:elevation="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/buttonSetMode"
-                app:layout_constraintTop_toTopOf="@+id/buttonSetMode" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <EditText
+                    android:id="@+id/editTextTextName"
+                    android:layout_width="300dp"
+                    android:layout_height="47dp"
+                    android:layout_marginTop="44dp"
+                    android:background="@drawable/task_text_shape"
+                    android:elevation="5dp"
+                    android:ems="10"
+                    android:hint="@string/set_name"
+                    android:inputType="textPersonName"
+                    android:paddingStart="4dp"
+                    android:textColor="@color/text_default_gray6"
+                    android:textColorHint="@color/gray3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/editTextTextDescription"
+                    android:layout_width="303dp"
+                    android:layout_height="204dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/task_text_shape"
+                    android:elevation="5dp"
+                    android:ems="10"
+                    android:gravity="start|top"
+                    android:hint="@string/add_a_description"
+                    android:inputType="textMultiLine"
+                    android:paddingStart="4dp"
+                    android:paddingTop="4dp"
+                    android:textColor="@color/text_default_gray6"
+                    android:textColorHint="@color/gray3"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.512"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextTextName"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <Switch
+                    android:id="@+id/checkBoxRepeating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:switchPadding="158dp"
+                    android:text="@string/repeating_task"
+                    android:textColor="@color/text_default_gray6"
+                    app:layout_constraintStart_toStartOf="@+id/editTextTextDescription"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextTextDescription" />
+
+                <Button
+                    android:id="@+id/buttonSetMode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="58dp"
+                    android:layout_marginTop="32dp"
+                    android:backgroundTint="@color/orange_normal"
+                    android:elevation="10dp"
+                    android:fontFamily="@font/inter_extrabold"
+                    android:text="@string/set_mode"
+                    android:textSize="14sp"
+                    app:cornerRadius="24dp"
+                    app:layout_constraintStart_toStartOf="@+id/checkBoxRepeating"
+                    app:layout_constraintTop_toBottomOf="@+id/checkBoxRepeating" />
+
+                <Button
+                    android:id="@+id/buttonSaveTask"
+                    android:layout_width="wrap_content"
+                    android:layout_height="58dp"
+                    android:backgroundTint="@color/orange_normal"
+                    android:elevation="10dp"
+                    android:fontFamily="@font/inter_extrabold"
+                    android:text="@string/save_task"
+                    android:textSize="14sp"
+                    app:cornerRadius="24dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/buttonSetMode"
+                    app:layout_constraintTop_toTopOf="@+id/buttonSetMode" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
