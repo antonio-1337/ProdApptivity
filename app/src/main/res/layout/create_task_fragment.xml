@@ -56,7 +56,7 @@
                 app:layout_constraintStart_toStartOf="@+id/editTextTextName"
                 app:layout_constraintTop_toBottomOf="@+id/editTextTextName" />
 
-            <CheckBox
+            <Switch
                 android:id="@+id/checkBoxRepeating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -68,7 +68,11 @@
                 android:id="@+id/buttonSetMode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="48dp"
+                android:background="@drawable/taskcreatebutton"
+                android:fontFamily="@font/inter_extrabold"
                 android:text="@string/set_mode"
+                android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@+id/checkBoxRepeating"
                 app:layout_constraintTop_toBottomOf="@+id/checkBoxRepeating" />
 
@@ -77,6 +81,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/save_task"
+                android:background="@drawable/taskcreatebutton"
+                android:fontFamily="@font/inter_extrabold"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/buttonSetMode"
                 app:layout_constraintTop_toTopOf="@+id/buttonSetMode" />
