@@ -48,6 +48,7 @@ class TaskManagerFragment() : Fragment() {
         return binding.root
     }
 
+    // Automatically selects the current day of the week
     private fun setRadioButtonToCurrentDay(binding: TaskManagerFragmentBinding) {
         when (viewModel.currentDayOfTheWeek) {
             Calendar.MONDAY -> binding.radioButtonMonday.isChecked = true

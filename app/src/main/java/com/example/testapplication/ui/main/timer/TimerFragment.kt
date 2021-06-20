@@ -79,7 +79,7 @@ class TimerFragment : Fragment() {
         secondsPicker = binding.numPickerSeconds
 
         // Set boundaries for the various fields
-        hoursPicker.maxValue = 24
+        hoursPicker.maxValue = 23
         hoursPicker.minValue = 0
 
         minutesPicker.maxValue = 59

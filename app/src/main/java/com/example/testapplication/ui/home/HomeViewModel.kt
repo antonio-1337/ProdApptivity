@@ -27,7 +27,7 @@ class HomeViewModel(
             try {
                 val response = userRepository.getRandomQuote()
                 response.let {
-                    //metto la citazione fra doppi apici
+                    //Serve a far apparire la citazione fra doppi apici
                     it[0].q = "\"" + it[0].q + "\""
                     it[0].a = "- " + it[0].a
                     homeListener?.onSuccess(it[0])
@@ -42,12 +42,12 @@ class HomeViewModel(
         }
     }
 
-    // Gestisce la navigazione verso la MainContainerActivity.
-    // So che sembra un giro pittosto strano, ma queste sono le coding guidelines dettate dalla stessa Google
-    // e, per mantenere coerenza in tutto il progetto, le seguirò.
-    // Il senso è che è compito del ViewModel gestire la navigazione, che viene però implementata dallo UI Controler
-    // (in questo caso la HomeActivity). Quindi il ViewModel all'avvento del click "da l'ordine" alla Activity di
-    // navigare verso la pagina desiderata.
+    /* Gestisce la navigazione verso la MainContainerActivity.
+    So che sembra un giro pittosto strano, ma queste sono le coding guidelines dettate dalla stessa Google
+    e, per mantenere coerenza in tutto il progetto, le seguirò.
+    Il senso è che è compito del ViewModel gestire la navigazione, che viene però implementata dallo UI Controller
+    (in questo caso la HomeActivity). Quindi il ViewModel all'avvento del click "a "l'ordine" alla Activity di
+    navigare verso la pagina desiderata. */
     private val _toMainPage = MutableLiveData<Boolean>()
     val toMainPage: LiveData<Boolean>
         get() = _toMainPage
