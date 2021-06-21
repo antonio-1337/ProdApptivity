@@ -1,24 +1,37 @@
 package com.example.testapplication.ui.main.taskManager
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
+import com.example.testapplication.data.database.entities.Tasks
 import com.example.testapplication.data.repository.UserRepository
+import kotlinx.coroutines.launch
 import java.util.*
 
 class TaskManagerViewModel(
     private val userRepository: UserRepository
 ) : ViewModel() {
 
-    // Instantiate Database
-    //val tasksDatabase = TasksDatabase.getDatabase()
-
     // Instantiate all the calendar-related variable that we need
-    val calendar = Calendar.getInstance()
+    var calendar: Calendar = Calendar.getInstance()
     val currentDayOfTheWeek = calendar.get(Calendar.DAY_OF_WEEK)
     var selectedDay: Int = currentDayOfTheWeek
         set(value) {
             Log.i("TaskManagerViewModel", "Giorno settato: $value")
             field = value
         }
+
+    // Instantiate Database
+    //val tasksDatabase = TasksDatabase.getDatabase()
+
+    val allTasks: LiveData<List<Tasks>> = userRepository.getAllTasks().asLiveData()
+
+    val dailyTasks: LiveData<List<Tasks>> =
+        userRepository.getDailyTasks(selectedDay.toString()).asLiveData()
+
+
+
 
 }

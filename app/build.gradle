@@ -84,18 +84,15 @@ dependencies {
     implementation 'com.google.android.material:material:1.4.0-alpha01'
 
     //Android Room
-    def room_version = "2.3.0-beta03"
-    implementation "androidx.room:room-ktx:$room_version"
+    def room_version = "2.3.0"
     implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation("androidx.room:room-ktx:$room_version")
 
-    //Kodein Dependency injection
-    def kodein_version = "6.2.1"
-    //implementation "org.kodein.di:kodein-di-generic-jvm:$kodein_version"
-    //implementation "org.kodein.di:kodein-di-framework-android-x:$kodein_version"
-
-    def koin_version = "2.2.3"
     // Koin for Kotlin
+    def koin_version = "2.2.3"
     //implementation "io.insert-koin:koin-core:$koin_version"
     // Koin for Android
     implementation "io.insert-koin:koin-android:$koin_version"
@@ -106,6 +103,13 @@ dependencies {
 
     // Glide
     implementation 'com.github.bumptech.glide:glide:4.12.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+    kapt 'com.github.bumptech.glide:compiler:4.12.0'
+
+    //RecyclerView
+    //implementation"androidx.recyclerview:recyclerview:1.2.1"
+    // For control over item selection of both touch and mouse driven selection
+    //implementation"androidx.recyclerview:recyclerview-selection:1.1.0"
+
+
 
 }

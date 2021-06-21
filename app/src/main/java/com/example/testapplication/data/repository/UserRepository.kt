@@ -1,5 +1,6 @@
 package com.example.testapplication.data.repository
 
+import androidx.annotation.WorkerThread
 import com.example.testapplication.data.database.AppDatabase
 import com.example.testapplication.data.database.entities.Tasks
 import com.example.testapplication.data.network.SafeApiRequest
@@ -20,10 +21,21 @@ class UserRepository(
         return apiRequest { webApi.getRandomQuote() }
     }
 
+
+    @WorkerThread
     //save or update a task
-    suspend fun saveTask(tasks: Tasks) = db.getTasksDao().upsert(tasks)
+    suspend fun saveTask(task: Tasks) = db.getTasksDao().upsert(task)
 
+    //get a single task
+    fun getTask(taskID: Int) = db.getTasksDao().getTask(taskID)
 
+    //get all tasks for the day
+    fun getDailyTasks(day: String) = db.getTasksDao().getDailyTasks(day)
 
+    //get all tasks
+    fun getAllTasks() = db.getTasksDao().getAllTasks()
+
+    //DELETE all tasks
+    fun deleteAllTasks() = db.getTasksDao().deleteAllTasks()
 
 }

@@ -4,11 +4,16 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.sqlite.db.SupportSQLiteDatabase
+import com.example.testapplication.R
 import com.example.testapplication.data.database.entities.Tasks
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 @Database(
     entities = [Tasks::class],
-    version = 1
+    version = 1,
+    exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
 
@@ -32,6 +37,7 @@ abstract class AppDatabase : RoomDatabase() {
                 context.applicationContext,
                 AppDatabase::class.java,
                 "MyDatabase.db"
-            ).build()
+            )
+            .build()
     }
 }

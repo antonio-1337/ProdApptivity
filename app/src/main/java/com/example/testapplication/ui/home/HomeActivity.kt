@@ -50,6 +50,7 @@ class HomeActivity : AppCompatActivity(), HomeListener {
         // Naviga verso la MainContainerActivity, vedi nel ViewModel per spiegazioni.
         homeViewModel.toMainPage.observe(this, Observer {
             val intent = Intent(this, MainContainerActivity::class.java)
+            //intent.flags =  Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             intent.putExtra("USER_IMAGE", googleAccount?.photoUrl.toString())
             intent.putExtra("DISPLAY_NAME", googleAccount?.displayName)
             intent.putExtra("EMAIL", googleAccount?.email)

@@ -10,8 +10,8 @@ data class Tasks(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
 
-    @ColumnInfo
-    val userID: String,
+    //@ColumnInfo
+    //val userID: String,
 
     @ColumnInfo
     val name: String,
@@ -23,7 +23,10 @@ data class Tasks(
     val timeSpent: Long,
 
     @ColumnInfo
-    val repeatingDays: String
+    val repeatingDays: String,
+
+    @ColumnInfo
+    val status_imageSource: Int
 
     //val timerType: ??? TODO: Implement timer type
 )
