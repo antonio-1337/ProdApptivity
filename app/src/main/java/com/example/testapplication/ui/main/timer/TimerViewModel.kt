@@ -1,8 +1,7 @@
 package com.example.testapplication.ui.main.timer
 
-import android.util.Log
 import androidx.lifecycle.*
-import com.example.testapplication.ui.main.timer.timerModes.Basic
+import com.example.testapplication.ui.main.timer.timerModes.Incremental
 import com.example.testapplication.ui.main.timer.timerModes.TimerInterface
 import java.util.concurrent.TimeUnit
 
@@ -13,7 +12,12 @@ class TimerViewModel : ViewModel() {
     var hours: Int = 0
     var minutes: Int = 0
     var seconds: Int = 0
-    var totalTime: Long = 0L
+    var selectedTime: Long = 0L
+
+    val length: Long
+        get() = timer.length
+    val totalTime: Long
+        get() = timer.totalTime
 
     private lateinit var timer: TimerInterface
 
@@ -40,14 +44,14 @@ class TimerViewModel : ViewModel() {
     fun start() {
         if (!this::timer.isInitialized || timer.state.value == TimerInterface.Companion.TimerState.STOPPED) {
             // Create the correct timer with the correct time
-            totalTime = 0L
+            selectedTime = 0L
 
-            totalTime += TimeUnit.HOURS.toMillis(hours.toLong())
-            totalTime += TimeUnit.MINUTES.toMillis(minutes.toLong())
-            totalTime += TimeUnit.SECONDS.toMillis(seconds.toLong())
+            selectedTime += TimeUnit.HOURS.toMillis(hours.toLong())
+            selectedTime += TimeUnit.MINUTES.toMillis(minutes.toLong())
+            selectedTime += TimeUnit.SECONDS.toMillis(seconds.toLong())
 
             // TODO: choose the timer that the user selected
-            timer = Basic(totalTime)
+            timer = Incremental(selectedTime, 10000)
 
             // Start the timer
             timer.start()
@@ -65,8 +69,8 @@ class TimerViewModel : ViewModel() {
 
             // Calculate and updates the percent of completion
             timeLeftPercent.addSource(timer.timeLeft) {
-                var percent: Float = ((it.toFloat() / totalTime.toFloat()) * 100f)
-                Log.i("TimerViewModel", "Percent: $percent, ($it / $totalTime) * 100")
+                var percent: Float = ((it.toFloat() / timer.length.toFloat()) * 100f)
+//                Log.i("TimerViewModel", "Percent: $percent, ($it / ${timer.length}) * 100")
                 timeLeftPercent.value = percent.toInt()
             }
 
@@ -93,6 +97,4 @@ class TimerViewModel : ViewModel() {
     fun resume() {
         timer.resume()
     }
-
-
 }

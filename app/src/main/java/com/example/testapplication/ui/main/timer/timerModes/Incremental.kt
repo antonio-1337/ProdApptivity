@@ -7,7 +7,10 @@ import androidx.lifecycle.MutableLiveData
 
 // Basic timer.
 // Should do what a basic timer does.
-class Basic(override val length: Long) : TimerInterface {
+class Incremental(
+    override var length: Long,
+    private val increment: Long
+) : TimerInterface {
 
     override var totalTime: Long = 0L
 
@@ -17,7 +20,8 @@ class Basic(override val length: Long) : TimerInterface {
         get() = _timeLeft
 
     // The actual state of the timer, starts STOPPED
-    private var _state = MutableLiveData<TimerInterface.Companion.TimerState>(TimerInterface.Companion.TimerState.STOPPED)
+    private var _state =
+        MutableLiveData<TimerInterface.Companion.TimerState>(TimerInterface.Companion.TimerState.STOPPED)
     override val state: LiveData<TimerInterface.Companion.TimerState>
         get() = _state
 
@@ -32,14 +36,19 @@ class Basic(override val length: Long) : TimerInterface {
                 val remains = millisUntilFinished % 1000
                 _timeLeft.value = millisUntilFinished - remains + 1000
                 totalTime += TimerInterface.ONE_DECASECOND
-                Log.i("BasicTimer", "Time left: $millisUntilFinished which corresponds to ${_timeLeft.value}")
+//                Log.i(
+//                    "Incremental",
+//                    "Time left: $millisUntilFinished which corresponds to ${_timeLeft.value}"
+//                )
             }
 
             // When the timer is over, set timeLeft to 0
             override fun onFinish() {
                 _timeLeft.value = 0
-                _state.value = TimerInterface.Companion.TimerState.STOPPED
-                Log.i("BasicTimer", "Timer completed!")
+
+                Log.i("Incremental", "Timer completed!")
+
+                cycle()
             }
         }
     }
@@ -70,6 +79,14 @@ class Basic(override val length: Long) : TimerInterface {
     override fun resume() {
         timer = initialize(pauseTime)
         start()
+    }
+
+    fun cycle(){
+        _state.value = TimerInterface.Companion.TimerState.PAUSED
+        length += increment
+        pauseTime = length
+        timer.cancel()
+        _timeLeft.value = length
     }
 
 }

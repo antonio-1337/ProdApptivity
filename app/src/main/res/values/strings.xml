@@ -44,7 +44,6 @@
 
     <!-- timer going and break timer strings -->
     <string name="set_as_done">Set as done</string>
-    <string name="task_name">Task Name</string>
     <string name="timer">Timer</string>
 
     <!-- set timer strings -->
@@ -79,6 +78,7 @@
     <string name="start_the_timer">Start the timer</string>
     <string name="set_the_timer_mode">Set the timer mode</string>
     <string name="total_1_d_minutes">Total %1$d minutes</string>
+    <string name="task_name">Task Name</string>
 
 
 </resources>
