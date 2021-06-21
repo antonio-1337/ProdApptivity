@@ -8,6 +8,7 @@
     <color name="gray1">#333333</color>
     <color name="gray2">#4F4F4F</color>
     <color name="gray3">#828282</color>
+    <color name="gray4">#BDBDBD</color>
     <color name="text_default_gray6">#F2F2F2</color>
     <color name="task_creator_text_gray">#282828</color>
     <color name="dark_bg_gray">#212121</color>
