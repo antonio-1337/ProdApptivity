@@ -25,4 +25,5 @@
         <item name="android:fontFamily">@font/inter_semibold</item>
         <item name="android:color">@color/text_default_gray6</item>
     </style>
+
 </resources>

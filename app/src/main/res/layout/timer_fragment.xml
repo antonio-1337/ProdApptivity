@@ -43,7 +43,7 @@
                 android:layout_marginBottom="28dp"
                 android:contentDescription="@string/start_the_timer"
                 android:onClick="@{() -> viewModel.stop()}"
-                android:src="@drawable/ic_baseline_close"
+                android:src="@drawable/ic_stop_circle"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/fab_play"
