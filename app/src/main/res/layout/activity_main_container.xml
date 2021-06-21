@@ -41,6 +41,8 @@
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
+        app:itemTextColor="@color/text_default_gray6"
+        app:itemIconTint="@color/text_default_gray6"
         android:background="@color/activity_bg"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
