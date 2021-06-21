@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.testapplication.R
 import com.example.testapplication.databinding.CreateTaskFragmentBinding
 import com.example.testapplication.ui.home.HomeViewModel
@@ -24,6 +26,7 @@ class CreateTaskFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
+        val currday: String = arguments?.get("day_today") as String
         // Set the viewModel to the fragment
         //viewModel = ViewModelProvider(this).get(CreateTaskViewModel::class.java)
 
@@ -35,6 +38,14 @@ class CreateTaskFragment : Fragment() {
 
         // This makes LiveData update the UI correctly
         binding.lifecycleOwner = this
+
+        binding.buttonSaveTask.setOnClickListener {
+            viewModel.addTask(currday)
+
+            //go back to task manager fragment
+            val action = CreateTaskFragmentDirections.actionCreateTaskFragmentToTaskManagerFragment()
+            findNavController().navigate(action)
+        }
 
         return binding.root
     }

@@ -21,6 +21,7 @@
         android:name="com.example.testapplication.ui.main.createTask.CreateTaskFragment"
         android:label="Create Task"
         tools:layout="@layout/create_task_fragment">
+        <argument android:name="day_today" app:argType="string"/>
         <action
             android:id="@+id/action_createTaskFragment_to_taskManagerFragment"
             app:destination="@id/taskManagerFragment" />
