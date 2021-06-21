@@ -13,6 +13,7 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorOnSecondary</item>
     </style>
 
+    <!-- Style for time picker -->
     <style name="AppTheme.Picker" parent="Theme.AppCompat.Light.NoActionBar" >
         <item name="android:textColorPrimary">@color/text_default_gray6</item>
         <item name="android:textSize">36dp</item>
@@ -24,11 +25,4 @@
         <item name="android:fontFamily">@font/inter_semibold</item>
         <item name="android:color">@color/text_default_gray6</item>
     </style>
-
-    <style name="menuItem" parent="@style/Widget.Design.NavigationView">
-        <item name="itemTextColor">@color/text_default_gray6</item>
-        <item name="itemIconTint">@color/text_default_gray6</item>
-    </style>
-
-
 </resources>
