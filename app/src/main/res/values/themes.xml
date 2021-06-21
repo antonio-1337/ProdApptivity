@@ -11,12 +11,29 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorOnSecondary</item>
+        <!-- Menu icon.-->
+        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
     </style>
 
+    <!-- Style -->
+
+    <!-- Style number picker timer -->
     <style name="AppTheme.Picker" parent="Theme.AppCompat.Light.NoActionBar" >
+        <item name="android:padding">10dp</item>
         <item name="android:textColorPrimary">@color/text_default_gray6</item>
         <item name="android:textSize">36dp</item>
         <item name="android:colorControlNormal">@android:color/transparent</item>
+    </style>
+
+    <!-- Style for text Default -->
+    <style name="textDefault" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/inter_semibold</item>
+        <item name="android:color">@color/text_default_gray6</item>
+    </style>
+
+    <!-- Style for Menu incon -->
+    <style name="DrawerArrowStyle" parent="@style/Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">@color/text_default_gray6</item>
     </style>
 
 </resources>
