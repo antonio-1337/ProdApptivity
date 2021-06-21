@@ -14,9 +14,13 @@ interface TimerInterface {
         }
     }
 
+    val length: Long
     val timeLeft: LiveData<Long>
     val state: LiveData<TimerState>
     var timer: CountDownTimer
+
+    // TODO: Make it a LiveData to update the UI asap
+    var totalTime: Long
 
     fun start()
     fun stop()

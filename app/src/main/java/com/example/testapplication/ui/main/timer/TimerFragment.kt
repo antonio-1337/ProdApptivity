@@ -110,7 +110,9 @@ class TimerFragment : Fragment() {
     }
 
     fun hintStringSetUp(binding: TimerFragmentBinding) {
+//        val timeInMinutes = TimeUnit.MILLISECONDS.toMinutes(viewModel.totalTime)
         val timeInMinutes = TimeUnit.MILLISECONDS.toMinutes(viewModel.totalTime)
+
         binding.textViewHint.text =
             String.format(resources.getString(R.string.total_1_d_minutes), timeInMinutes)
     }
