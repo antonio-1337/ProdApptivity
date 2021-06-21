@@ -14,6 +14,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.testapplication.R
 import com.example.testapplication.databinding.TimerFragmentBinding
 import com.example.testapplication.ui.main.timer.timerModes.TimerInterface
+import org.koin.android.ext.android.bind
+import java.util.concurrent.TimeUnit
 
 class TimerFragment : Fragment() {
 
@@ -54,6 +56,9 @@ class TimerFragment : Fragment() {
                     binding.textViewTimer.visibility = View.VISIBLE
                     binding.buttonSetAsDone.isEnabled = false
                     binding.fabPlay.setImageDrawable(resources.getDrawable(R.drawable.ic_baseline_pause_circle_filled_24))
+                    hintStringSetUp(binding)
+                    binding.textViewHint.visibility = View.VISIBLE
+                    binding.fabSetMode.isEnabled = false
                 }
                 TimerInterface.Companion.TimerState.STOPPED -> {
                     binding.numPicker.visibility = View.VISIBLE
@@ -61,6 +66,8 @@ class TimerFragment : Fragment() {
                     binding.fabStop.visibility = View.GONE
                     binding.buttonSetAsDone.isEnabled = true
                     binding.fabPlay.setImageDrawable(resources.getDrawable(R.drawable.ic_baseline_play_arrow_24))
+                    binding.textViewHint.visibility = View.GONE
+                    binding.fabSetMode.isEnabled = true
                 }
                 TimerInterface.Companion.TimerState.PAUSED -> {
                     binding.fabPlay.setImageDrawable(resources.getDrawable(R.drawable.ic_baseline_play_arrow_24))
@@ -100,5 +107,11 @@ class TimerFragment : Fragment() {
         secondsPicker.setOnValueChangedListener(OnValueChangeListener { picker, oldVal, newVal ->
             viewModel.seconds = newVal
         })
+    }
+
+    fun hintStringSetUp(binding: TimerFragmentBinding) {
+        val timeInMinutes = TimeUnit.MILLISECONDS.toMinutes(viewModel.totalTime)
+        binding.textViewHint.text =
+            String.format(resources.getString(R.string.total_1_d_minutes), timeInMinutes)
     }
 }

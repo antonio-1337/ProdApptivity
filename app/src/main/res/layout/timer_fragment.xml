@@ -11,9 +11,9 @@
     </data>
 
     <FrameLayout
-        android:background="@color/activity_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/activity_bg"
         tools:context=".ui.main.timer.TimerFragment">
 
 
@@ -46,7 +46,18 @@
                 android:src="@drawable/ic_baseline_close"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/fab_play" />
+                app:layout_constraintEnd_toStartOf="@+id/fab_play"
+                tools:visibility="gone" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_set_mode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:contentDescription="@string/set_the_timer_mode"
+                android:src="@drawable/ic_timer"
+                app:layout_constraintBottom_toBottomOf="@+id/buttonSetAsDone"
+                app:layout_constraintStart_toEndOf="@+id/buttonSetAsDone" />
 
             <Button
                 android:id="@+id/buttonSetAsDone"
@@ -98,13 +109,15 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter_medium"
                 android:text="@{String.valueOf(viewModel.timeLeftString)}"
+                android:textColor="@color/white"
                 android:textSize="64sp"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="00:00" />
+                tools:text="00:00"
+                tools:visibility="gone" />
 
             <com.google.android.material.progressindicator.CircularProgressIndicator
                 android:id="@+id/progress_countdown"
@@ -121,19 +134,20 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:trackThickness="20dp"
                 tools:progress="75" />
-            <!--
-            <ProgressBar
-                android:id="@+id/progress_countdown"
-                android:minWidth="360dp"
-                android:minHeight="360dp"
+
+            <TextView
+                android:id="@+id/textViewHint"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:progress="25"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-                -->
+                android:layout_marginTop="32dp"
+                android:text="@string/total_1_d_minutes"
+                android:textColor="@color/white"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@+id/numPicker"
+                app:layout_constraintStart_toStartOf="@+id/numPicker"
+                app:layout_constraintTop_toBottomOf="@+id/numPicker"
+                tools:text="Total 25 minutes"
+                tools:visibility="visible" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>

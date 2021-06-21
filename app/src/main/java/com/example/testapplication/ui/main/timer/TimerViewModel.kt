@@ -13,6 +13,7 @@ class TimerViewModel : ViewModel() {
     var hours: Int = 0
     var minutes: Int = 0
     var seconds: Int = 0
+    var totalTime: Long = 0L
 
     private lateinit var timer: TimerInterface
 
@@ -25,34 +26,35 @@ class TimerViewModel : ViewModel() {
 
     // Initialize a value for the timeLeft so that is not null when observed by the textView
     init {
-        timeLeftString.addSource(MutableLiveData<String>("00:00")){
+        timeLeftString.addSource(MutableLiveData<String>("00:00")) {
             timeLeftString.value = it
         }
-        timeLeftPercent.addSource(MutableLiveData<Long>(0L)){
+        timeLeftPercent.addSource(MutableLiveData<Long>(0L)) {
             timeLeftPercent.value = it.toInt()
         }
-        buttonStatus.addSource(MutableLiveData(TimerInterface.Companion.TimerState.STOPPED)){
+        buttonStatus.addSource(MutableLiveData(TimerInterface.Companion.TimerState.STOPPED)) {
             buttonStatus.value = it
         }
     }
 
     fun start() {
-        if (!this::timer.isInitialized || timer.state.value == TimerInterface.Companion.TimerState.STOPPED){
+        if (!this::timer.isInitialized || timer.state.value == TimerInterface.Companion.TimerState.STOPPED) {
             // Create the correct timer with the correct time
-            var time: Long = 0L
+            totalTime = 0L
 
-            time += TimeUnit.HOURS.toMillis(hours.toLong())
-            time += TimeUnit.MINUTES.toMillis(minutes.toLong())
-            time += TimeUnit.SECONDS.toMillis(seconds.toLong())
+            totalTime += TimeUnit.HOURS.toMillis(hours.toLong())
+            totalTime += TimeUnit.MINUTES.toMillis(minutes.toLong())
+            totalTime += TimeUnit.SECONDS.toMillis(seconds.toLong())
 
-            timer = Basic(time)
+            // TODO: choose the timer that the user selected
+            timer = Basic(totalTime)
 
             // Start the timer
             timer.start()
 
             // Add to the timeLeft MediatorLiveData the new already initialized and started timer, so the view
             // observing the timeLeft is correctly updated
-            timeLeftString.addSource(timer.timeLeft){
+            timeLeftString.addSource(timer.timeLeft) {
                 val out = String.format(
                     "%02d:%02d",
                     TimeUnit.MILLISECONDS.toMinutes(it),
@@ -62,19 +64,19 @@ class TimerViewModel : ViewModel() {
             }
 
             // Calculate and updates the percent of completion
-            timeLeftPercent.addSource(timer.timeLeft){
-                var percent: Float = ((it.toFloat() / time.toFloat()) * 100f)
-                Log.i("TimerViewModel", "Percent: $percent, ($it / $time) * 100")
+            timeLeftPercent.addSource(timer.timeLeft) {
+                var percent: Float = ((it.toFloat() / totalTime.toFloat()) * 100f)
+                Log.i("TimerViewModel", "Percent: $percent, ($it / $totalTime) * 100")
                 timeLeftPercent.value = percent.toInt()
             }
 
             // Same but with the state of the timer
-            buttonStatus.addSource(timer.state){
+            buttonStatus.addSource(timer.state) {
                 buttonStatus.value = it
             }
-        } else if (timer.state.value == TimerInterface.Companion.TimerState.PAUSED){
+        } else if (timer.state.value == TimerInterface.Companion.TimerState.PAUSED) {
             resume()
-        } else{
+        } else {
             pause()
         }
 
