@@ -55,6 +55,7 @@ class TaskManagerFragment() : Fragment() {
     }
 
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -75,22 +76,7 @@ class TaskManagerFragment() : Fragment() {
         }
     }
 
-    /*
-    private fun generateDummyList(size: Int): List<Tasks>{
-        val list = ArrayList<Tasks>()
-
-        for(i in 0 until size){
-            val drawable = when(i % 2){
-                0 -> R.drawable.task_todo_check
-                1 -> R.drawable.task_done_check
-                else -> R.drawable.task_done_check
-            }
-            val item = Tasks(i+1,"","Task $i+1", "tomato",0,"2;3",drawable)
-            list += item
-        }
-        return  list
-    }*/
-
+    // Automatically selects the current day of the week
     private fun setRadioButtonToCurrentDay(binding: TaskManagerFragmentBinding) {
         when (viewModel.currentDayOfTheWeek) {
             Calendar.MONDAY -> binding.radioButtonMonday.isChecked = true

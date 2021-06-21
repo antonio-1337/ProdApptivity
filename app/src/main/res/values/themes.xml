@@ -11,12 +11,24 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorOnSecondary</item>
-
-        <!-- Customize your theme here. -->
-        <!--
-        <item name="android:windowBackground">@color/activity_bg</item>
-        <item name="actionMenuTextColor">@color/black</item>
-        -->
-
     </style>
+
+    <style name="AppTheme.Picker" parent="Theme.AppCompat.Light.NoActionBar" >
+        <item name="android:textColorPrimary">@color/text_default_gray6</item>
+        <item name="android:textSize">36dp</item>
+        <item name="android:colorControlNormal">@android:color/transparent</item>
+    </style>
+
+    <!-- Style for text Default -->
+    <style name="textDefault" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/inter_semibold</item>
+        <item name="android:color">@color/text_default_gray6</item>
+    </style>
+
+    <style name="menuItem" parent="@style/Widget.Design.NavigationView">
+        <item name="itemTextColor">@color/text_default_gray6</item>
+        <item name="itemIconTint">@color/text_default_gray6</item>
+    </style>
+
+
 </resources>

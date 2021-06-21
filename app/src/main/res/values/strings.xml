@@ -77,6 +77,8 @@
     <string name="letter_sunday">S</string>
     <string name="my_tasks">My tasks</string>
     <string name="start_the_timer">Start the timer</string>
+    <string name="set_the_timer_mode">Set the timer mode</string>
+    <string name="total_1_d_minutes">Total %1$d minutes</string>
 
 
 </resources>

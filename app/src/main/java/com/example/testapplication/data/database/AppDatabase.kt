@@ -20,8 +20,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun getTasksDao(): TasksDao
 
     companion object{
-        // Singleton prevents multiple instances of database opening at the
-        // same time.
+        // Singleton prevents multiple instances of database opening at the same time.
         @Volatile
         private var INSTANCE: AppDatabase? = null
         private val LOCK = Any()
