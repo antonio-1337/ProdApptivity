@@ -78,10 +78,10 @@
                 android:id="@+id/numPicker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintBottom_toBottomOf="@+id/progress_countdown"
+                app:layout_constraintEnd_toEndOf="@+id/progress_countdown"
+                app:layout_constraintStart_toStartOf="@+id/progress_countdown"
+                app:layout_constraintTop_toTopOf="@id/progress_countdown">
 
                 <NumberPicker
                     android:id="@+id/numPicker_hours"
@@ -112,10 +112,10 @@
                 android:textColor="@color/white"
                 android:textSize="64sp"
                 android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/progress_countdown"
+                app:layout_constraintEnd_toEndOf="@id/progress_countdown"
+                app:layout_constraintStart_toStartOf="@id/progress_countdown"
+                app:layout_constraintTop_toTopOf="@id/progress_countdown"
                 tools:text="00:00"
                 tools:visibility="gone" />
 
@@ -124,7 +124,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="48dp"
                 android:layout_marginEnd="16dp"
+                android:layout_marginBottom="200dp"
                 android:max="100"
                 android:progress="@{Integer.valueOf(viewModel.timeLeftPercent)}"
                 app:indicatorSize="360dp"
@@ -139,16 +141,17 @@
                 android:id="@+id/textViewHint"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="48dp"
+                android:layout_marginTop="72dp"
                 android:fontFamily="@font/inter_medium"
                 android:text="@string/total_1_d_minutes"
-                android:textColor="@color/white"
-                android:textColorHint="@color/gray3"
+                android:textColor="@color/text_default_gray6"
+                android:textColorHint="@color/text_default_gray6"
                 android:textSize="14sp"
                 android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="@+id/numPicker"
-                app:layout_constraintStart_toStartOf="@+id/numPicker"
-                app:layout_constraintTop_toBottomOf="@+id/numPicker"
+                app:layout_constraintEnd_toEndOf="@+id/progress_countdown"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="@+id/progress_countdown"
+                app:layout_constraintTop_toBottomOf="@+id/textViewTimer"
                 tools:text="Total 25 minutes"
                 tools:visibility="visible" />
 
