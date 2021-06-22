@@ -21,7 +21,7 @@ class Decremental(
 
     // The actual state of the timer, starts STOPPED
     private var _state =
-        MutableLiveData<TimerInterface.Companion.TimerState>(TimerInterface.Companion.TimerState.STOPPED)
+        MutableLiveData(TimerInterface.Companion.TimerState.STOPPED)
     override val state: LiveData<TimerInterface.Companion.TimerState>
         get() = _state
 
@@ -53,6 +53,21 @@ class Decremental(
         }
     }
 
+    // Called when the session ends.
+    // Updates the length of the timer to the next increment.
+    fun cycle() {
+        _state.value = TimerInterface.Companion.TimerState.PAUSED
+
+        if (length <= decrement){
+            stop()
+        } else{
+            length -= decrement
+            pauseTime = length
+            timer.cancel()
+            _timeLeft.value = length
+        }
+    }
+
     // Start the timer
     override fun start() {
         _state.value = TimerInterface.Companion.TimerState.RUNNING_FOCUS
@@ -80,20 +95,4 @@ class Decremental(
         timer = initialize(pauseTime)
         start()
     }
-
-    // Called when the session ends.
-    // Updates the length of the timer to the next increment.
-    fun cycle() {
-        _state.value = TimerInterface.Companion.TimerState.PAUSED
-
-        if (length <= decrement){
-            stop()
-        } else{
-            length -= decrement
-            pauseTime = length
-            timer.cancel()
-            _timeLeft.value = length
-        }
-    }
-
 }

@@ -3,6 +3,7 @@ package com.example.testapplication.ui.main.timer
 import androidx.lifecycle.*
 import com.example.testapplication.ui.main.timer.timerModes.Decremental
 import com.example.testapplication.ui.main.timer.timerModes.Incremental
+import com.example.testapplication.ui.main.timer.timerModes.Pomodoro
 import com.example.testapplication.ui.main.timer.timerModes.TimerInterface
 import java.util.concurrent.TimeUnit
 
@@ -52,7 +53,7 @@ class TimerViewModel : ViewModel() {
             selectedTime += TimeUnit.SECONDS.toMillis(seconds.toLong())
 
             // TODO: choose the timer that the user selected
-            timer = Decremental(selectedTime, 10000)
+            timer = Pomodoro(selectedTime, 10000)
 
             // Start the timer
             timer.start()

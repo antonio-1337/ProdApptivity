@@ -1,7 +1,6 @@
 package com.example.testapplication.ui.main.timer.timerModes
 
 import android.os.CountDownTimer
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
@@ -18,7 +17,7 @@ class Basic(override val length: Long) : TimerInterface {
 
     // The actual state of the timer, starts STOPPED
     private var _state =
-        MutableLiveData<TimerInterface.Companion.TimerState>(TimerInterface.Companion.TimerState.STOPPED)
+        MutableLiveData(TimerInterface.Companion.TimerState.STOPPED)
     override val state: LiveData<TimerInterface.Companion.TimerState>
         get() = _state
 

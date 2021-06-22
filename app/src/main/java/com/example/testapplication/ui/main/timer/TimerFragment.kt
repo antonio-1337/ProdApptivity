@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.NumberPicker
 import android.widget.NumberPicker.OnValueChangeListener
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -47,6 +48,7 @@ class TimerFragment : Fragment() {
         numberPickerSetUp(binding)
 
         // Observe the button status from the viewModel to update the UI
+        // TODO: Rearrange everything and make it more clear
         viewModel.buttonStatus.observe(viewLifecycleOwner, Observer { timerState ->
             Log.i("TimerFragment", "Timer state: $timerState")
             when (timerState) {
@@ -73,7 +75,19 @@ class TimerFragment : Fragment() {
                     binding.fabPlay.setImageDrawable(resources.getDrawable(R.drawable.ic_baseline_play_arrow_24))
                     binding.fabStop.visibility = View.VISIBLE
                 }
-//                TimerInterface.Companion.TimerState.RUNNING_PAUSE -> TODO()
+                TimerInterface.Companion.TimerState.RUNNING_PAUSE -> {
+                    binding.numPicker.visibility = View.GONE
+                    binding.fabStop.visibility = View.GONE
+                    binding.textViewTimer.visibility = View.VISIBLE
+                    binding.buttonSetAsDone.isEnabled = false
+                    binding.fabPlay.setImageDrawable(resources.getDrawable(R.drawable.ic_baseline_pause_circle_filled_24))
+                    hintStringSetUp(binding)
+                    binding.textViewHint.visibility = View.VISIBLE
+                    binding.fabSetMode.isEnabled = false
+
+                    Toast.makeText(context, "This is the pause!", Toast.LENGTH_SHORT).show()
+
+                }
             }
         })
 
