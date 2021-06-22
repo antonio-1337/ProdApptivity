@@ -61,7 +61,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="40dp"
                 android:contentDescription="@string/set_the_timer_mode"
-                android:src="@drawable/ic_timer"
+                android:src="@drawable/ic_timer_teal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/fab_stop"
                 app:layout_constraintStart_toEndOf="@+id/buttonSetAsDone" />

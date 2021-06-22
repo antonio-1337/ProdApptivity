@@ -90,6 +90,8 @@
     <string name="task_name">Task Name</string>
     <string name="profile_picture">profile_picture</string>
     <string name="timer_icon">Timer icon</string>
+    <string name="timer_mode">Timer mode</string>
+    <string name="task_description">Description of the task</string>
 
 
 </resources>
