@@ -17,7 +17,8 @@ class Basic(override val length: Long) : TimerInterface {
         get() = _timeLeft
 
     // The actual state of the timer, starts STOPPED
-    private var _state = MutableLiveData<TimerInterface.Companion.TimerState>(TimerInterface.Companion.TimerState.STOPPED)
+    private var _state =
+        MutableLiveData<TimerInterface.Companion.TimerState>(TimerInterface.Companion.TimerState.STOPPED)
     override val state: LiveData<TimerInterface.Companion.TimerState>
         get() = _state
 
@@ -32,14 +33,14 @@ class Basic(override val length: Long) : TimerInterface {
                 val remains = millisUntilFinished % 1000
                 _timeLeft.value = millisUntilFinished - remains + 1000
                 totalTime += TimerInterface.ONE_DECASECOND
-                Log.i("BasicTimer", "Time left: $millisUntilFinished which corresponds to ${_timeLeft.value}")
+//                Log.i("BasicTimer", "Time left: $millisUntilFinished which corresponds to ${_timeLeft.value}")
             }
 
             // When the timer is over, set timeLeft to 0
             override fun onFinish() {
                 _timeLeft.value = 0
                 _state.value = TimerInterface.Companion.TimerState.STOPPED
-                Log.i("BasicTimer", "Timer completed!")
+//                Log.i("BasicTimer", "Timer completed!")
             }
         }
     }

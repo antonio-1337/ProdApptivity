@@ -7,9 +7,9 @@ import androidx.lifecycle.MutableLiveData
 
 // Basic timer.
 // Should do what a basic timer does.
-class Incremental(
+class Decremental(
     override var length: Long,
-    private val increment: Long
+    private val decrement: Long
 ) : TimerInterface {
 
     override var totalTime: Long = 0L
@@ -37,7 +37,7 @@ class Incremental(
                 _timeLeft.value = millisUntilFinished - remains + 1000
                 totalTime += TimerInterface.ONE_DECASECOND
 //                Log.i(
-//                    "Incremental",
+//                    "Decremental",
 //                    "Time left: $millisUntilFinished which corresponds to ${_timeLeft.value}"
 //                )
             }
@@ -46,7 +46,7 @@ class Incremental(
             override fun onFinish() {
                 _timeLeft.value = 0
 
-                Log.i("Incremental", "Timer completed!")
+                Log.i("Decremental", "Timer completed!")
 
                 cycle()
             }
@@ -85,10 +85,15 @@ class Incremental(
     // Updates the length of the timer to the next increment.
     fun cycle() {
         _state.value = TimerInterface.Companion.TimerState.PAUSED
-        length += increment
-        pauseTime = length
-        timer.cancel()
-        _timeLeft.value = length
+
+        if (length <= decrement){
+            stop()
+        } else{
+            length -= decrement
+            pauseTime = length
+            timer.cancel()
+            _timeLeft.value = length
+        }
     }
 
 }
