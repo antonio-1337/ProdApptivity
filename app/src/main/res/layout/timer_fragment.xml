@@ -27,35 +27,43 @@
                 android:id="@+id/fab_play"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:layout_marginEnd="20dp"
+                android:layout_marginBottom="40dp"
                 android:contentDescription="@string/start_the_timer"
                 android:onClick="@{() -> viewModel.start()}"
                 android:src="@drawable/ic_baseline_play_arrow_24"
-                app:layout_constraintBottom_toBottomOf="@+id/fab_set_mode"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/fab_stop" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fab_stop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="8dp"
                 android:layout_marginBottom="40dp"
                 android:contentDescription="@string/start_the_timer"
                 android:onClick="@{() -> viewModel.stop()}"
-                android:src="@drawable/ic_stop_circle"
+                android:src="@drawable/ic_baseline_stop_empty"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/fab_play"
+                app:layout_constraintStart_toEndOf="@+id/fab_set_mode"
                 tools:visibility="gone" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fab_set_mode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="40dp"
                 android:contentDescription="@string/set_the_timer_mode"
                 android:src="@drawable/ic_timer"
-                app:layout_constraintBottom_toBottomOf="@+id/buttonSetAsDone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/fab_stop"
                 app:layout_constraintStart_toEndOf="@+id/buttonSetAsDone" />
 
             <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
@@ -63,14 +71,15 @@
                 android:layout_width="148dp"
                 android:layout_height="58dp"
                 android:layout_marginStart="20dp"
+                android:layout_marginEnd="8dp"
                 android:layout_marginBottom="40dp"
-                android:gravity="center"
                 android:elevation="8dp"
                 android:fontFamily="@font/inter_extrabold"
+                android:gravity="center"
                 android:text="@string/set_as_done"
                 android:textSize="14sp"
-                app:elevation="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/fab_set_mode"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <LinearLayout

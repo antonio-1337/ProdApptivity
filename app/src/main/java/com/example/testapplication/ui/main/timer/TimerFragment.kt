@@ -114,7 +114,7 @@ class TimerFragment : Fragment() {
         binding.buttonSetAsDone.isEnabled = false
         binding.fabSetMode.isEnabled = false
 
-        binding.fabPlay.setImageDrawable(resources.getDrawable(R.drawable.ic_baseline_pause_circle_filled_24))
+        binding.fabPlay.setImageDrawable(resources.getDrawable(R.drawable.ic_baseline_pause_empty))
 
         hintStringSetUp()
     }
