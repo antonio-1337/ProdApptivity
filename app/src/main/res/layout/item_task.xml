@@ -46,7 +46,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/task_checked"
                 app:layout_constraintStart_toStartOf="@+id/task_title"
                 app:layout_constraintTop_toBottomOf="@+id/task_title"
-                tools:text="timer type" />
+                tools:text="@string/timer_type" />
 
             <ImageView
                 android:id="@+id/task_checked"
