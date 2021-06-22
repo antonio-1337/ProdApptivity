@@ -4,8 +4,12 @@ import android.os.CountDownTimer
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
-// Basic timer.
-// Should do what a basic timer does.
+/**
+ * A timer that implement the Pomodoro technique.
+ *
+ * @param length the length of the 'focus time'
+ * @param pauseLength the length of the 'pause time' between each focus session.
+ */
 class Pomodoro(
     override var length: Long,
     private val pauseLength: Long

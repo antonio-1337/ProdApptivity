@@ -5,8 +5,12 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
-// Basic timer.
-// Should do what a basic timer does.
+/**
+ * An incremental timer that extends its length every time a session finish.
+ *
+ * @param length the length at which the timer must operate initially.
+ * @param increment the increment that must be added to the length each time a session finish.
+ */
 class Incremental(
     override var length: Long,
     private val increment: Long

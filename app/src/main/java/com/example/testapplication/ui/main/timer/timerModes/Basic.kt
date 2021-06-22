@@ -4,8 +4,11 @@ import android.os.CountDownTimer
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
-// Basic timer.
-// Should do what a basic timer does.
+/**
+ * A simple timer that does what a basic timer should do.
+ *
+ * @param length the length at which the timer must operate
+ */
 class Basic(override val length: Long) : TimerInterface {
 
     override var totalTime: Long = 0L

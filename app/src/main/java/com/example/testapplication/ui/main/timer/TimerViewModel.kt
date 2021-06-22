@@ -1,10 +1,7 @@
 package com.example.testapplication.ui.main.timer
 
 import androidx.lifecycle.*
-import com.example.testapplication.ui.main.timer.timerModes.Decremental
-import com.example.testapplication.ui.main.timer.timerModes.Incremental
-import com.example.testapplication.ui.main.timer.timerModes.Pomodoro
-import com.example.testapplication.ui.main.timer.timerModes.TimerInterface
+import com.example.testapplication.ui.main.timer.timerModes.*
 import java.util.concurrent.TimeUnit
 
 
@@ -51,6 +48,9 @@ class TimerViewModel : ViewModel() {
             selectedTime += TimeUnit.HOURS.toMillis(hours.toLong())
             selectedTime += TimeUnit.MINUTES.toMillis(minutes.toLong())
             selectedTime += TimeUnit.SECONDS.toMillis(seconds.toLong())
+
+            // If the time selected is 0 there is no reason to start the timer.
+            if (selectedTime == 0L) return
 
             // TODO: choose the timer that the user selected
             timer = Pomodoro(selectedTime, 10000)

@@ -5,8 +5,12 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
-// Basic timer.
-// Should do what a basic timer does.
+/**
+ * A decremental timer that contracts its length every time a session finish.
+ *
+ * @param length the length at which the timer must operate initially.
+ * @param decrement the decrement that must be subtracted to the length each time a session finish.
+ */
 class Decremental(
     override var length: Long,
     private val decrement: Long
