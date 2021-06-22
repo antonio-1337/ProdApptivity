@@ -6,14 +6,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
 /**
- * An incremental timer that extends its length every time a session finish.
+ * A decremental timer that contracts its length every time a session finish.
  *
  * @param length the length at which the timer must operate initially.
- * @param increment the increment that must be added to the length each time a session finish.
+ * @param decrement the decrement that must be subtracted to the length each time a session finish.
  */
-class Incremental(
+class Decremental(
     override var length: Long,
-    private val increment: Long
+    private val decrement: Long
 ) : TimerInterface {
 
     override var totalTime: Long = 0L
@@ -41,7 +41,7 @@ class Incremental(
                 _timeLeft.value = millisUntilFinished - remains + 1000
                 totalTime += TimerInterface.ONE_DECASECOND
 //                Log.i(
-//                    "Incremental",
+//                    "Decremental",
 //                    "Time left: $millisUntilFinished which corresponds to ${_timeLeft.value}"
 //                )
             }
@@ -50,10 +50,25 @@ class Incremental(
             override fun onFinish() {
                 _timeLeft.value = 0
 
-                Log.i("Incremental", "Timer completed!")
+                Log.i("Decremental", "Timer completed!")
 
                 cycle()
             }
+        }
+    }
+
+    // Called when the session ends.
+    // Updates the length of the timer to the next increment.
+    fun cycle() {
+        _state.value = TimerInterface.Companion.TimerState.PAUSED
+
+        if (length <= decrement){
+            stop()
+        } else{
+            length -= decrement
+            pauseTime = length
+            timer.cancel()
+            _timeLeft.value = length
         }
     }
 
@@ -84,15 +99,4 @@ class Incremental(
         timer = initialize(pauseTime)
         start()
     }
-
-    // Called when the session ends.
-    // Updates the length of the timer to the next increment.
-    fun cycle() {
-        _state.value = TimerInterface.Companion.TimerState.PAUSED
-        length += increment
-        pauseTime = length
-        timer.cancel()
-        _timeLeft.value = length
-    }
-
 }

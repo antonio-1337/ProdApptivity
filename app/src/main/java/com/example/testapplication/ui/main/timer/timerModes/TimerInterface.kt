@@ -4,7 +4,12 @@ import android.os.CountDownTimer
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
-// Interface that all custom timers must implement
+/**
+ * Interface that all custom timers must implement.
+ *
+ * This interface guarantees that the custom timer being used is fully supported by the TimerViewModel,
+ * and provides a great abstraction over what a timer is.
+ */
 interface TimerInterface {
     companion object{
         const val ONE_SECOND : Long = 1000L

@@ -5,7 +5,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,7 +20,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 import kotlin.collections.ArrayList
 
-class TaskManagerFragment() : Fragment() {
+class TaskManagerFragment() : Fragment(), RecyclerAdapter.OnItemClickListener {
 
     // Get the ViewModel from Koin
     private val viewModel: TaskManagerViewModel by viewModel()
@@ -29,7 +31,6 @@ class TaskManagerFragment() : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
 
         // Setup binding object and inflate the fragment xml
         val binding = TaskManagerFragmentBinding.inflate(inflater, container, false)
@@ -55,8 +56,6 @@ class TaskManagerFragment() : Fragment() {
         return binding.root
     }
 
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -64,9 +63,8 @@ class TaskManagerFragment() : Fragment() {
         recyclerview.setHasFixedSize(true)
         recyclerview.layoutManager = LinearLayoutManager(activity)
 
-        val adapter = RecyclerAdapter()
+        val adapter = RecyclerAdapter(this)
         recyclerview.adapter = adapter
-
 
         viewModel.allTasks.observe(viewLifecycleOwner) { tasks ->
             // Update the cached copy of the words in the adapter.
@@ -74,6 +72,19 @@ class TaskManagerFragment() : Fragment() {
             tasks.let {
                 adapter.setnotes(it)
             }
+        }
+    }
+
+    // Navigate to the dialog passing all the arguments it needs
+    override fun onItemClick(position: Int) {
+        val item = viewModel.allTasks.value?.get(position)
+        if (item != null){
+            val action = TaskManagerFragmentDirections.actionTaskManagerFragmentToTaskSelectedDialogFragment()
+            action.taskId = item.id
+            action.taskName = item.name
+            action.taskDescription = item.description
+            action.timerMode = "NOT YET TIMERMODE"
+            findNavController().navigate(action)
         }
     }
 

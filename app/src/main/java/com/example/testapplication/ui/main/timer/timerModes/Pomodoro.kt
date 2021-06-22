@@ -1,20 +1,25 @@
 package com.example.testapplication.ui.main.timer.timerModes
 
 import android.os.CountDownTimer
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
 /**
- * An incremental timer that extends its length every time a session finish.
+ * A timer that implement the Pomodoro technique.
  *
- * @param length the length at which the timer must operate initially.
- * @param increment the increment that must be added to the length each time a session finish.
+ * @param length the length of the 'focus time'
+ * @param pauseLength the length of the 'pause time' between each focus session.
  */
-class Incremental(
+class Pomodoro(
     override var length: Long,
-    private val increment: Long
+    private val pauseLength: Long
 ) : TimerInterface {
+
+    // Stores the original Pomodoro length passed in the constructor
+    private val pomodoroLength = length
+
+    // Tracker for the previous state
+    private var wasRunningFocus: Boolean = false
 
     override var totalTime: Long = 0L
 
@@ -40,26 +45,41 @@ class Incremental(
                 val remains = millisUntilFinished % 1000
                 _timeLeft.value = millisUntilFinished - remains + 1000
                 totalTime += TimerInterface.ONE_DECASECOND
-//                Log.i(
-//                    "Incremental",
-//                    "Time left: $millisUntilFinished which corresponds to ${_timeLeft.value}"
-//                )
             }
 
             // When the timer is over, set timeLeft to 0
             override fun onFinish() {
                 _timeLeft.value = 0
-
-                Log.i("Incremental", "Timer completed!")
-
                 cycle()
             }
         }
     }
 
+    // Called when the session ends.
+    // Set up everything for the next cycle, updating the status based on the previous one.
+    private fun cycle(){
+        if (state.value == TimerInterface.Companion.TimerState.RUNNING_FOCUS){
+            wasRunningFocus = true
+            pauseTime = pauseLength
+            length = pauseLength
+        } else{
+            wasRunningFocus = false
+            pauseTime = pomodoroLength
+            length = pomodoroLength
+        }
+
+        timer.cancel()
+        _timeLeft.value = pauseTime
+        _state.value = TimerInterface.Companion.TimerState.PAUSED
+    }
+
     // Start the timer
     override fun start() {
-        _state.value = TimerInterface.Companion.TimerState.RUNNING_FOCUS
+        if (wasRunningFocus){
+            _state.value = TimerInterface.Companion.TimerState.RUNNING_PAUSE
+        } else {
+            _state.value = TimerInterface.Companion.TimerState.RUNNING_FOCUS
+        }
         timer.start()
     }
 
@@ -84,15 +104,4 @@ class Incremental(
         timer = initialize(pauseTime)
         start()
     }
-
-    // Called when the session ends.
-    // Updates the length of the timer to the next increment.
-    fun cycle() {
-        _state.value = TimerInterface.Companion.TimerState.PAUSED
-        length += increment
-        pauseTime = length
-        timer.cancel()
-        _timeLeft.value = length
-    }
-
 }

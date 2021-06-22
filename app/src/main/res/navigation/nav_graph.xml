@@ -8,20 +8,25 @@
         android:id="@+id/taskManagerFragment"
         android:name="com.example.testapplication.ui.main.taskManager.TaskManagerFragment"
         android:label="Tasks"
-        tools:layout="@layout/task_manager_fragment" >
+        tools:layout="@layout/task_manager_fragment">
         <action
             android:id="@+id/action_taskManagerFragment_to_createTaskFragment"
             app:destination="@id/createTaskFragment" />
         <action
             android:id="@+id/action_taskManagerFragment_to_timerFragment"
             app:destination="@id/timerFragment" />
+        <action
+            android:id="@+id/action_taskManagerFragment_to_taskSelectedDialogFragment"
+            app:destination="@id/taskSelectedDialogFragment" />
     </fragment>
     <fragment
         android:id="@+id/createTaskFragment"
         android:name="com.example.testapplication.ui.main.createTask.CreateTaskFragment"
         android:label="Create Task"
         tools:layout="@layout/create_task_fragment">
-        <argument android:name="day_today" app:argType="string"/>
+        <argument
+            android:name="day_today"
+            app:argType="string" />
         <action
             android:id="@+id/action_createTaskFragment_to_taskManagerFragment"
             app:destination="@id/taskManagerFragment" />
@@ -35,4 +40,29 @@
             android:id="@+id/action_timerFragment_to_taskManagerFragment"
             app:destination="@id/taskManagerFragment" />
     </fragment>
+    <dialog
+        android:id="@+id/taskSelectedDialogFragment"
+        android:name="com.example.testapplication.ui.main.taskManager.TaskSelectedDialogFragment"
+        android:label="TaskSelectedDialogFragment"
+        tools:layout="@layout/dialog_task">
+        <argument
+            android:name="taskId"
+            app:argType="integer"
+            android:defaultValue="0"/>
+        <argument
+            android:name="taskName"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
+            android:name="timerMode"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
+            android:name="taskDescription"
+            app:argType="string"
+            android:defaultValue=""/>
+        <action
+            android:id="@+id/action_taskSelectedDialogFragment_to_timerFragment"
+            app:destination="@id/timerFragment" />
+    </dialog>
 </navigation>
