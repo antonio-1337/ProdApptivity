@@ -79,6 +79,7 @@
     <string name="set_the_timer_mode">Set the timer mode</string>
     <string name="total_1_d_minutes">Total %1$d minutes</string>
     <string name="task_name">Task Name</string>
+    <string name="profile_picture">profile_picture</string>
 
 
 </resources>
