@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="task"
             type="com.example.testapplication.data.database.entities.Tasks" />
@@ -15,6 +16,7 @@
         android:layout_margin="5dp"
         android:checkable="true"
         android:clickable="true"
+        android:elevation="5dp"
         android:focusable="true"
         app:cardBackgroundColor="@color/task_creator_text_gray"
         app:cardCornerRadius="8dp"
@@ -23,8 +25,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:strokeColor="@color/black"
-        app:strokeWidth="1dp"
-        android:elevation="5dp">
+        app:strokeWidth="1dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -62,7 +63,7 @@
 
             <TextView
                 android:id="@+id/task_title"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="16dp"
@@ -71,9 +72,11 @@
                 android:ellipsize="end"
                 android:fontFamily="@font/inter_semibold"
                 android:maxLines="1"
+                android:singleLine="true"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:textColor="@color/orange_normal"
                 android:textSize="24sp"
+                app:layout_constraintEnd_toStartOf="@+id/task_checked"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="@string/task_name" />

@@ -67,7 +67,7 @@ class MainContainerActivity : AppCompatActivity(), NavigationView.OnNavigationIt
     }
 
     private val destinationChangedListener = NavController.OnDestinationChangedListener{ controller, destination, argument ->
-        if (drawerLockMode == false){
+        if (!drawerLockMode || destination.label == "Timer"){
             drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
             drawerLockMode = true
         } else{
