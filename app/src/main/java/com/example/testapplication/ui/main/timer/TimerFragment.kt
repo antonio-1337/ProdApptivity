@@ -51,6 +51,7 @@ class TimerFragment : Fragment() {
                 TimerInterface.Companion.TimerState.STOPPED -> stoppedUIManager()
                 TimerInterface.Companion.TimerState.PAUSED -> pausedUIManager()
                 TimerInterface.Companion.TimerState.RUNNING_PAUSE -> {
+                    // TODO: change the progress bar color
                     runningUIManager()
                     Toast.makeText(context, "This is the pause!", Toast.LENGTH_SHORT).show()
                 }
