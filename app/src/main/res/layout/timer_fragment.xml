@@ -28,11 +28,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
-                android:layout_marginBottom="28dp"
                 android:contentDescription="@string/start_the_timer"
                 android:onClick="@{() -> viewModel.start()}"
                 android:src="@drawable/ic_baseline_play_arrow_24"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/fab_set_mode"
                 app:layout_constraintEnd_toEndOf="parent" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -40,7 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:layout_marginBottom="28dp"
+                android:layout_marginBottom="40dp"
                 android:contentDescription="@string/start_the_timer"
                 android:onClick="@{() -> viewModel.stop()}"
                 android:src="@drawable/ic_stop_circle"
@@ -59,18 +58,18 @@
                 app:layout_constraintBottom_toBottomOf="@+id/buttonSetAsDone"
                 app:layout_constraintStart_toEndOf="@+id/buttonSetAsDone" />
 
-            <Button
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
                 android:id="@+id/buttonSetAsDone"
-                android:layout_width="wrap_content"
+                android:layout_width="148dp"
                 android:layout_height="58dp"
                 android:layout_marginStart="20dp"
-                android:layout_marginBottom="28dp"
-                android:backgroundTint="@color/orange_normal"
-                android:elevation="5dp"
+                android:layout_marginBottom="40dp"
+                android:gravity="center"
+                android:elevation="8dp"
                 android:fontFamily="@font/inter_extrabold"
                 android:text="@string/set_as_done"
                 android:textSize="14sp"
-                app:cornerRadius="24dp"
+                app:elevation="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
@@ -78,10 +77,10 @@
                 android:id="@+id/numPicker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintBottom_toBottomOf="@+id/progress_countdown"
+                app:layout_constraintEnd_toEndOf="@+id/progress_countdown"
+                app:layout_constraintStart_toStartOf="@+id/progress_countdown"
+                app:layout_constraintTop_toTopOf="@id/progress_countdown">
 
                 <NumberPicker
                     android:id="@+id/numPicker_hours"
@@ -112,10 +111,10 @@
                 android:textColor="@color/white"
                 android:textSize="64sp"
                 android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/progress_countdown"
+                app:layout_constraintEnd_toEndOf="@id/progress_countdown"
+                app:layout_constraintStart_toStartOf="@id/progress_countdown"
+                app:layout_constraintTop_toTopOf="@id/progress_countdown"
                 tools:text="00:00"
                 tools:visibility="gone" />
 
@@ -124,7 +123,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="48dp"
                 android:layout_marginEnd="16dp"
+                android:layout_marginBottom="200dp"
                 android:max="100"
                 android:progress="@{Integer.valueOf(viewModel.timeLeftPercent)}"
                 app:indicatorSize="360dp"
@@ -139,16 +140,17 @@
                 android:id="@+id/textViewHint"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="48dp"
+                android:layout_marginTop="4dp"
                 android:fontFamily="@font/inter_medium"
                 android:text="@string/total_1_d_minutes"
-                android:textColor="@color/white"
-                android:textColorHint="@color/gray3"
+                android:textColor="@color/text_default_gray6"
+                android:textColorHint="@color/text_default_gray6"
                 android:textSize="14sp"
                 android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="@+id/numPicker"
-                app:layout_constraintStart_toStartOf="@+id/numPicker"
-                app:layout_constraintTop_toBottomOf="@+id/numPicker"
+                app:layout_constraintEnd_toEndOf="@+id/progress_countdown"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="@+id/progress_countdown"
+                app:layout_constraintTop_toBottomOf="@+id/textViewTimer"
                 tools:text="Total 25 minutes"
                 tools:visibility="visible" />
 

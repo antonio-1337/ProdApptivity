@@ -17,6 +17,7 @@
     <style name="AppTheme.Picker" parent="Theme.AppCompat.Light.NoActionBar" >
         <item name="android:textColorPrimary">@color/text_default_gray6</item>
         <item name="android:textSize">36dp</item>
+        <item name="android:layout_marginBottom">40dp</item>
         <item name="android:colorControlNormal">@android:color/transparent</item>
     </style>
 

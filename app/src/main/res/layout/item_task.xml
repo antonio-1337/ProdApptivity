@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="task"
             type="com.example.testapplication.data.database.entities.Tasks" />
@@ -24,7 +23,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:strokeColor="@color/black"
-        app:strokeWidth="1dp">
+        app:strokeWidth="1dp"
+        android:elevation="5dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
