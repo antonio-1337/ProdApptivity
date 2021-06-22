@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="false"
     tools:context=".ui.main.MainContainerActivity"
-    tools:openDrawer="start">
+    tools:openDrawer="end">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,13 +16,14 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
-            android:background="@color/activity_bg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:titleTextColor="@color/text_default_gray6"
+            android:background="@color/activity_bg"
+            android:theme="@style/ToolbarColoredNavigation"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:titleTextColor="@color/text_default_gray6" />
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/nav_host_fragment"
@@ -39,13 +40,13 @@
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
-        app:itemIconTint="@color/text_default_gray6"
-        app:itemTextColor="@color/text_default_gray6"
-        android:background="@color/activity_bg"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:background="@color/activity_bg"
         app:headerLayout="@layout/header_navigation_view"
+        app:itemIconTint="@color/text_default_gray6"
+        app:itemTextColor="@color/text_default_gray6"
         app:menu="@menu/drawer_menu" />
 
 </androidx.drawerlayout.widget.DrawerLayout>
