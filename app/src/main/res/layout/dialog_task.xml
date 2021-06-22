@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="fragment"
+            type="com.example.testapplication.ui.main.taskManager.TaskSelectedDialogFragment" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textViewName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Task name" />
+
+        <ImageView
+            android:id="@+id/imageViewTimerIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/timer_icon"
+            android:minWidth="24dp"
+            android:minHeight="24dp"
+            app:layout_constraintStart_toStartOf="@+id/textViewName"
+            app:layout_constraintTop_toBottomOf="@+id/textViewName"
+            app:srcCompat="@drawable/ic_timer" />
+
+        <TextView
+            android:id="@+id/textViewTimerMode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewTimerIcon"
+            app:layout_constraintStart_toEndOf="@+id/imageViewTimerIcon"
+            app:layout_constraintTop_toTopOf="@+id/imageViewTimerIcon"
+            tools:text="Timer mode" />
+
+        <TextView
+            android:id="@+id/textViewDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/imageViewTimerIcon"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewTimerIcon"
+            tools:text="Description of the task" />
+
+        <Button
+            android:id="@+id/buttonStartFocusing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/start_focusing"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewDescription" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
