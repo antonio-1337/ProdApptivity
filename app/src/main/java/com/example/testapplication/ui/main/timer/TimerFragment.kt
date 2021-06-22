@@ -114,7 +114,7 @@ class TimerFragment : Fragment() {
         binding.buttonSetAsDone.isEnabled = false
         binding.fabSetMode.isEnabled = false
 
-        binding.fabPlay.setImageDrawable(resources.getDrawable(R.drawable.ic_baseline_pause_empty))
+        binding.fabPlay.setImageDrawable(resources.getDrawable(R.drawable.ic_pause_button))
 
         hintStringSetUp()
     }
@@ -131,7 +131,7 @@ class TimerFragment : Fragment() {
         binding.buttonSetAsDone.isEnabled = true
         binding.fabSetMode.isEnabled = true
 
-        binding.fabPlay.setImageDrawable(resources.getDrawable(R.drawable.ic_baseline_play_arrow_24))
+        binding.fabPlay.setImageDrawable(resources.getDrawable(R.drawable.ic_play_button))
     }
 
     /**
@@ -139,6 +139,6 @@ class TimerFragment : Fragment() {
      */
     private fun pausedUIManager() {
         binding.fabStop.visibility = View.VISIBLE
-        binding.fabPlay.setImageDrawable(resources.getDrawable(R.drawable.ic_baseline_play_arrow_24))
+        binding.fabPlay.setImageDrawable(resources.getDrawable(R.drawable.ic_play_button))
     }
 }
