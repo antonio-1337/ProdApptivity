@@ -90,7 +90,8 @@
                     android:text="@string/repeating_task"
                     android:textColor="@color/text_default_gray6"
                     app:layout_constraintStart_toStartOf="@+id/editTextTextDescription"
-                    app:layout_constraintTop_toBottomOf="@+id/editTextTextDescription" />
+                    app:layout_constraintTop_toBottomOf="@+id/editTextTextDescription"
+                    tools:ignore="UseSwitchCompatOrMaterialXml" />
 
                 <Button
                     android:id="@+id/buttonSetMode"

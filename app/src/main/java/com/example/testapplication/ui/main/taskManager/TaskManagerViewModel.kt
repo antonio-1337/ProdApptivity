@@ -36,7 +36,6 @@ class TaskManagerViewModel(
     fun goToCreateTaskFragment(view: View){
         val action = TaskManagerFragmentDirections.actionTaskManagerFragmentToCreateTaskFragment(selectedDay.toString())
         view.findNavController().navigate(action)
-
     }
 
 }

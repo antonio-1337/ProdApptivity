@@ -56,6 +56,15 @@
     <string name="every_day">Every day</string>
     <string name="does_not_repeat">Does not repeat</string>
     <string name="every_week">Every Week</string>
+    <string-array name="week_days">
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+    </string-array>
     <string name="string_break">Break</string>
     <string name="start_focusing">Start focusing</string>
     <string name="cancel">Cancel</string>
