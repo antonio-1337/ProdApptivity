@@ -66,18 +66,18 @@ class TaskManagerFragment() : Fragment(), RecyclerAdapter.OnItemClickListener {
         val adapter = RecyclerAdapter(this)
         recyclerview.adapter = adapter
 
-        viewModel.allTasks.observe(viewLifecycleOwner) { tasks ->
+        viewModel.dailyTasks.observe(viewLifecycleOwner) { tasks ->
             // Update the cached copy of the words in the adapter.
             //tasks.let { adapter.submitList(it) }
             tasks.let {
-                adapter.setnotes(it)
+                adapter.setTasks(it)
             }
         }
     }
 
     // Navigate to the dialog passing all the arguments it needs
     override fun onItemClick(position: Int) {
-        val item = viewModel.allTasks.value?.get(position)
+        val item = viewModel.dailyTasks.value?.get(position)
         if (item != null){
             val action = TaskManagerFragmentDirections.actionTaskManagerFragmentToTaskSelectedDialogFragment()
             action.taskId = item.id

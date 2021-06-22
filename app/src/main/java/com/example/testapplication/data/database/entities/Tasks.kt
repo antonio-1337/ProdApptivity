@@ -25,6 +25,7 @@ data class Tasks(
     @ColumnInfo
     val repeatingDays: String,
 
+    //TODO change type to boolean and manage img source in front end based on value
     @ColumnInfo
     val status_imageSource: Int
 

@@ -30,7 +30,7 @@ class RecyclerAdapter(private val listener: OnItemClickListener) :
 
     override fun getItemCount(): Int = tasks.count()
 
-    public fun setnotes(tasks: List<Tasks>) {
+    public fun setTasks(tasks: List<Tasks>) {
         this.tasks = tasks
         notifyDataSetChanged() //TODO change this method to notify item inserted/removed
     }

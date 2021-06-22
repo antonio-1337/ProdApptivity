@@ -23,14 +23,12 @@ class TaskManagerViewModel(
         set(value) {
             Log.i("TaskManagerViewModel", "Giorno settato: $value")
             field = value
+            dailyTasks = userRepository.getDailyTasks(value.toString()).asLiveData()
         }
-
-    // Instantiate Database
-    //val tasksDatabase = TasksDatabase.getDatabase()
 
     val allTasks: LiveData<List<Tasks>> = userRepository.getAllTasks().asLiveData()
 
-    val dailyTasks: LiveData<List<Tasks>> =
+    var dailyTasks: LiveData<List<Tasks>> =
         userRepository.getDailyTasks(selectedDay.toString()).asLiveData()
 
     fun goToCreateTaskFragment(view: View){
