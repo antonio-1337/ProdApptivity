@@ -11,92 +11,84 @@
             type="com.example.testapplication.ui.main.taskManager.TaskSelectedDialogFragment" />
     </data>
 
-    <com.google.android.material.card.MaterialCardView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:cardCornerRadius="8dp"
-        app:strokeColor="@color/black"
-        app:strokeWidth="1dp">
+        android:background="@color/activity_bg">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/task_info_card">
+        <TextView
+            android:id="@+id/textViewName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/inter_medium"
+            android:textColor="@color/text_default_gray6"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/task_name" />
 
-            <TextView
-                android:id="@+id/textViewName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/inter_medium"
-                android:textColor="@color/text_default_gray6"
-                android:textSize="24sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="@string/task_name" />
+        <ImageView
+            android:id="@+id/imageViewTimerIcon"
+            android:layout_width="19dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="2dp"
+            android:contentDescription="@string/timer_icon"
+            android:minWidth="24dp"
+            android:minHeight="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewName"
+            app:srcCompat="@drawable/ic_timer_teal" />
 
-            <ImageView
-                android:id="@+id/imageViewTimerIcon"
-                android:layout_width="19dp"
-                android:layout_height="20dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="2dp"
-                android:contentDescription="@string/timer_icon"
-                android:minWidth="24dp"
-                android:minHeight="24dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewName"
-                app:srcCompat="@drawable/ic_timer_teal" />
+        <TextView
+            android:id="@+id/textViewTimerMode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/inter_regular"
+            android:textColor="@color/teal_normal"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewTimerIcon"
+            app:layout_constraintStart_toEndOf="@+id/imageViewTimerIcon"
+            app:layout_constraintTop_toTopOf="@+id/imageViewTimerIcon"
+            tools:text="@string/timer_mode" />
 
-            <TextView
-                android:id="@+id/textViewTimerMode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:fontFamily="@font/inter_regular"
-                android:textColor="@color/teal_normal"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@+id/imageViewTimerIcon"
-                app:layout_constraintStart_toEndOf="@+id/imageViewTimerIcon"
-                app:layout_constraintTop_toTopOf="@+id/imageViewTimerIcon"
-                tools:text="@string/timer_mode" />
+        <TextView
+            android:id="@+id/textViewDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/inter_regular"
+            android:inputType="textMultiLine"
+            android:textColor="@color/text_default_gray6"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewTimerIcon"
+            tools:text="@string/task_description" />
 
-            <TextView
-                android:id="@+id/textViewDescription"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="24dp"
-                android:fontFamily="@font/inter_regular"
-                android:inputType="textMultiLine"
-                android:textColor="@color/text_default_gray6"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageViewTimerIcon"
-                tools:text="@string/task_description" />
+        <Button
+            android:id="@+id/buttonStartFocusing"
+            android:layout_width="300dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/orange_normal"
+            android:fontFamily="@font/inter_extrabold"
+            android:text="@string/start_focusing"
+            android:textColor="@color/activity_bg"
+            android:textSize="14sp"
+            app:cornerRadius="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewDescription" />
 
-            <Button
-                android:id="@+id/buttonStartFocusing"
-                android:layout_width="300dp"
-                android:layout_height="58dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:backgroundTint="@color/orange_normal"
-                android:fontFamily="@font/inter_extrabold"
-                android:text="@string/start_focusing"
-                android:textColor="@color/activity_bg"
-                android:textSize="14sp"
-                app:cornerRadius="24dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewDescription" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

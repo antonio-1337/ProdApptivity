@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="20dp"
-                android:layout_marginBottom="40dp"
+                android:layout_marginBottom="56dp"
                 android:contentDescription="@string/start_the_timer"
                 android:onClick="@{() -> viewModel.start()}"
                 android:src="@drawable/ic_play_button"
@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginBottom="40dp"
+                android:layout_marginBottom="56dp"
                 android:contentDescription="@string/start_the_timer"
                 android:onClick="@{() -> viewModel.stop()}"
                 android:src="@drawable/ic_stop_button"
@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginBottom="40dp"
+                android:layout_marginBottom="56dp"
                 android:contentDescription="@string/set_the_timer_mode"
                 android:src="@drawable/ic_timer_teal"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -72,8 +72,10 @@
                 android:layout_height="58dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginBottom="40dp"
+                android:layout_marginBottom="56dp"
                 android:elevation="8dp"
+                android:textAlignment="center"
+                android:textColor="@color/activity_bg"
                 android:fontFamily="@font/inter_extrabold"
                 android:gravity="center"
                 android:text="@string/set_as_done"
@@ -129,11 +131,11 @@
 
             <com.google.android.material.progressindicator.CircularProgressIndicator
                 android:id="@+id/progress_countdown"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_width="314dp"
+                android:layout_height="381dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="32dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="20dp"
                 android:layout_marginBottom="200dp"
                 android:max="100"
                 android:progress="@{Integer.valueOf(viewModel.timeLeftPercent)}"
@@ -142,7 +144,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewTaskName"
-                app:trackThickness="20dp"
+                app:trackThickness="30dp"
                 tools:progress="75" />
 
             <TextView
@@ -160,7 +162,7 @@
                 app:layout_constraintHorizontal_bias="0.496"
                 app:layout_constraintStart_toStartOf="@+id/progress_countdown"
                 app:layout_constraintTop_toBottomOf="@+id/textViewTimer"
-                tools:text="Total 25 minutes"
+                tools:text="@string/total_minutes"
                 tools:visibility="visible" />
 
             <TextView
@@ -170,7 +172,7 @@
                 android:layout_marginTop="32dp"
                 android:textColor="@color/white"
                 android:textSize="24sp"
-                tools:text="Task name"
+                tools:text="@string/task_name"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
