@@ -10,24 +10,31 @@ import androidx.navigation.fragment.findNavController
 import com.example.testapplication.R
 import com.example.testapplication.databinding.FragmentCreateTaskBinding
 import com.example.testapplication.ui.main.dialogues.MultipleChoiceDialog
+import com.example.testapplication.ui.main.dialogues.TimerTypeChoiceDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class CreateTaskFragment : Fragment(), MultipleChoiceDialog.SelectRepeatingDaysDialogListener {
+class CreateTaskFragment : Fragment(),
+    MultipleChoiceDialog.SelectRepeatingDaysDialogListener,
+    TimerTypeChoiceDialog.SelectTimerTypeDialogListener{
 
     // Get the ViewModel from Koin
     private val viewModel: CreateTaskViewModel by viewModel()
     private lateinit var repeatingDaysSwitch: SwitchCompat
 
+    //SELECT REPEATING DAYS RESULT FROM DIALOG
     override fun onDialogPositiveClick(selected_days: String) {
         //update task repeating days after closing the dialog
         viewModel.task_repeating_days = selected_days
     }
-
     override fun onDialogNegativeClick() {
         repeatingDaysSwitch.isChecked = false
     }
 
+    //SELECT  TASK TIMER TYPE RESULT FROM DIALOG
+    override fun onTimerTypeDialogPositiveClick(selected_timer: String) {
+        viewModel.task_timer_type = selected_timer
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,6 +62,7 @@ class CreateTaskFragment : Fragment(), MultipleChoiceDialog.SelectRepeatingDaysD
             findNavController().navigate(action)
         }
 
+        //This opens the repeating days selection dialog
         binding.checkBoxRepeating.setOnCheckedChangeListener { buttonView, _ ->
             if (buttonView.isChecked) {
                 // checked
@@ -64,6 +72,12 @@ class CreateTaskFragment : Fragment(), MultipleChoiceDialog.SelectRepeatingDaysD
                 println("btn is NOT checked")
             }
         }
+
+        //This opens the timer type selection dialog
+        binding.buttonSetMode.setOnClickListener{
+            showSelectTimerTypeDialog()
+        }
+
         return binding.root
     }
 
@@ -80,4 +94,9 @@ class CreateTaskFragment : Fragment(), MultipleChoiceDialog.SelectRepeatingDaysD
         dialog.show(parentFragmentManager, "repeating_days")
     }
 
+    private fun showSelectTimerTypeDialog(){
+        val dialog = TimerTypeChoiceDialog()
+        dialog.setTargetFragment(this,2)
+        dialog.show(parentFragmentManager,"timer_type")
+    }
 }

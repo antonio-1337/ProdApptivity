@@ -65,6 +65,12 @@
         <item>Saturday</item>
         <item>Sunday</item>
     </string-array>
+    <string-array name="timer_types">
+        <item>BASIC</item>
+        <item>INCREMENTAL</item>
+        <item>DECREMENTAL</item>
+        <item>POMODORO</item>
+    </string-array>
     <string name="string_break">Break</string>
     <string name="start_focusing">Start focusing</string>
     <string name="cancel">Cancel</string>
