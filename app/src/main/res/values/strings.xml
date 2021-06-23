@@ -93,6 +93,7 @@
     <string name="timer_mode">Timer mode</string>
     <string name="task_description">Description of the task </string>
     <string name="timer_type">timer type</string>
+    <string name="Repeating_days">Repeating days</string>
 
 
 </resources>
