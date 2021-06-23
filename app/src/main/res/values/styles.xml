@@ -3,6 +3,7 @@
 
     <style name="ToolbarColoredNavigation" parent="Theme.TestApplication">
         <item name="android:textColorSecondary">@color/white</item>
+        <item name="fontFamily">@font/inter_medium</item>
     </style>
 
     <style name="MultipleDialogue" parent="Theme.AppCompat.Dialog.Alert">
