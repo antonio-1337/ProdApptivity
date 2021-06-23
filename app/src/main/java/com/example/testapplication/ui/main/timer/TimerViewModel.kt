@@ -7,6 +7,11 @@ import java.util.concurrent.TimeUnit
 
 class TimerViewModel : ViewModel() {
 
+    enum class TimerMode{
+        BASIC, INCREMENTAL, DECREMENTAL, POMODORO
+    }
+    var timerMode = TimerMode.BASIC
+
     // Stores the time selected by the user
     var hours: Int = 0
     var minutes: Int = 0
@@ -53,7 +58,12 @@ class TimerViewModel : ViewModel() {
             if (selectedTime == 0L) return
 
             // TODO: choose the timer that the user selected
-            timer = Pomodoro(selectedTime, 10000)
+            timer = when(timerMode){
+                TimerMode.BASIC -> Basic(selectedTime)
+                TimerMode.INCREMENTAL -> Incremental(selectedTime, TimeUnit.MINUTES.toMillis(1L))
+                TimerMode.DECREMENTAL -> Decremental(selectedTime, TimeUnit.MINUTES.toMillis(1L))
+                TimerMode.POMODORO -> Pomodoro(selectedTime, TimeUnit.MINUTES.toMillis(1L))
+            }
 
             // Start the timer
             timer.start()
@@ -72,7 +82,6 @@ class TimerViewModel : ViewModel() {
             // Calculate and updates the percent of completion
             timeLeftPercent.addSource(timer.timeLeft) {
                 var percent: Float = ((it.toFloat() / timer.length.toFloat()) * 100f)
-//                Log.i("TimerViewModel", "Percent: $percent, ($it / ${timer.length}) * 100")
                 timeLeftPercent.value = percent.toInt()
             }
 

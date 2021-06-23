@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testapplication.R
 import com.example.testapplication.data.database.entities.Tasks
-import com.example.testapplication.databinding.TaskManagerFragmentBinding
+import com.example.testapplication.databinding.FragmentTaskManagerBinding
 import com.example.testapplication.ui.RecyclerAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
@@ -33,7 +33,7 @@ class TaskManagerFragment() : Fragment(), RecyclerAdapter.OnItemClickListener {
     ): View {
 
         // Setup binding object and inflate the fragment xml
-        val binding = TaskManagerFragmentBinding.inflate(inflater, container, false)
+        val binding = FragmentTaskManagerBinding.inflate(inflater, container, false)
 
         // Bind the viewModel in the layout to the viewModel class
         binding.viewModel = viewModel
@@ -89,7 +89,7 @@ class TaskManagerFragment() : Fragment(), RecyclerAdapter.OnItemClickListener {
     }
 
     // Automatically selects the current day of the week
-    private fun setRadioButtonToCurrentDay(binding: TaskManagerFragmentBinding) {
+    private fun setRadioButtonToCurrentDay(binding: FragmentTaskManagerBinding) {
         when (viewModel.currentDayOfTheWeek) {
             Calendar.MONDAY -> binding.radioButtonMonday.isChecked = true
             Calendar.TUESDAY -> binding.radioButtonTuesday.isChecked = true

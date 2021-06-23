@@ -8,8 +8,10 @@ import android.widget.NumberPicker
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.navArgs
 import com.example.testapplication.R
-import com.example.testapplication.databinding.TimerFragmentBinding
+import com.example.testapplication.databinding.FragmentTimerBinding
+import com.example.testapplication.ui.main.taskManager.TaskSelectedDialogFragmentArgs
 import com.example.testapplication.ui.main.timer.timerModes.TimerInterface
 import java.util.concurrent.TimeUnit
 
@@ -17,11 +19,14 @@ class TimerFragment : Fragment() {
 
     private lateinit var viewModel: TimerViewModel
 
-    private lateinit var binding: TimerFragmentBinding
+    private lateinit var binding: FragmentTimerBinding
 
     private lateinit var hoursPicker: NumberPicker
     private lateinit var minutesPicker: NumberPicker
     private lateinit var secondsPicker: NumberPicker
+
+    // All the arguments from the navigation actions are stored here
+    val args: TimerFragmentArgs by navArgs()
 
 
     override fun onCreateView(
@@ -33,7 +38,7 @@ class TimerFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(TimerViewModel::class.java)
 
         // Setup binding object and inflate the fragment xml
-        binding = TimerFragmentBinding.inflate(inflater, container, false)
+        binding = FragmentTimerBinding.inflate(inflater, container, false)
 
         // Bind the viewModel in the layout to the viewModel class
         binding.viewModel = viewModel
@@ -43,6 +48,9 @@ class TimerFragment : Fragment() {
 
         // Setup the NumberPickers to display
         numberPickerSetUp()
+
+        // Setup the passed arguments from Navigation to the ViewModel
+        argsSetup()
 
         // Observe the button status from the viewModel to update the UI
         viewModel.buttonStatus.observe(viewLifecycleOwner, { timerState ->
@@ -59,6 +67,22 @@ class TimerFragment : Fragment() {
         })
 
         return binding.root
+    }
+
+    /**
+     * Pass the arguments from the Navigation component to the ViewModel
+     * and set up everything according to the arguments
+     */
+    private fun argsSetup(){
+
+        binding.textViewTaskName.text = args.taskName
+
+        when(args.timerMode){
+            "BASIC" -> viewModel.timerMode = TimerViewModel.TimerMode.BASIC
+            "INCREMENTAL" -> viewModel.timerMode = TimerViewModel.TimerMode.INCREMENTAL
+            "DECREMENTAL" -> viewModel.timerMode = TimerViewModel.TimerMode.DECREMENTAL
+            "POMODORO" -> viewModel.timerMode = TimerViewModel.TimerMode.POMODORO
+        }
     }
 
     /**

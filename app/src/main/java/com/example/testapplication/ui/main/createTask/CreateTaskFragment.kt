@@ -1,16 +1,14 @@
 package com.example.testapplication.ui.main.createTask
 
-import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Switch
+import androidx.appcompat.widget.SwitchCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.testapplication.R
-import com.example.testapplication.databinding.CreateTaskFragmentBinding
+import com.example.testapplication.databinding.FragmentCreateTaskBinding
 import com.example.testapplication.ui.main.dialogues.MultipleChoiceDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -19,7 +17,7 @@ class CreateTaskFragment : Fragment(), MultipleChoiceDialog.SelectRepeatingDaysD
 
     // Get the ViewModel from Koin
     private val viewModel: CreateTaskViewModel by viewModel()
-    lateinit var repeatingDaysSwitch: Switch
+    private lateinit var repeatingDaysSwitch: SwitchCompat
 
     override fun onDialogPositiveClick(selected_days: String) {
         //update task repeating days after closing the dialog
@@ -39,7 +37,7 @@ class CreateTaskFragment : Fragment(), MultipleChoiceDialog.SelectRepeatingDaysD
         val currday: String = arguments?.get("day_today") as String
 
         // Setup binding object and inflate the fragment xml
-        val binding = CreateTaskFragmentBinding.inflate(inflater, container, false)
+        val binding = FragmentCreateTaskBinding.inflate(inflater, container, false)
 
         // Bind the viewModel in the layout to the viewModel class
         binding.viewModel = viewModel
@@ -71,7 +69,7 @@ class CreateTaskFragment : Fragment(), MultipleChoiceDialog.SelectRepeatingDaysD
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        repeatingDaysSwitch = view.findViewById(R.id.checkBoxRepeating) as Switch
+        repeatingDaysSwitch = view.findViewById(R.id.checkBoxRepeating) as SwitchCompat
 
         println("LOL")
     }

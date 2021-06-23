@@ -50,6 +50,7 @@ class TaskSelectedDialogFragment() : DialogFragment() {
     // TODO: Passing arguments to the timer fragment
     fun navigateToTimer(){
         val action = TaskSelectedDialogFragmentDirections.actionTaskSelectedDialogFragmentToTimerFragment()
+        action.taskName = args.taskName
         findNavController().navigate(action)
     }
 }

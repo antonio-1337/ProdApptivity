@@ -8,7 +8,7 @@
         android:id="@+id/taskManagerFragment"
         android:name="com.example.testapplication.ui.main.taskManager.TaskManagerFragment"
         android:label="Tasks"
-        tools:layout="@layout/task_manager_fragment">
+        tools:layout="@layout/fragment_task_manager">
         <action
             android:id="@+id/action_taskManagerFragment_to_createTaskFragment"
             app:destination="@id/createTaskFragment" />
@@ -23,7 +23,7 @@
         android:id="@+id/createTaskFragment"
         android:name="com.example.testapplication.ui.main.createTask.CreateTaskFragment"
         android:label="Create Task"
-        tools:layout="@layout/create_task_fragment">
+        tools:layout="@layout/fragment_create_task">
         <argument
             android:name="day_today"
             app:argType="string" />
@@ -35,7 +35,19 @@
         android:id="@+id/timerFragment"
         android:name="com.example.testapplication.ui.main.timer.TimerFragment"
         android:label="Timer"
-        tools:layout="@layout/timer_fragment">
+        tools:layout="@layout/fragment_timer">
+        <argument
+            android:name="taskId"
+            app:argType="integer"
+            android:defaultValue="0"/>
+        <argument
+            android:name="taskName"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
+            android:name="timerMode"
+            app:argType="string"
+            android:defaultValue="NOT_A_TASK"/>
         <action
             android:id="@+id/action_timerFragment_to_taskManagerFragment"
             app:destination="@id/taskManagerFragment" />

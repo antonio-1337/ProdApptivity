@@ -13,8 +13,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.main.createTask.CreateTaskFragment"
-        >
+        tools:context=".ui.main.createTask.CreateTaskFragment">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -52,6 +51,7 @@
                     android:layout_marginTop="40dp"
                     android:ems="10"
                     android:hint="@string/set_name"
+                    android:importantForAutofill="no"
                     android:inputType="textPersonName"
                     android:paddingStart="4dp"
                     android:paddingEnd="4dp"
@@ -84,6 +84,7 @@
                     android:ems="10"
                     android:gravity="start|top"
                     android:hint="@string/add_a_description"
+                    android:importantForAutofill="no"
                     android:inputType="textMultiLine"
                     android:paddingStart="4dp"
                     android:paddingTop="4dp"
@@ -98,7 +99,7 @@
                     app:layout_constraintVertical_bias="0.027" />
 
 
-                <Switch
+                <androidx.appcompat.widget.SwitchCompat
                     android:id="@+id/checkBoxRepeating"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -111,9 +112,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/editTextTextDescription" />
-                    app:layout_constraintStart_toStartOf="@+id/editTextTextDescription"
-                    app:layout_constraintTop_toBottomOf="@+id/editTextTextDescription"
-                    tools:ignore="UseSwitchCompatOrMaterialXml" />
 
                 <Button
                     android:id="@+id/buttonSetMode"
