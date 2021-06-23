@@ -44,7 +44,7 @@ class RecyclerAdapter(private val listener: OnItemClickListener) :
         fun bind(task: Tasks) {
             textViewTitle.text = task.name
             textViewTimerType.text = task.description
-            imageViewCheckImg.setImageResource(task.status_imageSource)
+//            imageViewCheckImg.setImageResource(task.status_imageSource)
         }
 
         companion object {

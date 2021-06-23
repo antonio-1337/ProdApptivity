@@ -6,6 +6,7 @@ import android.view.Gravity
 import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
@@ -20,6 +21,7 @@ import com.bumptech.glide.Glide
 import com.example.testapplication.R
 import com.example.testapplication.ui.main.taskManager.TaskManagerFragmentDirections
 import com.google.android.material.navigation.NavigationView
+import utils.toast
 
 class MainContainerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -62,6 +64,7 @@ class MainContainerActivity : AppCompatActivity(), NavigationView.OnNavigationIt
         findViewById<DrawerLayout>(R.id.drawer_layout).closeDrawer(GravityCompat.START)
         when(item.itemId){
             R.id.nav_timer -> findNavController(R.id.nav_host_fragment).navigate(R.id.timerFragment)
+            R.id.nav_logout -> logout()
         }
         return true
     }
@@ -74,5 +77,10 @@ class MainContainerActivity : AppCompatActivity(), NavigationView.OnNavigationIt
             drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
             drawerLockMode = false
         }
+    }
+
+    // TODO: Implement logout function
+    private fun logout(){
+        Toast.makeText(applicationContext, "Logout!", Toast.LENGTH_SHORT).show()
     }
 }

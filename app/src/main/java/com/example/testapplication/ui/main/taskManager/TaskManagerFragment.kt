@@ -44,6 +44,9 @@ class TaskManagerFragment() : Fragment(), RecyclerAdapter.OnItemClickListener {
         // Set the radio button of the current day checked
         setRadioButtonToCurrentDay(binding)
 
+        // Little trick to make the RecyclerView fill immediatly with the current day tasks
+        viewModel.selectedDay = viewModel.currentDayOfTheWeek
+
         /*
         binding.fab.setOnClickListener {
             //TODO: Navigate to create new task fragment

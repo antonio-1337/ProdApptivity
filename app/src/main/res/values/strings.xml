@@ -73,7 +73,7 @@
     <string name="good_job">You did an amazing job, keep going like this!</string>
     <string name="you_completed_your_task">You completed your task!</string>
     <string name="add_task">Add task</string>
-    <string name="logout">LOGOUT</string>
+    <string name="logout">Log out</string>
     <string name="task_manager">Task Manager</string>
     <string name="analytics">Analytics</string>
     <string name="letter_monday">M</string>

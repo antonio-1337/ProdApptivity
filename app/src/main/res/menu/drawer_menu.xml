@@ -10,6 +10,11 @@
             android:title="@string/timer"
             android:fontFamily="@font/inter_medium"/>
 
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_baseline_logout"
+            android:title="@string/logout"
+            android:fontFamily="@font/inter_medium"/>
     </group>
 
 </menu>
