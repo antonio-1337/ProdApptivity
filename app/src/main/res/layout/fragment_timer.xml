@@ -162,7 +162,7 @@
                 app:layout_constraintHorizontal_bias="0.496"
                 app:layout_constraintStart_toStartOf="@+id/progress_countdown"
                 app:layout_constraintTop_toBottomOf="@+id/textViewTimer"
-                tools:text="@string/total_minutes"
+                tools:text="@string/total_1_d_minutes"
                 tools:visibility="visible" />
 
             <TextView
