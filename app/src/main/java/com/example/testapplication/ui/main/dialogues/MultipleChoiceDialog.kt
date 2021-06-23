@@ -59,8 +59,8 @@ class MultipleChoiceDialog: DialogFragment() {
                 // Set the action buttons
                 .setPositiveButton(R.string.ok) { dialog, id ->
                     // User clicked OK, so save the selectedItems results somewhere
-                    var repeatingDaysString =""
 
+                    var repeatingDaysString =""
                     for (item: Int in selectedItems){
                         when(item){
                             0 -> repeatingDaysString+= Calendar.MONDAY.toString() +";"
@@ -72,11 +72,16 @@ class MultipleChoiceDialog: DialogFragment() {
                             6 -> repeatingDaysString+= Calendar.SUNDAY.toString()+";"
                         }
                     }
+                    if(repeatingDaysString.isNotEmpty()){
 
-                    //remove last semicolon (;)
-                    repeatingDaysString = repeatingDaysString.substring(0,repeatingDaysString.length - 1)
+                        //remove last semicolon (;)
+                        repeatingDaysString = repeatingDaysString.substring(0,repeatingDaysString.length - 1)
 
-                    listener.onDialogPositiveClick(repeatingDaysString)
+                        listener.onDialogPositiveClick(repeatingDaysString)
+                    }
+                    else{
+                        listener.onDialogNegativeClick()
+                    }
                     dialog.dismiss()
                 }
                 .setNegativeButton(R.string.cancel) { dialog, id ->
@@ -84,7 +89,6 @@ class MultipleChoiceDialog: DialogFragment() {
                     listener.onDialogNegativeClick()
                     dialog.dismiss()
                 }
-
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
     }

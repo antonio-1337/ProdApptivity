@@ -33,7 +33,7 @@ class CreateTaskFragment : Fragment(), MultipleChoiceDialog.SelectRepeatingDaysD
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        //get current day param fron taskManager Fragment
+        //get current day param from taskManager Fragment
         val currday: String = arguments?.get("day_today") as String
 
         // Setup binding object and inflate the fragment xml
