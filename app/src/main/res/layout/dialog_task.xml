@@ -70,7 +70,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="24dp"
                 android:fontFamily="@font/inter_regular"
-                android:minLines="2"
+                android:inputType="textMultiLine"
                 android:textColor="@color/text_default_gray6"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
