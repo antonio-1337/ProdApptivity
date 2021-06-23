@@ -11,12 +11,17 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.example.testapplication.R
 import com.example.testapplication.databinding.FragmentTimerBinding
+import com.example.testapplication.ui.main.taskManager.TaskManagerViewModel
 import com.example.testapplication.ui.main.timer.timerModes.TimerInterface
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.concurrent.TimeUnit
 
 class TimerFragment : Fragment() {
 
-    private lateinit var viewModel: TimerViewModel
+    private val viewModel: TimerViewModel by viewModel()
 
     private lateinit var binding: FragmentTimerBinding
 
@@ -27,14 +32,12 @@ class TimerFragment : Fragment() {
     // All the arguments from the navigation actions are stored here
     val args: TimerFragmentArgs by navArgs()
 
+    var isTaskPresent: Boolean = true
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-        // Set the viewModel to the fragment
-        viewModel = ViewModelProvider(this).get(TimerViewModel::class.java)
 
         // Setup binding object and inflate the fragment xml
         binding = FragmentTimerBinding.inflate(inflater, container, false)
@@ -83,6 +86,7 @@ class TimerFragment : Fragment() {
             "INCREMENTAL" -> viewModel.timerMode = TimerViewModel.TimerMode.INCREMENTAL
             "DECREMENTAL" -> viewModel.timerMode = TimerViewModel.TimerMode.DECREMENTAL
             "POMODORO" -> viewModel.timerMode = TimerViewModel.TimerMode.POMODORO
+            "NOT_A_TASK" -> isTaskPresent = false
         }
     }
 
@@ -125,6 +129,9 @@ class TimerFragment : Fragment() {
         val timeInMinutes = TimeUnit.MILLISECONDS.toMinutes(viewModel.totalTime)
         binding.textViewHint.text =
             String.format(resources.getString(R.string.total_1_d_minutes), timeInMinutes)
+
+        // Save it into the Database
+        // TODO: Save the time in the db
     }
 
     /**
@@ -157,6 +164,10 @@ class TimerFragment : Fragment() {
         binding.fabSetMode.isEnabled = true
 
         binding.fabPlay.setImageDrawable(resources.getDrawable(R.drawable.ic_play_button))
+
+        if (viewModel.isTimerInizialized()){
+            hintStringSetUp()
+        }
     }
 
     /**
@@ -165,5 +176,7 @@ class TimerFragment : Fragment() {
     private fun pausedUIManager() {
         binding.fabStop.visibility = View.VISIBLE
         binding.fabPlay.setImageDrawable(resources.getDrawable(R.drawable.ic_play_button))
+
+        hintStringSetUp()
     }
 }

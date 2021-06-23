@@ -1,15 +1,22 @@
 package com.example.testapplication.ui.main.timer
 
 import androidx.lifecycle.*
+import com.example.testapplication.data.repository.UserRepository
 import com.example.testapplication.ui.main.timer.timerModes.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
 
 
-class TimerViewModel : ViewModel() {
+class TimerViewModel(
+    private val userRepository: UserRepository
+) : ViewModel() {
 
-    enum class TimerMode{
+    enum class TimerMode {
         BASIC, INCREMENTAL, DECREMENTAL, POMODORO
     }
+
     var timerMode = TimerMode.BASIC
 
     // Stores the time selected by the user
@@ -24,6 +31,7 @@ class TimerViewModel : ViewModel() {
         get() = timer.totalTime
 
     private lateinit var timer: TimerInterface
+    fun isTimerInizialized(): Boolean = this::timer.isInitialized
 
     // The time left to be observed by the views
     val timeLeftString = MediatorLiveData<String>()
@@ -58,7 +66,7 @@ class TimerViewModel : ViewModel() {
             if (selectedTime == 0L) return
 
             // TODO: choose the timer that the user selected
-            timer = when(timerMode){
+            timer = when (timerMode) {
                 TimerMode.BASIC -> Basic(selectedTime)
                 TimerMode.INCREMENTAL -> Incremental(selectedTime, TimeUnit.MINUTES.toMillis(1L))
                 TimerMode.DECREMENTAL -> Decremental(selectedTime, TimeUnit.MINUTES.toMillis(1L))
