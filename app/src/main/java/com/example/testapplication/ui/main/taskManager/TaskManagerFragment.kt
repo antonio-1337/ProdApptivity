@@ -17,6 +17,7 @@ import com.example.testapplication.data.database.entities.Tasks
 import com.example.testapplication.databinding.FragmentTaskManagerBinding
 import com.example.testapplication.ui.RecyclerAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.time.LocalDateTime
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -81,8 +82,9 @@ class TaskManagerFragment() : Fragment(), RecyclerAdapter.OnItemClickListener {
     // Navigate to the dialog passing all the arguments it needs
     override fun onItemClick(position: Int) {
         val item = viewModel.dailyTasks.value?.get(position)
-        if (item != null){
-            val action = TaskManagerFragmentDirections.actionTaskManagerFragmentToTaskSelectedDialogFragment()
+        if (item != null) {
+            val action =
+                TaskManagerFragmentDirections.actionTaskManagerFragmentToTaskSelectedDialogFragment()
             action.taskId = item.id
             action.taskName = item.name
             action.taskDescription = item.description

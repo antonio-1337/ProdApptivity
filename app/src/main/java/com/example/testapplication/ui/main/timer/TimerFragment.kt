@@ -1,17 +1,16 @@
 package com.example.testapplication.ui.main.timer
 
+import android.graphics.ColorFilter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.NumberPicker
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.example.testapplication.R
 import com.example.testapplication.databinding.FragmentTimerBinding
-import com.example.testapplication.ui.main.taskManager.TaskSelectedDialogFragmentArgs
 import com.example.testapplication.ui.main.timer.timerModes.TimerInterface
 import java.util.concurrent.TimeUnit
 
@@ -55,13 +54,15 @@ class TimerFragment : Fragment() {
         // Observe the button status from the viewModel to update the UI
         viewModel.buttonStatus.observe(viewLifecycleOwner, { timerState ->
             when (timerState) {
-                TimerInterface.Companion.TimerState.RUNNING_FOCUS -> runningUIManager()
+                TimerInterface.Companion.TimerState.RUNNING_FOCUS -> {
+                    runningUIManager()
+                    binding.progressCountdown.setIndicatorColor(resources.getColor(R.color.teal_normal))
+                }
                 TimerInterface.Companion.TimerState.STOPPED -> stoppedUIManager()
                 TimerInterface.Companion.TimerState.PAUSED -> pausedUIManager()
                 TimerInterface.Companion.TimerState.RUNNING_PAUSE -> {
-                    // TODO: change the progress bar color
                     runningUIManager()
-                    Toast.makeText(context, "This is the pause!", Toast.LENGTH_SHORT).show()
+                    binding.progressCountdown.setIndicatorColor(resources.getColor(R.color.orange_normal))
                 }
             }
         })
