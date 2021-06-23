@@ -42,7 +42,8 @@
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/WeekOverviewText">
+                app:layout_constraintTop_toBottomOf="@+id/WeekOverviewText"
+                android:elevation="2dp">
 
                 <RadioButton
                     android:id="@+id/radioButtonMonday"
