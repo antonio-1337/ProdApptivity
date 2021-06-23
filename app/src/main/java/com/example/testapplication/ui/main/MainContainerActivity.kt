@@ -1,5 +1,6 @@
 package com.example.testapplication.ui.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
@@ -19,8 +20,10 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
 import com.example.testapplication.R
+import com.example.testapplication.ui.auth.LoginActivity
 import com.example.testapplication.ui.main.taskManager.TaskManagerFragmentDirections
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
 import utils.toast
 
 class MainContainerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -81,6 +84,10 @@ class MainContainerActivity : AppCompatActivity(), NavigationView.OnNavigationIt
 
     // TODO: Implement logout function
     private fun logout(){
-        Toast.makeText(applicationContext, "Logout!", Toast.LENGTH_SHORT).show()
+        FirebaseAuth.getInstance().signOut()
+        // go back to login screen
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+        //Toast.makeText(applicationContext, "Logout!", Toast.LENGTH_SHORT).show()
     }
 }

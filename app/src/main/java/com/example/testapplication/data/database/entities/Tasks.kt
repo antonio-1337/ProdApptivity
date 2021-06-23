@@ -27,7 +27,7 @@ data class Tasks(
 
     //TODO change type to boolean and manage img source in front end based on value
     @ColumnInfo
-    val status_imageSource: Int
+    val status_imageSource: Int,
 
-    //val timerType: ??? TODO: Implement timer type
+    val timerType: String
 )

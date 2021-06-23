@@ -25,7 +25,7 @@ class CreateTaskViewModel(
     fun addTask() = viewModelScope.launch {
         //create new Task object
         //TODO check if task name is null before creating task
-        val task = Tasks(0, task_name, task_description, 0, task_repeating_days, R.drawable.task_todo_check)
+        val task = Tasks(0, task_name, task_description, 0, task_repeating_days, R.drawable.task_todo_check,"")
         //save the new task to room database
         userRepository.saveTask(task)
     }

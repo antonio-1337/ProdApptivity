@@ -6,12 +6,13 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.testapplication.R
+import com.example.testapplication.data.database.entities.TaskStatus
 import com.example.testapplication.data.database.entities.Tasks
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 @Database(
-    entities = [Tasks::class],
+    entities = [Tasks::class, TaskStatus::class],
     version = 1,
     exportSchema = false
 )
