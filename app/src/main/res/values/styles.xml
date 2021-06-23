@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="ToolbarColoredNavigation" parent="Theme.TestApplication">
         <item name="android:textColorSecondary">@color/white</item>
     </style>
+
+    <style name="MultipleDialogue" parent="Theme.AppCompat.Dialog.Alert">
+        <!-- Used for the title and text -->
+        <item name="android:textColorPrimary">@color/text_default_gray6</item>
+        <!-- Style for text -->
+        <item name="android:textViewStyle">@font/inter_medium</item>
+        <!-- Style for items-->
+        <item name="textAppearanceListItem">@font/inter_medium</item>
+        <!-- Used for the background -->
+        <item name="android:background">@color/activity_bg</item>
+        <!-- Used for the size -->
+        <item name="android:textSize"> 16dp</item>
+        <!-- For the background -->
+        <item name="android:windowBackground">@drawable/task_info_card</item>
+        <!-- For Button color -->
+        <item name="colorOnPrimary">@color/orange_normal</item>
+        <item name="colorOnSecondary">@color/orange_normal</item>
+        <item name="colorAccent">@color/orange_normal</item>
+    </style>
+
+
 </resources>

@@ -42,9 +42,9 @@ class MultipleChoiceDialog: DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
             val selectedItems = ArrayList<Int>() // Where we track the selected items
-            val builder = AlertDialog.Builder(it)
+            val builder = AlertDialog.Builder(it,R.style.MultipleDialogue)
             // Set the dialog title
-            builder.setTitle("Repeating days")
+            builder.setTitle(getString(R.string.Repeating_days))
                 // Specify the list array, the items to be selected by default (null for none),
                 // and the listener through which to receive callbacks when items are selected
                 .setMultiChoiceItems(R.array.week_days, null) { dialog, which, isChecked ->
