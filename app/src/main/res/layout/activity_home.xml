@@ -55,6 +55,7 @@
             android:backgroundTintMode="src_in"
             android:fontFamily="@font/inter_extrabold"
             android:text="@string/start_your_day"
+            android:textColor="@color/activity_bg"
             android:onClick="@{() -> viewModel.goToMainPage()}"
             app:cornerRadius="24dp"
             app:layout_constraintBottom_toBottomOf="parent"

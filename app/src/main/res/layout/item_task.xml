@@ -16,7 +16,7 @@
         android:layout_margin="5dp"
         android:checkable="true"
         android:clickable="true"
-        android:elevation="5dp"
+        android:elevation="8dp"
         android:focusable="true"
         app:cardBackgroundColor="@color/task_creator_text_gray"
         app:cardCornerRadius="8dp"
