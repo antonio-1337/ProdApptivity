@@ -27,7 +27,7 @@ class CreateTaskFragment : Fragment(), CreateTaskListener,
     private lateinit var repeatingDaysSwitch: SwitchCompat
 
     //SELECT REPEATING DAYS RESULT FROM DIALOG
-    override fun onDialogPositiveClick(selected_days: String) {
+    override fun onDialogPositiveClick(selected_days: List<String>) {
         //update task repeating days after closing the dialog
         viewModel.task_repeating_days = selected_days
     }
@@ -62,7 +62,7 @@ class CreateTaskFragment : Fragment(), CreateTaskListener,
         savedInstanceState: Bundle?
     ): View {
         //get current day param from taskManager Fragment
-        val currday: String = arguments?.get("day_today") as String
+        val currday: List<String> = listOf(arguments?.get("day_today") as String)
 
         // Setup binding object and inflate the fragment xml
         val binding = FragmentCreateTaskBinding.inflate(inflater, container, false)

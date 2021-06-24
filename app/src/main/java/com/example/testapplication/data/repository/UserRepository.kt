@@ -26,16 +26,6 @@ class UserRepository(
     //save or update a task
     suspend fun saveTask(task: Tasks) = db.getTasksDao().upsert(task)
 
-    //get a single task
-    fun getTask(taskID: Int) = db.getTasksDao().getTask(taskID)
-
     //get all tasks for the day
     fun getDailyTasks(day: String) = db.getTasksDao().getDailyTasks(day)
-
-    //get all tasks
-    fun getAllTasks() = db.getTasksDao().getAllTasks()
-
-    //DELETE all tasks
-    fun deleteAllTasks() = db.getTasksDao().deleteAllTasks()
-
 }

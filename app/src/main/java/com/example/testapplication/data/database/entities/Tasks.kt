@@ -10,9 +10,6 @@ data class Tasks(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
 
-    //@ColumnInfo
-    //val userID: String,
-
     @ColumnInfo
     val name: String,
 
@@ -23,11 +20,11 @@ data class Tasks(
     val timeSpent: Long,
 
     @ColumnInfo
-    val repeatingDays: String,
+    val repeatingDay: String,
 
-    //TODO change type to boolean and manage img source in front end based on value
     @ColumnInfo
-    val status_imageSource: Int,
+    val timerType: String,
 
-    val timerType: String
+    @ColumnInfo
+    val isCompleted: Boolean
 )

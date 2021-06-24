@@ -16,16 +16,16 @@ interface TasksDao {
     suspend fun upsert(task: Tasks): Long
 
     //GET
-    @Query("SELECT * FROM tasks")
-    fun getAllTasks(): Flow<List<Tasks>>
-    @Query("SELECT * FROM tasks WHERE repeatingDays LIKE '%' || :day || '%'")
+    @Query("SELECT * FROM tasks WHERE repeatingDay LIKE '%' || :day || '%'")
     fun getDailyTasks(day: String): Flow<List<Tasks>>
+
     @Query("SELECT * FROM tasks WHERE id = :idTask")
-    fun getTask(idTask: Int): LiveData<Tasks>
+    fun getTask(idTask: Int): Flow<List<Tasks>>
 
     //DELETE
     @Query("DELETE FROM tasks")
     fun deleteAllTasks()
+
     @Query("DELETE FROM tasks where id = :idTask")
-    fun deleteAllTasks(idTask:Int)
+    fun deleteTask(idTask:Int)
 }

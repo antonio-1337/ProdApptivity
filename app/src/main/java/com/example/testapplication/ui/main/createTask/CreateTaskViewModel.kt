@@ -24,30 +24,34 @@ class CreateTaskViewModel(
 
     var task_name: String = ""
     var task_description: String = ""
-    var task_repeating_days: String = ""
+    var task_repeating_days: List<String> = listOf(String())
     var task_timer_type: String = TimerTypes.basic.value
 
     fun addTask() = viewModelScope.launch {
 
         createTaskListener?.onStarted()
 
-        if(task_name.isNullOrEmpty())
+        if (task_name.isNullOrEmpty())
             createTaskListener?.onError("Please insert a name for your task")
-        else if(task_description.isNullOrEmpty())
+        else if (task_description.isNullOrEmpty())
             createTaskListener?.onError("Please insert a description for your task")
-        else{
-            //create new Task object
-            val task = Tasks(
-                0,
-                task_name,
-                task_description,
-                0,
-                task_repeating_days,
-                R.drawable.task_todo_check,
-                task_timer_type
-            )
-            //save the new task to room database
-            userRepository.saveTask(task)
+        else {
+            var task: Tasks
+            for (day in task_repeating_days) {
+                //create new Task object
+                task = Tasks(
+                    0,
+                    task_name,
+                    task_description,
+                    0,
+                    day,
+                    task_timer_type,
+                    false
+                )
+                //save the new task to room database
+                userRepository.saveTask(task)
+            }
+
             createTaskListener?.onSuccess("Task created successfully")
         }
 

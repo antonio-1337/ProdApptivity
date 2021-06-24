@@ -10,7 +10,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
-class MultipleChoiceDialog: DialogFragment() {
+class MultipleChoiceDialog : DialogFragment() {
 
     // Use this instance of the interface to deliver action events
     internal lateinit var listener: SelectRepeatingDaysDialogListener
@@ -19,7 +19,7 @@ class MultipleChoiceDialog: DialogFragment() {
      * implement this interface in order to receive event callbacks.
      * Each method passes the DialogFragment in case the host needs to query it. */
     interface SelectRepeatingDaysDialogListener {
-        fun onDialogPositiveClick(selected_days: String)
+        fun onDialogPositiveClick(selected_days: List<String>)
         fun onDialogNegativeClick()
     }
 
@@ -32,17 +32,18 @@ class MultipleChoiceDialog: DialogFragment() {
             listener = targetFragment as SelectRepeatingDaysDialogListener
         } catch (e: ClassCastException) {
             // The activity doesn't implement the interface, throw exception
-            throw ClassCastException((context.toString() +
-                    " must implement SelectRepeatingDaysDialogListener"))
+            throw ClassCastException(
+                (context.toString() +
+                        " must implement SelectRepeatingDaysDialogListener")
+            )
         }
     }
-
 
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
             val selectedItems = ArrayList<Int>() // Where we track the selected items
-            val builder = AlertDialog.Builder(it,R.style.MultipleDialogue)
+            val builder = AlertDialog.Builder(it, R.style.MultipleDialogue)
             // Set the dialog title
             builder.setTitle(getString(R.string.Repeating_days))
                 // Specify the list array, the items to be selected by default (null for none),
@@ -60,26 +61,21 @@ class MultipleChoiceDialog: DialogFragment() {
                 .setPositiveButton(R.string.ok) { dialog, id ->
                     // User clicked OK, so save the selectedItems results somewhere
 
-                    var repeatingDaysString =""
-                    for (item: Int in selectedItems){
-                        when(item){
-                            0 -> repeatingDaysString+= Calendar.MONDAY.toString() +";"
-                            1 -> repeatingDaysString+= Calendar.TUESDAY.toString()+";"
-                            2 -> repeatingDaysString+= Calendar.WEDNESDAY.toString()+";"
-                            3 -> repeatingDaysString+= Calendar.THURSDAY.toString()+";"
-                            4 -> repeatingDaysString+= Calendar.FRIDAY.toString()+";"
-                            5 -> repeatingDaysString+= Calendar.SATURDAY.toString()+";"
-                            6 -> repeatingDaysString+= Calendar.SUNDAY.toString()+";"
+                    var repeatingDaysString: MutableList<String> = mutableListOf()
+                    for (item: Int in selectedItems) {
+                        when (item) {
+                            0 -> repeatingDaysString.add(Calendar.MONDAY.toString())
+                            1 -> repeatingDaysString.add(Calendar.TUESDAY.toString())
+                            2 -> repeatingDaysString.add(Calendar.WEDNESDAY.toString())
+                            3 -> repeatingDaysString.add(Calendar.THURSDAY.toString())
+                            4 -> repeatingDaysString.add(Calendar.FRIDAY.toString())
+                            5 -> repeatingDaysString.add(Calendar.SATURDAY.toString())
+                            6 -> repeatingDaysString.add(Calendar.SUNDAY.toString())
                         }
                     }
-                    if(repeatingDaysString.isNotEmpty()){
-
-                        //remove last semicolon (;)
-                        repeatingDaysString = repeatingDaysString.substring(0,repeatingDaysString.length - 1)
-
+                    if (repeatingDaysString.isNotEmpty()) {
                         listener.onDialogPositiveClick(repeatingDaysString)
-                    }
-                    else{
+                    } else {
                         listener.onDialogNegativeClick()
                     }
                     dialog.dismiss()
