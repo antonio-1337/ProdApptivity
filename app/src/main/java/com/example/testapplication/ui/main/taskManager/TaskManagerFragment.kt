@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testapplication.R
 import com.example.testapplication.databinding.FragmentTaskManagerBinding
+import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import utils.SwipeToDeleteCallback
 import utils.snackbar
@@ -63,11 +64,21 @@ class TaskManagerFragment() : Fragment(), RecyclerAdapter.OnItemClickListener {
         //set on reciclerview item swiped listener
         val swipeHandler = object : SwipeToDeleteCallback(view.context) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val note = viewModel.dailyTasks.value?.get(viewHolder.adapterPosition)
 
-                if (note != null) {
-                    viewModel.deleteTaskByID(note.id)
-                    view.snackbar("Task deleted")
+                //view.snackbar("Task deleted")
+
+                val task = viewModel.dailyTasks.value?.get(viewHolder.adapterPosition)
+
+
+                if (task != null) {
+                    viewModel.deleteTaskByID(task.id)
+                    viewModel.selectedDay = viewModel.selectedDay
+                    Snackbar.make(view,"Task Deleted", Snackbar.LENGTH_LONG).also { snackbar ->
+                        snackbar.setAction("UNDO", View.OnClickListener {
+                            viewModel.restoreDeletedTask(task)
+                            snackbar.dismiss()
+                        })
+                    }.show()
                 }
             }
         }

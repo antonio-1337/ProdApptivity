@@ -42,4 +42,8 @@ class TaskManagerViewModel(
         userRepository.deleteTask(id)
     }
 
+    fun restoreDeletedTask(task: Tasks) = viewModelScope.launch {
+        userRepository.saveTask(task)
+    }
+
 }
