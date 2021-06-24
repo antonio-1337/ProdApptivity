@@ -1,17 +1,12 @@
 package com.example.testapplication.ui.main.taskManager
 
-import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.lifecycle.*
 import androidx.navigation.findNavController
 import com.example.testapplication.data.database.entities.Tasks
 import com.example.testapplication.data.repository.UserRepository
-import com.example.testapplication.ui.RecyclerAdapter
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import java.util.*
 
@@ -27,7 +22,7 @@ class TaskManagerViewModel(
     val dailyTasks: LiveData<List<Tasks>>
         get() = _dailyTasks
 
-    var selectedDay: Int = 0
+    var selectedDay: Int = currentDayOfTheWeek
         set(day) {
             field = day
             MainScope().launch {

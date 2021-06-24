@@ -1,18 +1,15 @@
-package com.example.testapplication.ui
+package com.example.testapplication.ui.main.taskManager
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.findFragment
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testapplication.R
 import com.example.testapplication.data.database.entities.Tasks
-import com.example.testapplication.ui.main.taskManager.TaskSelectedDialogFragment
 
 class RecyclerAdapter(private val listener: OnItemClickListener) :
     ListAdapter<Tasks, RecyclerAdapter.TaskViewHolder>(TasksComparator()) {
