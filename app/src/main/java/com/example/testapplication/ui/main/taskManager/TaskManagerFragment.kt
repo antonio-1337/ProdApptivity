@@ -1,32 +1,24 @@
 package com.example.testapplication.ui.main.taskManager
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testapplication.R
-import com.example.testapplication.data.database.entities.Tasks
 import com.example.testapplication.databinding.FragmentTaskManagerBinding
-import com.example.testapplication.ui.RecyclerAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.time.LocalDateTime
 import java.util.*
-import kotlin.collections.ArrayList
 
 class TaskManagerFragment() : Fragment(), RecyclerAdapter.OnItemClickListener {
 
     // Get the ViewModel from Koin
     private val viewModel: TaskManagerViewModel by viewModel()
     private lateinit var recyclerview: RecyclerView
-
+    private lateinit var binding: FragmentTaskManagerBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,19 +26,13 @@ class TaskManagerFragment() : Fragment(), RecyclerAdapter.OnItemClickListener {
     ): View {
 
         // Setup binding object and inflate the fragment xml
-        val binding = FragmentTaskManagerBinding.inflate(inflater, container, false)
+        binding = FragmentTaskManagerBinding.inflate(inflater, container, false)
 
         // Bind the viewModel in the layout to the viewModel class
         binding.viewModel = viewModel
 
         // This makes LiveData update the UI correctly
         binding.lifecycleOwner = this
-
-        // Set the radio button of the current day checked
-        setRadioButtonToCurrentDay(binding)
-
-        // Little trick to make the RecyclerView fill immediatly with the current day tasks
-        viewModel.selectedDay = viewModel.currentDayOfTheWeek
 
         return binding.root
     }
@@ -68,6 +54,9 @@ class TaskManagerFragment() : Fragment(), RecyclerAdapter.OnItemClickListener {
                 adapter.setTasks(it)
             }
         }
+
+        // Set the radio button of the current day checked
+        setRadioButtonToCurrentDay()
     }
 
     // Navigate to the dialog passing all the arguments it needs
@@ -85,15 +74,19 @@ class TaskManagerFragment() : Fragment(), RecyclerAdapter.OnItemClickListener {
     }
 
     // Automatically selects the current day of the week
-    private fun setRadioButtonToCurrentDay(binding: FragmentTaskManagerBinding) {
-        when (viewModel.currentDayOfTheWeek) {
-            Calendar.MONDAY -> binding.radioButtonMonday.isChecked = true
-            Calendar.TUESDAY -> binding.radioButtonTuesday.isChecked = true
-            Calendar.WEDNESDAY -> binding.radioButtonWednesday.isChecked = true
-            Calendar.THURSDAY -> binding.radioButtonThursday.isChecked = true
-            Calendar.FRIDAY -> binding.radioButtonFriday.isChecked = true
-            Calendar.SATURDAY -> binding.radioButtonSaturday.isChecked = true
-            Calendar.SUNDAY -> binding.radioButtonSunday.isChecked = true
+    private fun setRadioButtonToCurrentDay() {
+
+        // Little trick to make the RecyclerView fill immediatly with the current day tasks
+        viewModel.selectedDay = viewModel.selectedDay
+
+        when (viewModel.selectedDay) {
+            Calendar.MONDAY -> binding.radioGroup.check(R.id.radioButtonMonday)
+            Calendar.TUESDAY -> binding.radioGroup.check(R.id.radioButtonTuesday)
+            Calendar.WEDNESDAY -> binding.radioGroup.check(R.id.radioButtonWednesday)
+            Calendar.THURSDAY -> binding.radioGroup.check(R.id.radioButtonThursday)
+            Calendar.FRIDAY -> binding.radioGroup.check(R.id.radioButtonFriday)
+            Calendar.SATURDAY -> binding.radioGroup.check(R.id.radioButtonSaturday)
+            Calendar.SUNDAY -> binding.radioGroup.check(R.id.radioButtonSunday)
         }
     }
 

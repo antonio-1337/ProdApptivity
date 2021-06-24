@@ -29,7 +29,9 @@
             app:argType="string" />
         <action
             android:id="@+id/action_createTaskFragment_to_taskManagerFragment"
-            app:destination="@id/taskManagerFragment" />
+            app:destination="@id/taskManagerFragment"
+            app:popUpTo="@id/createTaskFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/timerFragment"
