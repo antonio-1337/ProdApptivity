@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.appcompat.widget.SwitchCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -12,9 +14,11 @@ import com.example.testapplication.databinding.FragmentCreateTaskBinding
 import com.example.testapplication.ui.main.dialogues.MultipleChoiceDialog
 import com.example.testapplication.ui.main.dialogues.TimerTypeChoiceDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import utils.hide
+import utils.show
 
 
-class CreateTaskFragment : Fragment(),
+class CreateTaskFragment : Fragment(), CreateTaskListener,
     MultipleChoiceDialog.SelectRepeatingDaysDialogListener,
     TimerTypeChoiceDialog.SelectTimerTypeDialogListener{
 
@@ -36,6 +40,23 @@ class CreateTaskFragment : Fragment(),
         viewModel.task_timer_type = selected_timer
     }
 
+    //CREATE TASK STATUSES
+    override fun onStarted() {
+        view?.findViewById<ProgressBar>(R.id.createTask_progressBar)?.show()
+    }
+    override fun onSuccess(okMsg: String) {
+        Toast.makeText(context, okMsg, Toast.LENGTH_SHORT).show()
+        view?.findViewById<ProgressBar>(R.id.createTask_progressBar)?.hide()
+        //go back to task manager fragment
+        val action =
+            CreateTaskFragmentDirections.actionCreateTaskFragmentToTaskManagerFragment()
+        findNavController().navigate(action)
+    }
+    override fun onError(errorMsg: String) {
+        Toast.makeText(context, errorMsg, Toast.LENGTH_SHORT).show()
+        view?.findViewById<ProgressBar>(R.id.createTask_progressBar)?.hide()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -49,6 +70,8 @@ class CreateTaskFragment : Fragment(),
         // Bind the viewModel in the layout to the viewModel class
         binding.viewModel = viewModel
 
+        viewModel.createTaskListener = this
+
         viewModel.task_repeating_days = currday
 
         // This makes LiveData update the UI correctly
@@ -56,10 +79,6 @@ class CreateTaskFragment : Fragment(),
 
         binding.buttonSaveTask.setOnClickListener {
             viewModel.addTask()
-            //go back to task manager fragment
-            val action =
-                CreateTaskFragmentDirections.actionCreateTaskFragmentToTaskManagerFragment()
-            findNavController().navigate(action)
         }
 
         //This opens the repeating days selection dialog
@@ -84,8 +103,6 @@ class CreateTaskFragment : Fragment(),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         repeatingDaysSwitch = view.findViewById(R.id.checkBoxRepeating) as SwitchCompat
-
-        println("LOL")
     }
 
     private fun showSelectRepeatingDaysDialog() {
