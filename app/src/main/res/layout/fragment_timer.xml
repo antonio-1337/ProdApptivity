@@ -62,9 +62,11 @@
                 android:layout_marginBottom="56dp"
                 android:contentDescription="@string/set_the_timer_mode"
                 android:src="@drawable/ic_timer_teal"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/fab_stop"
-                app:layout_constraintStart_toEndOf="@+id/buttonSetAsDone" />
+                app:layout_constraintStart_toEndOf="@+id/buttonSetAsDone"
+                tools:visibility="gone" />
 
             <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
                 android:id="@+id/buttonSetAsDone"
