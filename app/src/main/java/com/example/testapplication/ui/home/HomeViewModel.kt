@@ -33,7 +33,6 @@ class HomeViewModel(
                     homeListener?.onSuccess(it[0])
                     return@main
                 }
-                homeListener?.onError("message object is null")
             } catch (e: ApiException) {
                 homeListener?.onError(e.message!!)
             } catch (e: NoInternetException) {

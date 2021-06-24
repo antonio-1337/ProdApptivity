@@ -80,6 +80,8 @@
     <string name="you_completed_your_task">You completed your task!</string>
     <string name="add_task">Add task</string>
     <string name="logout">Log out</string>
+    <string name="delete_data">Delete data</string>
+    <string name="delete_all_data_text">Delete all data?</string>
     <string name="task_manager">Task Manager</string>
     <string name="analytics">Analytics</string>
     <string name="letter_monday">M</string>

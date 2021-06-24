@@ -11,6 +11,12 @@
             android:fontFamily="@font/inter_medium"/>
 
         <item
+            android:id="@+id/nav_delete_data"
+            android:icon="@drawable/ic_delete"
+            android:title="@string/delete_data"
+            android:fontFamily="@font/inter_medium"/>
+
+        <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/ic_baseline_logout"
             android:title="@string/logout"

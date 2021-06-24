@@ -20,7 +20,6 @@ import utils.hide
 import utils.show
 import utils.toast
 
-// TODO spostare la logica legata all'account google nel ViewModel
 class HomeActivity : AppCompatActivity(), HomeListener {
 
     // Get the ViewModel from Koin

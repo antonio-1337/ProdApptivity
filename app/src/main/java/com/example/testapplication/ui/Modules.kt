@@ -6,6 +6,8 @@ import com.example.testapplication.data.network.WebApi
 import com.example.testapplication.data.repository.UserRepository
 import com.example.testapplication.ui.auth.AuthViewModel
 import com.example.testapplication.ui.home.HomeViewModel
+import com.example.testapplication.ui.main.MainContainerActivity
+import com.example.testapplication.ui.main.MainContainerViewModel
 import com.example.testapplication.ui.main.createTask.CreateTaskViewModel
 import com.example.testapplication.ui.main.taskManager.TaskManagerViewModel
 import com.example.testapplication.ui.main.timer.TimerViewModel
@@ -27,6 +29,7 @@ val viewModelModule: Module = module {
     viewModel { TaskManagerViewModel(get()) }
     viewModel { CreateTaskViewModel(get()) }
     viewModel { TimerViewModel(get()) }
+    viewModel { MainContainerViewModel(get()) }
 }
 
 

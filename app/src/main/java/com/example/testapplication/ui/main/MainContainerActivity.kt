@@ -5,9 +5,11 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
+import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -17,21 +19,37 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.work.*
 import com.bumptech.glide.Glide
 import com.example.testapplication.R
+import com.example.testapplication.databinding.ActivityHomeBinding
+import com.example.testapplication.databinding.ActivityMainContainerBinding
 import com.example.testapplication.ui.auth.LoginActivity
+import com.example.testapplication.ui.home.HomeViewModel
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import utils.ResetWeekWorker
+import utils.toast
 import java.util.*
 import java.util.concurrent.TimeUnit
 
 class MainContainerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
+    // Get the ViewModel from Koin
+    private val viewModel: MainContainerViewModel by viewModel()
 
     private lateinit var drawerLayout: DrawerLayout
     private var drawerLockMode: Boolean = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_container)
+
+        //setContentView(R.layout.activity_main_container)
+
+        // Crea l'oggetto Binding per l'activity mostrando anche il layout
+        val binding: ActivityMainContainerBinding = DataBindingUtil.setContentView(this, R.layout.activity_main_container)
+
+        // Binda il layout direttamente con il ViewModel
+        binding.viewModel = viewModel
+
 
         // Setup for the toolbar
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
@@ -97,6 +115,7 @@ class MainContainerActivity : AppCompatActivity(), NavigationView.OnNavigationIt
         findViewById<DrawerLayout>(R.id.drawer_layout).closeDrawer(GravityCompat.START)
         when(item.itemId){
             R.id.nav_timer -> findNavController(R.id.nav_host_fragment).navigate(R.id.timerFragment)
+            R.id.nav_delete_data -> deleteAllData()
             R.id.nav_logout -> logout()
         }
         return true
@@ -112,12 +131,28 @@ class MainContainerActivity : AppCompatActivity(), NavigationView.OnNavigationIt
         }
     }
 
-    // TODO: Implement logout function
     private fun logout(){
         FirebaseAuth.getInstance().signOut()
         // go back to login screen
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
-        //Toast.makeText(applicationContext, "Logout!", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun deleteAllData(){
+        val builder = AlertDialog.Builder(this)
+        builder.setMessage("Delete all your data?")
+            .setCancelable(false)
+            .setPositiveButton("Yes") { dialog, id ->
+                // Delete all the user's tasks from database
+                viewModel.deleteAllData()
+                toast("All data deleted successfully")
+                dialog.dismiss()
+            }
+            .setNegativeButton("Cancel") { dialog, id ->
+                // Dismiss the dialog
+                dialog.dismiss()
+            }
+        val alert = builder.create()
+        alert.show()
     }
 }
