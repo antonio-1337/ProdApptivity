@@ -97,19 +97,21 @@
                 <NumberPicker
                     android:id="@+id/numPicker_hours"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="280dp"
+                    android:layout_marginRight="24dp"
                     android:theme="@style/AppTheme.Picker" />
 
                 <NumberPicker
                     android:id="@+id/numPicker_minutes"
+                    android:layout_marginRight="24dp"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="280dp"
                     android:theme="@style/AppTheme.Picker" />
 
                 <NumberPicker
                     android:id="@+id/numPicker_seconds"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="280dp"
                     android:theme="@style/AppTheme.Picker" />
 
             </LinearLayout>
@@ -135,13 +137,13 @@
                 android:layout_width="314dp"
                 android:layout_height="381dp"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="80dp"
+                android:layout_marginTop="110dp"
                 android:layout_marginEnd="20dp"
-                android:layout_marginBottom="32dp"
+                android:layout_marginBottom="140dp"
                 android:max="100"
                 android:progress="@{Integer.valueOf(viewModel.timeLeftPercent)}"
                 app:indicatorSize="360dp"
-                app:layout_constraintBottom_toTopOf="@+id/buttonSetAsDone"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -168,23 +170,20 @@
 
             <TextView
                 android:id="@+id/textViewTaskName"
-                android:layout_width="352dp"
-                android:layout_height="88dp"
+                android:layout_width="370dp"
+                android:layout_height="81dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="20dp"
-                android:layout_marginBottom="16dp"
                 android:fontFamily="@font/inter_medium"
                 android:inputType="textMultiLine"
                 android:textAlignment="center"
                 android:textColor="@color/text_default_gray6"
                 android:textSize="32sp"
-                app:layout_constraintBottom_toTopOf="@+id/progress_countdown"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.226"
                 tools:text="@string/task_name" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
