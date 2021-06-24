@@ -1,17 +1,15 @@
 package com.example.testapplication.ui.main.taskManager
 
-import android.util.Log
 import android.view.View
-import android.widget.Toast
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.findNavController
 import com.example.testapplication.data.database.entities.Tasks
 import com.example.testapplication.data.repository.UserRepository
-import com.example.testapplication.ui.RecyclerAdapter
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import java.util.*
 
@@ -41,6 +39,10 @@ class TaskManagerViewModel(
         val action =
             TaskManagerFragmentDirections.actionTaskManagerFragmentToCreateTaskFragment(selectedDay.toString())
         view.findNavController().navigate(action)
+    }
+
+    fun deleteTaskByID(id:Int) = viewModelScope.launch{
+        userRepository.deleteTask(id)
     }
 
 }

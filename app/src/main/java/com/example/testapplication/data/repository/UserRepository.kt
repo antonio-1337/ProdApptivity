@@ -30,6 +30,9 @@ class UserRepository(
     // Update a task
     suspend fun setAsDone(id: Int) = db.getTasksDao().setAsDone(id)
 
+    @WorkerThread
+    suspend fun deleteTask(id: Int) = db.getTasksDao().deleteTask(id)
+
     // Get all tasks for the day
     fun getDailyTasks(day: String) = db.getTasksDao().getDailyTasks(day)
 }

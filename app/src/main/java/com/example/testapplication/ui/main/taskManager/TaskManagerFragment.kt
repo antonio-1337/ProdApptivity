@@ -1,25 +1,23 @@
 package com.example.testapplication.ui.main.taskManager
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.core.view.accessibility.AccessibilityEventCompat.setAction
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testapplication.R
-import com.example.testapplication.data.database.entities.Tasks
 import com.example.testapplication.databinding.FragmentTaskManagerBinding
 import com.example.testapplication.ui.RecyclerAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.time.LocalDateTime
+import utils.SwipeToDeleteCallback
+import utils.snackbar
 import java.util.*
-import kotlin.collections.ArrayList
+
 
 class TaskManagerFragment() : Fragment(), RecyclerAdapter.OnItemClickListener {
 
@@ -68,6 +66,44 @@ class TaskManagerFragment() : Fragment(), RecyclerAdapter.OnItemClickListener {
                 adapter.setTasks(it)
             }
         }
+
+        /*
+        val itemTouchHelperCallback =
+            object :
+                ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
+                override fun onMove(
+                    recyclerView: RecyclerView,
+                    viewHolder: RecyclerView.ViewHolder,
+                    target: RecyclerView.ViewHolder
+                ) = false
+
+                override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                    val position = viewHolder.adapterPosition
+                    val note = viewModel.dailyTasks.value?.get(position)
+
+                    if (note != null) {
+                        viewModel.deleteTaskByID(note.id)
+                    }
+
+                }
+            }
+
+        val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
+        itemTouchHelper.attachToRecyclerView(recyclerview)*/
+
+        val swipeHandler = object : SwipeToDeleteCallback(view.context) {
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val note = viewModel.dailyTasks.value?.get(viewHolder.adapterPosition)
+
+                if (note != null) {
+                    viewModel.deleteTaskByID(note.id)
+                    view.snackbar("Task deleted")
+                }
+            }
+        }
+        val itemTouchHelper = ItemTouchHelper(swipeHandler)
+        itemTouchHelper.attachToRecyclerView(recyclerview)
+
     }
 
     // Navigate to the dialog passing all the arguments it needs
