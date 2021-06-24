@@ -4,15 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.testapplication.ui.home.HomeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:background="@color/activity_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/activity_bg"
         tools:context=".ui.home.HomeActivity">
 
         <Button
@@ -33,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="64dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="64dp"
             android:fontFamily="@font/inter_semibold"
             android:text="@string/hello_name"
@@ -53,15 +54,15 @@
             android:layout_marginBottom="24dp"
             android:backgroundTint="@color/orange_normal"
             android:backgroundTintMode="src_in"
+            android:elevation="8dp"
             android:fontFamily="@font/inter_extrabold"
+            android:onClick="@{() -> viewModel.goToMainPage()}"
             android:text="@string/start_your_day"
             android:textColor="@color/activity_bg"
-            android:onClick="@{() -> viewModel.goToMainPage()}"
-            app:cornerRadius="24dp"
+            app:cornerRadius="28dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:elevation="8dp"/>
+            app:layout_constraintStart_toStartOf="parent" />
 
         <ProgressBar
             android:id="@+id/homeProgressBar"
@@ -90,38 +91,53 @@
         <LinearLayout
             android:id="@+id/quote_container"
             android:layout_width="320dp"
-            android:layout_height="200dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"
             android:gravity="center"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintHorizontal_bias="0.48"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/name">
 
-            <TextView
-                android:id="@+id/quote_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/inter_regular"
-                android:gravity="start"
-                android:textColor="@color/text_default_gray6"
-                android:textSize="24sp"
-                android:textStyle="italic"
-                tools:text='"Inspirational quote"' />
+            <ScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/quote_author"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="start"
-                android:textColor="@color/text_default_gray6"
-                android:textSize="24sp"
-                tools:text='- cit. Author' />
+                <TextView
+                    android:id="@+id/quote_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter_regular"
+                    android:gravity="start"
+                    android:textColor="@color/text_default_gray6"
+                    android:textSize="24sp"
+                    android:textStyle="italic"
+                    tools:text='"Inspirational quote"' />
+            </ScrollView>
+
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/quote_author"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="36dp"
+            android:layout_marginBottom="32dp"
+            android:gravity="start"
+            android:textColor="@color/text_default_gray6"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/buttonStart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/quote_container"
+            app:layout_constraintVertical_bias="0.037"
+            tools:text='- cit. Author' />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
