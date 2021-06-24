@@ -1,9 +1,6 @@
 package com.example.testapplication.ui.main.timer
 
-import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.testapplication.data.database.entities.Tasks
 import com.example.testapplication.data.repository.UserRepository
 import com.example.testapplication.ui.main.timer.timerModes.*
@@ -121,10 +118,15 @@ class TimerViewModel(
 
     // Manages database operations
     var taskId: Int = 0
+    private val _navigateBack = MutableLiveData<Boolean>(false)
+    val navigateBack : LiveData<Boolean>
+        get() = _navigateBack
+
     @InternalCoroutinesApi
     fun setTaskAsDone(){
         viewModelScope.launch {
             userRepository.setAsDone(taskId)
         }
+        _navigateBack.value = true
     }
 }

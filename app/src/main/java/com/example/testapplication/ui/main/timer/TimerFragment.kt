@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.NumberPicker
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.testapplication.R
 import com.example.testapplication.databinding.FragmentTimerBinding
@@ -60,6 +61,14 @@ class TimerFragment : Fragment() {
                 TimerInterface.Companion.TimerState.STOPPED -> stoppedUIManager()
                 TimerInterface.Companion.TimerState.PAUSED -> pausedUIManager()
                 TimerInterface.Companion.TimerState.RUNNING_PAUSE -> runningUIManager()
+            }
+        })
+
+        // Observe when to navigate back to the TaskManager
+        viewModel.navigateBack.observe(viewLifecycleOwner, { navigate ->
+            if (navigate){
+                val action = TimerFragmentDirections.actionTimerFragmentToTaskManagerFragment()
+                findNavController().navigate(action)
             }
         })
 
