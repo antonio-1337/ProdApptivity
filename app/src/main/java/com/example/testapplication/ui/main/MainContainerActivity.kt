@@ -2,29 +2,27 @@ package com.example.testapplication.ui.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.Gravity
 import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
-import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import androidx.work.*
 import com.bumptech.glide.Glide
 import com.example.testapplication.R
 import com.example.testapplication.ui.auth.LoginActivity
-import com.example.testapplication.ui.main.taskManager.TaskManagerFragmentDirections
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
-import utils.toast
+import utils.ResetWeekWorker
+import java.util.*
+import java.util.concurrent.TimeUnit
 
 class MainContainerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -61,6 +59,38 @@ class MainContainerActivity : AppCompatActivity(), NavigationView.OnNavigationIt
 
         // Set click-listeners for the drawer
         navigationView.setNavigationItemSelectedListener(this)
+
+        // Start WorkManager
+        startWorkManager()
+    }
+
+    private fun startWorkManager(){
+
+        val calendar = Calendar.getInstance()
+
+        val today = calendar.get(Calendar.DAY_OF_WEEK).toLong()
+        val hour = calendar.get(Calendar.HOUR_OF_DAY).toLong()
+
+        val now = TimeUnit.DAYS.toHours(today) + hour
+
+        val delay: Long = TimeUnit.DAYS.toHours(7) - now
+
+        val resetWeekWorkRequest =
+            PeriodicWorkRequestBuilder<ResetWeekWorker>(7, TimeUnit.DAYS)
+                .addTag("WeekResetter")
+                .setInitialDelay(delay, TimeUnit.HOURS)
+                .setBackoffCriteria(
+                    BackoffPolicy.LINEAR,
+                    PeriodicWorkRequest.MIN_BACKOFF_MILLIS,
+                    TimeUnit.MILLISECONDS
+                )
+                .build()
+
+        WorkManager.getInstance(this).enqueueUniquePeriodicWork(
+            "WeekResetter",
+            ExistingPeriodicWorkPolicy.KEEP,
+            resetWeekWorkRequest
+        )
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
