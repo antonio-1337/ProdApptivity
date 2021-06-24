@@ -25,5 +25,9 @@
         <item name="colorAccent">@color/orange_normal</item>
     </style>
 
+    <style name="buttonDelete" parent="Theme.TestApplication">
+        <item name="colorPrimary">@color/gray3</item>
+    </style>
+
 
 </resources>

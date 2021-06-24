@@ -1,10 +1,7 @@
 package com.example.testapplication.ui.main.taskManager
 
 import android.view.View
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import androidx.navigation.findNavController
 import com.example.testapplication.data.database.entities.Tasks
 import com.example.testapplication.data.repository.UserRepository
@@ -25,7 +22,7 @@ class TaskManagerViewModel(
     val dailyTasks: LiveData<List<Tasks>>
         get() = _dailyTasks
 
-    var selectedDay: Int = 0
+    var selectedDay: Int = currentDayOfTheWeek
         set(day) {
             field = day
             MainScope().launch {

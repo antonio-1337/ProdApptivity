@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.accessibility.AccessibilityEventCompat.setAction
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -12,19 +11,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testapplication.R
 import com.example.testapplication.databinding.FragmentTaskManagerBinding
-import com.example.testapplication.ui.RecyclerAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import utils.SwipeToDeleteCallback
 import utils.snackbar
 import java.util.*
-
 
 class TaskManagerFragment() : Fragment(), RecyclerAdapter.OnItemClickListener {
 
     // Get the ViewModel from Koin
     private val viewModel: TaskManagerViewModel by viewModel()
     private lateinit var recyclerview: RecyclerView
-
+    private lateinit var binding: FragmentTaskManagerBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,19 +29,13 @@ class TaskManagerFragment() : Fragment(), RecyclerAdapter.OnItemClickListener {
     ): View {
 
         // Setup binding object and inflate the fragment xml
-        val binding = FragmentTaskManagerBinding.inflate(inflater, container, false)
+        binding = FragmentTaskManagerBinding.inflate(inflater, container, false)
 
         // Bind the viewModel in the layout to the viewModel class
         binding.viewModel = viewModel
 
         // This makes LiveData update the UI correctly
         binding.lifecycleOwner = this
-
-        // Set the radio button of the current day checked
-        setRadioButtonToCurrentDay(binding)
-
-        // Little trick to make the RecyclerView fill immediatly with the current day tasks
-        viewModel.selectedDay = viewModel.currentDayOfTheWeek
 
         return binding.root
     }
@@ -66,31 +57,10 @@ class TaskManagerFragment() : Fragment(), RecyclerAdapter.OnItemClickListener {
                 adapter.setTasks(it)
             }
         }
+        // Set the radio button of the current day checked
+        setRadioButtonToCurrentDay()
 
-        /*
-        val itemTouchHelperCallback =
-            object :
-                ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
-                override fun onMove(
-                    recyclerView: RecyclerView,
-                    viewHolder: RecyclerView.ViewHolder,
-                    target: RecyclerView.ViewHolder
-                ) = false
-
-                override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                    val position = viewHolder.adapterPosition
-                    val note = viewModel.dailyTasks.value?.get(position)
-
-                    if (note != null) {
-                        viewModel.deleteTaskByID(note.id)
-                    }
-
-                }
-            }
-
-        val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
-        itemTouchHelper.attachToRecyclerView(recyclerview)*/
-
+        //set on reciclerview item swiped listener
         val swipeHandler = object : SwipeToDeleteCallback(view.context) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val note = viewModel.dailyTasks.value?.get(viewHolder.adapterPosition)
@@ -103,7 +73,6 @@ class TaskManagerFragment() : Fragment(), RecyclerAdapter.OnItemClickListener {
         }
         val itemTouchHelper = ItemTouchHelper(swipeHandler)
         itemTouchHelper.attachToRecyclerView(recyclerview)
-
     }
 
     // Navigate to the dialog passing all the arguments it needs
@@ -121,15 +90,19 @@ class TaskManagerFragment() : Fragment(), RecyclerAdapter.OnItemClickListener {
     }
 
     // Automatically selects the current day of the week
-    private fun setRadioButtonToCurrentDay(binding: FragmentTaskManagerBinding) {
-        when (viewModel.currentDayOfTheWeek) {
-            Calendar.MONDAY -> binding.radioButtonMonday.isChecked = true
-            Calendar.TUESDAY -> binding.radioButtonTuesday.isChecked = true
-            Calendar.WEDNESDAY -> binding.radioButtonWednesday.isChecked = true
-            Calendar.THURSDAY -> binding.radioButtonThursday.isChecked = true
-            Calendar.FRIDAY -> binding.radioButtonFriday.isChecked = true
-            Calendar.SATURDAY -> binding.radioButtonSaturday.isChecked = true
-            Calendar.SUNDAY -> binding.radioButtonSunday.isChecked = true
+    private fun setRadioButtonToCurrentDay() {
+
+        // Little trick to make the RecyclerView fill immediatly with the current day tasks
+        viewModel.selectedDay = viewModel.selectedDay
+
+        when (viewModel.selectedDay) {
+            Calendar.MONDAY -> binding.radioGroup.check(R.id.radioButtonMonday)
+            Calendar.TUESDAY -> binding.radioGroup.check(R.id.radioButtonTuesday)
+            Calendar.WEDNESDAY -> binding.radioGroup.check(R.id.radioButtonWednesday)
+            Calendar.THURSDAY -> binding.radioGroup.check(R.id.radioButtonThursday)
+            Calendar.FRIDAY -> binding.radioGroup.check(R.id.radioButtonFriday)
+            Calendar.SATURDAY -> binding.radioGroup.check(R.id.radioButtonSaturday)
+            Calendar.SUNDAY -> binding.radioGroup.check(R.id.radioButtonSunday)
         }
     }
 
