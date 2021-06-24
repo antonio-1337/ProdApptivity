@@ -7,6 +7,7 @@ import androidx.lifecycle.*
 import androidx.navigation.findNavController
 import com.example.testapplication.data.database.entities.Tasks
 import com.example.testapplication.data.repository.UserRepository
+import com.example.testapplication.ui.RecyclerAdapter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.flow.collect

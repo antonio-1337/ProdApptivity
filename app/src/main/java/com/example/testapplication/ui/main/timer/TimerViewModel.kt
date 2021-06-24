@@ -3,13 +3,12 @@ package com.example.testapplication.ui.main.timer
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.testapplication.data.database.entities.Tasks
 import com.example.testapplication.data.repository.UserRepository
 import com.example.testapplication.ui.main.timer.timerModes.*
-import kotlinx.coroutines.InternalCoroutinesApi
-import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
 
 
@@ -124,11 +123,8 @@ class TimerViewModel(
     var taskId: Int = 0
     @InternalCoroutinesApi
     fun setTaskAsDone(){
-        MainScope().launch {
-            var result: List<Tasks>
-            userRepository.getTask(taskId).collect {
-                result = it
-            }
+        viewModelScope.launch {
+            userRepository.setAsDone(taskId)
         }
     }
 }

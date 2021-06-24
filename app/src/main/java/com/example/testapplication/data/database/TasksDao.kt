@@ -13,8 +13,9 @@ interface TasksDao {
     suspend fun upsert(task: Tasks): Long
 
     // Update Task
-    @Update(entity = Tasks::class)
-    fun update(task: Tasks)
+    @Transaction
+    @Query("UPDATE tasks SET isCompleted = 1 WHERE id = :id")
+    suspend fun setAsDone(id: Int)
 
     // GET
     @Query("SELECT * FROM tasks WHERE repeatingDay LIKE '%' || :day || '%'")

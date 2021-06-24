@@ -48,18 +48,10 @@ class TaskManagerFragment() : Fragment(), RecyclerAdapter.OnItemClickListener {
         // Little trick to make the RecyclerView fill immediatly with the current day tasks
         viewModel.selectedDay = viewModel.currentDayOfTheWeek
 
-        /*
-        binding.fab.setOnClickListener {
-            //TODO: Navigate to create new task fragment
-            Log.i("TaskManagerFragment", "FAB clicked.")
-
-            val action = TaskManagerFragmentDirections.actionTaskManagerFragmentToCreateTaskFragment()
-            findNavController().navigate(action)
-        }*/
-
         return binding.root
     }
 
+    private val adapter = RecyclerAdapter(this)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -67,7 +59,6 @@ class TaskManagerFragment() : Fragment(), RecyclerAdapter.OnItemClickListener {
         recyclerview.setHasFixedSize(true)
         recyclerview.layoutManager = LinearLayoutManager(activity)
 
-        val adapter = RecyclerAdapter(this)
         recyclerview.adapter = adapter
 
         viewModel.dailyTasks.observe(viewLifecycleOwner) { tasks ->

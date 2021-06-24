@@ -47,6 +47,8 @@ class RecyclerAdapter(private val listener: OnItemClickListener) :
 
             if (task.isCompleted){
                 imageViewCheckImg.setImageResource(R.drawable.task_done_check)
+            } else{
+                imageViewCheckImg.setImageResource(R.drawable.task_todo_check)
             }
 
         }
