@@ -16,16 +16,22 @@ class UserRepository(
         return apiRequest { webApi.loginUser(email,password)}
     }
 
-    //get random quote
+    // Get random quote
     suspend fun getRandomQuote(): Array<GetQuoteResponse> {
         return apiRequest { webApi.getRandomQuote() }
     }
 
 
     @WorkerThread
-    //save or update a task
+    // Save a task
     suspend fun saveTask(task: Tasks) = db.getTasksDao().upsert(task)
 
-    //get all tasks for the day
+    // Update a task
+    fun updateTask(task: Tasks) = db.getTasksDao().update(task)
+
+    // Get a specific task
+    fun getTask(id: Int) = db.getTasksDao().getTask(id)
+
+    // Get all tasks for the day
     fun getDailyTasks(day: String) = db.getTasksDao().getDailyTasks(day)
 }

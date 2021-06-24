@@ -80,6 +80,7 @@
                 android:gravity="center"
                 android:text="@string/set_as_done"
                 android:textSize="14sp"
+                android:onClick="@{() -> viewModel.setTaskAsDone()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/fab_set_mode"
                 app:layout_constraintStart_toStartOf="parent" />

@@ -26,5 +26,5 @@ data class Tasks(
     val timerType: String,
 
     @ColumnInfo
-    val isCompleted: Boolean
+    var isCompleted: Boolean
 )

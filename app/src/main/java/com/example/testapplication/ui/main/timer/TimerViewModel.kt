@@ -1,10 +1,14 @@
 package com.example.testapplication.ui.main.timer
 
-import androidx.lifecycle.*
+import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import com.example.testapplication.data.database.entities.Tasks
 import com.example.testapplication.data.repository.UserRepository
 import com.example.testapplication.ui.main.timer.timerModes.*
-import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
 
@@ -23,7 +27,7 @@ class TimerViewModel(
     var hours: Int = 0
     var minutes: Int = 0
     var seconds: Int = 0
-    var selectedTime: Long = 0L
+    private var selectedTime: Long = 0L
 
     val length: Long
         get() = timer.length
@@ -42,10 +46,10 @@ class TimerViewModel(
 
     // Initialize a value for the timeLeft so that is not null when observed by the textView
     init {
-        timeLeftString.addSource(MutableLiveData<String>("00:00")) {
+        timeLeftString.addSource(MutableLiveData("00:00")) {
             timeLeftString.value = it
         }
-        timeLeftPercent.addSource(MutableLiveData<Long>(0L)) {
+        timeLeftPercent.addSource(MutableLiveData(0L)) {
             timeLeftPercent.value = it.toInt()
         }
         buttonStatus.addSource(MutableLiveData(TimerInterface.Companion.TimerState.STOPPED)) {
@@ -89,7 +93,7 @@ class TimerViewModel(
 
             // Calculate and updates the percent of completion
             timeLeftPercent.addSource(timer.timeLeft) {
-                var percent: Float = ((it.toFloat() / timer.length.toFloat()) * 100f)
+                val percent: Float = ((it.toFloat() / timer.length.toFloat()) * 100f)
                 timeLeftPercent.value = percent.toInt()
             }
 
@@ -102,7 +106,6 @@ class TimerViewModel(
         } else {
             pause()
         }
-
     }
 
     fun stop() {
@@ -115,5 +118,17 @@ class TimerViewModel(
 
     fun resume() {
         timer.resume()
+    }
+
+    // Manages database operations
+    var taskId: Int = 0
+    @InternalCoroutinesApi
+    fun setTaskAsDone(){
+        MainScope().launch {
+            var result: List<Tasks>
+            userRepository.getTask(taskId).collect {
+                result = it
+            }
+        }
     }
 }
