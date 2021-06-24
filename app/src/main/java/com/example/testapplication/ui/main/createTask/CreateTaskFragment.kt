@@ -29,7 +29,7 @@ class CreateTaskFragment : Fragment(), CreateTaskListener,
     //SELECT REPEATING DAYS RESULT FROM DIALOG
     override fun onDialogPositiveClick(selected_days: List<String>) {
         //update task repeating days after closing the dialog
-        viewModel.task_repeating_days = selected_days
+        viewModel.taskRepeatingDays = selected_days
     }
     override fun onDialogNegativeClick() {
         repeatingDaysSwitch.isChecked = false
@@ -37,7 +37,7 @@ class CreateTaskFragment : Fragment(), CreateTaskListener,
 
     //SELECT  TASK TIMER TYPE RESULT FROM DIALOG
     override fun onTimerTypeDialogPositiveClick(selected_timer: String) {
-        viewModel.task_timer_type = selected_timer
+        viewModel.taskTimerType = selected_timer
     }
 
     //CREATE TASK STATUSES
@@ -72,7 +72,7 @@ class CreateTaskFragment : Fragment(), CreateTaskListener,
 
         viewModel.createTaskListener = this
 
-        viewModel.task_repeating_days = currday
+        viewModel.taskRepeatingDays = currday
 
         // This makes LiveData update the UI correctly
         binding.lifecycleOwner = this

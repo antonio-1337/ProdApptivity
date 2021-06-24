@@ -88,7 +88,7 @@ class TaskManagerFragment() : Fragment(), RecyclerAdapter.OnItemClickListener {
             action.taskId = item.id
             action.taskName = item.name
             action.taskDescription = item.description
-            action.timerMode = "NOT YET TIMERMODE"
+            action.timerMode = item.timerType
             findNavController().navigate(action)
         }
     }

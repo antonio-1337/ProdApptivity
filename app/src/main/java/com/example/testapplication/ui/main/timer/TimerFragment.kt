@@ -56,17 +56,11 @@ class TimerFragment : Fragment() {
 
         // Observe the button status from the viewModel to update the UI
         viewModel.buttonStatus.observe(viewLifecycleOwner, { timerState ->
-            when (timerState) {
-                TimerInterface.Companion.TimerState.RUNNING_FOCUS -> {
-                    runningUIManager()
-                    binding.progressCountdown.setIndicatorColor(resources.getColor(R.color.teal_normal))
-                }
+            when (timerState!!) {
+                TimerInterface.Companion.TimerState.RUNNING_FOCUS -> runningUIManager()
                 TimerInterface.Companion.TimerState.STOPPED -> stoppedUIManager()
                 TimerInterface.Companion.TimerState.PAUSED -> pausedUIManager()
-                TimerInterface.Companion.TimerState.RUNNING_PAUSE -> {
-                    runningUIManager()
-                    binding.progressCountdown.setIndicatorColor(resources.getColor(R.color.orange_normal))
-                }
+                TimerInterface.Companion.TimerState.RUNNING_PAUSE -> runningUIManager()
             }
         })
 
@@ -148,6 +142,9 @@ class TimerFragment : Fragment() {
 
         binding.fabPlay.setImageDrawable(resources.getDrawable(R.drawable.ic_pause_button))
 
+        // Changes the progress bar color
+        binding.progressCountdown.setIndicatorColor(resources.getColor(R.color.teal_normal))
+
         hintStringSetUp()
     }
 
@@ -176,6 +173,9 @@ class TimerFragment : Fragment() {
     private fun pausedUIManager() {
         binding.fabStop.visibility = View.VISIBLE
         binding.fabPlay.setImageDrawable(resources.getDrawable(R.drawable.ic_play_button))
+
+        // Changes the progress bar color
+        binding.progressCountdown.setIndicatorColor(resources.getColor(R.color.orange_normal))
 
         hintStringSetUp()
     }
