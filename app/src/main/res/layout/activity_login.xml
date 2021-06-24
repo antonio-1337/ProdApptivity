@@ -104,7 +104,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="316dp"
+                android:layout_marginTop="344dp"
                 android:fontFamily="@font/inter_bold"
                 android:text="@string/login"
                 android:textColor="@color/text_default_gray6"
