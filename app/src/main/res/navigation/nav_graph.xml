@@ -11,13 +11,19 @@
         tools:layout="@layout/fragment_task_manager">
         <action
             android:id="@+id/action_taskManagerFragment_to_createTaskFragment"
-            app:destination="@id/createTaskFragment" />
+            app:destination="@id/createTaskFragment"
+            app:enterAnim="@anim/slide_left"
+            app:exitAnim="@anim/wait_anim"
+            app:popEnterAnim="@anim/wait_anim"
+            app:popExitAnim="@anim/slide_right" />
         <action
             android:id="@+id/action_taskManagerFragment_to_timerFragment"
             app:destination="@id/timerFragment" />
         <action
             android:id="@+id/action_taskManagerFragment_to_taskSelectedDialogFragment"
-            app:destination="@id/taskSelectedDialogFragment" />
+            app:destination="@id/taskSelectedDialogFragment"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/createTaskFragment"
@@ -30,6 +36,10 @@
         <action
             android:id="@+id/action_createTaskFragment_to_taskManagerFragment"
             app:destination="@id/taskManagerFragment"
+            app:enterAnim="@anim/slide_right"
+            app:exitAnim="@anim/wait_anim"
+            app:popEnterAnim="@anim/wait_anim"
+            app:popExitAnim="@anim/slide_left"
             app:popUpTo="@id/createTaskFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -52,7 +62,11 @@
             android:defaultValue="NOT_A_TASK"/>
         <action
             android:id="@+id/action_timerFragment_to_taskManagerFragment"
-            app:destination="@id/taskManagerFragment" />
+            app:destination="@id/taskManagerFragment"
+            app:enterAnim="@anim/slide_left"
+            app:exitAnim="@anim/wait_anim"
+            app:popEnterAnim="@anim/wait_anim"
+            app:popExitAnim="@anim/slide_right" />
     </fragment>
     <dialog
         android:id="@+id/taskSelectedDialogFragment"
@@ -77,6 +91,8 @@
             android:defaultValue=""/>
         <action
             android:id="@+id/action_taskSelectedDialogFragment_to_timerFragment"
-            app:destination="@id/timerFragment" />
+            app:destination="@id/timerFragment"
+            app:enterAnim="@anim/slide_left"
+            app:exitAnim="@anim/wait_anim" />
     </dialog>
 </navigation>
