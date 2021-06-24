@@ -168,7 +168,7 @@
 
             <TextView
                 android:id="@+id/textViewTaskName"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="24dp"
@@ -176,6 +176,7 @@
                 android:fontFamily="@font/inter_medium"
                 android:textColor="@color/text_default_gray6"
                 android:textSize="32sp"
+                android:inputType="textMultiLine"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
