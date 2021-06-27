@@ -7,7 +7,6 @@ import com.example.testapplication.data.repository.UserRepository
 import org.koin.core.component.KoinApiExtension
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
-import org.koin.java.KoinJavaComponent.inject
 
 @KoinApiExtension
 class ResetWeekWorker(appContext: Context, workerParams: WorkerParameters) :

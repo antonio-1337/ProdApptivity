@@ -5,22 +5,23 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_logout"
+            android:fontFamily="@font/inter_medium"
+            android:icon="@drawable/ic_baseline_logout"
+            android:title="@string/logout" />
+
+        <item
             android:id="@+id/nav_timer"
+            android:fontFamily="@font/inter_medium"
             android:icon="@drawable/ic_timer_teal"
-            android:title="@string/timer"
-            android:fontFamily="@font/inter_medium"/>
+            android:title="@string/timer" />
 
         <item
             android:id="@+id/nav_delete_data"
+            android:fontFamily="@font/inter_medium"
             android:icon="@drawable/ic_delete"
-            android:title="@string/delete_data"
-            android:fontFamily="@font/inter_medium"/>
+            android:title="@string/delete_data" />
 
-        <item
-            android:id="@+id/nav_logout"
-            android:icon="@drawable/ic_baseline_logout"
-            android:title="@string/logout"
-            android:fontFamily="@font/inter_medium"/>
     </group>
 
 </menu>

@@ -1,11 +1,13 @@
 package com.example.testapplication.ui.main.taskManager
 
 import android.view.View
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.findNavController
 import com.example.testapplication.data.database.entities.Tasks
 import com.example.testapplication.data.repository.UserRepository
-import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.util.*
@@ -15,8 +17,8 @@ class TaskManagerViewModel(
 ) : ViewModel() {
 
     // Instantiate all the calendar-related variable that we need
-    var calendar: Calendar = Calendar.getInstance()
-    val currentDayOfTheWeek = calendar.get(Calendar.DAY_OF_WEEK)
+    private var calendar: Calendar = Calendar.getInstance()
+    private val currentDayOfTheWeek = calendar.get(Calendar.DAY_OF_WEEK)
 
     private val _dailyTasks = MutableLiveData<List<Tasks>>()
     val dailyTasks: LiveData<List<Tasks>>
@@ -25,7 +27,7 @@ class TaskManagerViewModel(
     var selectedDay: Int = currentDayOfTheWeek
         set(day) {
             field = day
-            MainScope().launch {
+            viewModelScope.launch {
                 userRepository.getDailyTasks(day.toString()).collect {
                     _dailyTasks.value = it
                 }

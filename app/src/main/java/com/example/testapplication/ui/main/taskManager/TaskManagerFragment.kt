@@ -45,6 +45,9 @@ class TaskManagerFragment() : Fragment(), RecyclerAdapter.OnItemClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Set the radio button of the current day checked
+        setRadioButtonToCurrentDay()
+
         recyclerview = view.findViewById(R.id.recycler_view)
         recyclerview.setHasFixedSize(true)
         recyclerview.layoutManager = LinearLayoutManager(activity)
@@ -53,19 +56,15 @@ class TaskManagerFragment() : Fragment(), RecyclerAdapter.OnItemClickListener {
 
         viewModel.dailyTasks.observe(viewLifecycleOwner) { tasks ->
             // Update the cached copy of the words in the adapter.
-            //tasks.let { adapter.submitList(it) }
+            recyclerview.removeAllViewsInLayout()
             tasks.let {
                 adapter.setTasks(it)
             }
         }
-        // Set the radio button of the current day checked
-        setRadioButtonToCurrentDay()
 
-        //set on reciclerview item swiped listener
+        //set on recyclerview item swiped listener
         val swipeHandler = object : SwipeToDeleteCallback(view.context) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-
-                //view.snackbar("Task deleted")
 
                 val task = viewModel.dailyTasks.value?.get(viewHolder.adapterPosition)
 
